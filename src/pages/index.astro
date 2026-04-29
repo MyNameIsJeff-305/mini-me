@@ -1,11 +1,635 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
+import MainLayout from "../layouts/MainLayout.astro";
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import {
+  Star,
+  MapPin,
+  BookOpen,
+  GraduationCap,
+  Baby,
+  HeartHandshake,
+  ShieldCheck,
+  Sparkles,
+  Puzzle,
+  Sun,
+  MoveRight,
+  Phone,
+  Mail,
+  CircleHelp,
+  Plus,
+  CalendarDays,
+  School,
+  UsersRound,
+  CheckCircle2,
+} from "@lucide/astro";
+
+const stats = [
+  { value: "1999", label: "Established" },
+  { value: "4", label: "Learning Centers" },
+  { value: "25+", label: "Years Serving Families" },
+];
+
+const programs = [
+  {
+    title: "Early Learning",
+    description:
+      "A nurturing environment where children build confidence, curiosity, social skills, and a love for learning.",
+    icon: BookOpen,
+  },
+  {
+    title: "School Readiness",
+    description:
+      "Daily routines, guided activities, and age-appropriate learning experiences designed to prepare children for the next step.",
+    icon: GraduationCap,
+  },
+  {
+    title: "Safe Childcare",
+    description:
+      "Warm classrooms, caring staff, and structured spaces where families can feel confident every day.",
+    icon: ShieldCheck,
+  },
+  {
+    title: "Inclusive Support",
+    description:
+      "A welcoming approach that supports different learning styles, personalities, and developmental needs.",
+    icon: HeartHandshake,
+  },
+];
+
+const locations = [
+  {
+    name: "Mini Me Daycare Learning Center",
+    address: "9851 SW 1st St, Fountainebleau, FL 33174",
+    email: "Minimelc1@att.net",
+    phone: "(305) 227-2289",
+    href: "/locations",
+  },
+  {
+    name: "Mini Me Learning Center II",
+    address: "11865 Southwest 26th Street, Miami, FL 33175",
+    email: "Minimedaycare@bellsouth.net",
+    phone: "(305) 227-9111",
+    href: "/locations",
+  },
+  {
+    name: "Mini Me Learning Center III",
+    address: "7300 SW 152 Ave, Miami, FL 33193",
+    email: "Minimelc3@att.net",
+    phone: "(305) 388-2098",
+    href: "/locations",
+  },
+  {
+    name: "Mini Me Learning Center IV",
+    address: "15260 SW 280 St, Homestead, FL 33032",
+    email: "Minimelc4@att.net",
+    phone: "(786) 410-8991",
+    href: "/locations",
+  },
+];
+
+const steps = [
+  {
+    title: "Choose a location",
+    description:
+      "Find the Mini Me Learning Center closest to your family, work, or daily routine.",
+  },
+  {
+    title: "Schedule a visit",
+    description:
+      "Tour the center, meet the team, and ask questions about programs, classrooms, and availability.",
+  },
+  {
+    title: "Begin enrollment",
+    description:
+      "Get guidance on the next steps so your child can begin their learning journey with confidence.",
+  },
+];
+
+const faqs = [
+  {
+    question: "How many Mini Me Learning Centers are available?",
+    answer:
+      "Mini Me Learning Centers currently has four locations serving families across Miami and South Florida.",
+  },
+  {
+    question: "Can parents schedule a visit before enrolling?",
+    answer:
+      "Yes. The homepage encourages parents to schedule a visit and connect with the right location.",
+  },
+  {
+    question: "Does Mini Me support early learning and childcare?",
+    answer:
+      "Yes. Mini Me is positioned as a warm early learning and childcare environment focused on growth, care, and school readiness.",
+  },
+];
+
+const cleanPhone = (phone: string) => phone.replace(/\D/g, "");
 ---
 
-<Layout>
-	<Welcome />
-</Layout>
+<MainLayout
+  title="Early Learning Centers in Miami & South Florida"
+  description="Mini Me Learning Centers offers nurturing childcare and early education programs across four locations in Miami and South Florida."
+>
+  <section class="hero-shell">
+    <div class="hero-orb hero-orb-yellow animate-float-slow"></div>
+    <div class="hero-orb hero-orb-blue animate-float-soft"></div>
+
+    <div class="container-shell">
+      <div class="grid items-center gap-12 lg:grid-cols-[1.05fr_0.95fr]">
+        <div class="animate-slide-up">
+          <p class="hero-badge">
+            <Star class="size-4 fill-current" aria-hidden="true" />
+            Early Learning Centers Since 1999
+          </p>
+
+          <h1 class="mt-6 max-w-5xl">
+            A bright place for <br />
+            <span class="text-gradient">little learners</span> <br />
+            to grow.
+          </h1>
+
+          <p class="lead mt-6 max-w-2xl">
+            Mini Me Learning Centers provides warm childcare, early education,
+            and school-readiness support for families across Miami and South
+            Florida.
+          </p>
+
+          <div class="mt-8 flex flex-col gap-3 sm:flex-row">
+            <a href="/enroll" class="btn btn-primary">
+              Start Enrollment
+              <MoveRight class="size-4" aria-hidden="true" />
+            </a>
+
+            <a href="/locations" class="btn btn-outline">
+              View Locations
+              <MapPin class="size-4" aria-hidden="true" />
+            </a>
+          </div>
+
+          <div class="mt-10 grid max-w-2xl gap-3 sm:grid-cols-3">
+            {
+              stats.map((item) => (
+                <div class="card p-5">
+                  <p class="font-display text-3xl font-black leading-none text-[rgb(var(--color-heading))]">
+                    {item.value}
+                  </p>
+                  <p class="mt-2 text-sm font-extrabold uppercase tracking-[0.12em] text-[rgb(var(--color-text-muted))]">
+                    {item.label}
+                  </p>
+                </div>
+              ))
+            }
+          </div>
+        </div>
+
+        <div class="relative animate-fade-in lg:justify-self-end">
+          <div
+            class="absolute inset-8 -z-10 rounded-full bg-[rgb(var(--color-bee-yellow)/0.16)] blur-3xl"
+          >
+          </div>
+
+          <div
+            class="glow-panel mx-auto max-w-[32rem] p-6 md:p-8"
+            transition:name="hero-logo-panel"
+          >
+            <div
+              class="relative mx-auto grid aspect-square max-w-[24rem] place-items-center rounded-[var(--radius-2xl)] border border-[rgb(var(--color-border)/0.3)] bg-[rgb(var(--color-surface)/0.55)] p-8"
+            >
+              <img
+                src="/images/mini-me-logo.webp"
+                alt="Mini Me Learning Centers bee mascot logo"
+                class="logo-shadow animate-bee-hover w-full object-contain"
+                width="420"
+                height="420"
+                loading="eager"
+              />
+
+              <div
+                class="absolute -bottom-5 left-1/2 w-[82%] -translate-x-1/2 rounded-full border border-[rgb(var(--color-bee-yellow)/0.35)] bg-[rgb(var(--color-surface)/0.82)] px-5 py-3 text-center shadow-[var(--shadow-card)] backdrop-blur-md"
+              >
+                <p class="flex items-center justify-center gap-2 text-sm font-black uppercase tracking-[0.16em] text-[rgb(var(--color-honey-light))]">
+                  <Sparkles class="size-4" aria-hidden="true" />
+                  Learn · Play · Grow
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="absolute -right-3 top-8 hidden items-center gap-2 rounded-full border border-[rgb(var(--color-border)/0.3)] bg-[rgb(var(--color-surface)/0.72)] px-4 py-3 text-sm font-black shadow-[var(--shadow-card)] backdrop-blur-md sm:flex"
+          >
+            <ShieldCheck class="size-4 text-[rgb(var(--color-bee-yellow))]" aria-hidden="true" />
+            Safe & caring
+          </div>
+
+          <div
+            class="absolute -left-3 bottom-12 hidden items-center gap-2 rounded-full border border-[rgb(var(--color-border)/0.3)] bg-[rgb(var(--color-surface)/0.72)] px-4 py-3 text-sm font-black shadow-[var(--shadow-card)] backdrop-blur-md sm:flex"
+          >
+            <GraduationCap class="size-4 text-[rgb(var(--color-wing-blue))]" aria-hidden="true" />
+            School ready
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-shell-sm">
+    <div class="container-shell">
+      <div
+        class="surface grid gap-4 p-5 sm:grid-cols-3 md:p-6"
+        aria-label="Mini Me highlights"
+      >
+        <div class="flex items-center gap-4">
+          <span class="grid size-12 place-items-center rounded-full wing-gradient">
+            <Baby class="size-6 text-[rgb(var(--color-ink))]" aria-hidden="true" />
+          </span>
+          <div>
+            <p class="font-black text-[rgb(var(--color-heading))]">
+              Child-centered care
+            </p>
+            <p class="text-sm font-semibold text-[rgb(var(--color-text-muted))]">
+              Warm spaces for early growth.
+            </p>
+          </div>
+        </div>
+
+        <div class="flex items-center gap-4">
+          <span class="grid size-12 place-items-center rounded-full bee-gradient">
+            <Sparkles class="size-6 text-[rgb(var(--color-ink))]" aria-hidden="true" />
+          </span>
+          <div>
+            <p class="font-black text-[rgb(var(--color-heading))]">
+              Established since 1999
+            </p>
+            <p class="text-sm font-semibold text-[rgb(var(--color-text-muted))]">
+              Trusted by South Florida families.
+            </p>
+          </div>
+        </div>
+
+        <div class="flex items-center gap-4">
+          <span class="grid size-12 place-items-center rounded-full wing-gradient">
+            <MapPin class="size-6 text-[rgb(var(--color-ink))]" aria-hidden="true" />
+          </span>
+          <div>
+            <p class="font-black text-[rgb(var(--color-heading))]">
+              Four convenient centers
+            </p>
+            <p class="text-sm font-semibold text-[rgb(var(--color-text-muted))]">
+              Serving Miami and Homestead.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-shell">
+    <div class="container-shell">
+      <div class="mx-auto max-w-3xl text-center">
+        <p class="section-kicker mx-auto">
+          <School class="size-4" aria-hidden="true" />
+          Programs & Care
+        </p>
+
+        <h2 class="mt-5">
+          Early learning designed around care, confidence, and curiosity.
+        </h2>
+
+        <p class="lead mt-5">
+          The homepage should quickly show parents that Mini Me is more than a
+          daycare — it is a caring learning environment where children feel safe,
+          supported, and ready to grow.
+        </p>
+      </div>
+
+      <div class="mt-12 grid gap-5 md:grid-cols-2 lg:grid-cols-4">
+        {
+          programs.map(({ icon: Icon, title, description }) => (
+            <article class="card p-6">
+              <div class="grid size-14 place-items-center rounded-[var(--radius-lg)] bg-[rgb(var(--color-bee-yellow)/0.14)] text-[rgb(var(--color-bee-yellow))]">
+                <Icon class="size-7" aria-hidden="true" />
+              </div>
+
+              <h3 class="mt-6 text-2xl">{title}</h3>
+
+              <p class="mt-4 leading-7 text-[rgb(var(--color-text-soft))]">
+                {description}
+              </p>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="section-shell">
+    <div class="container-shell">
+      <div class="two-column">
+        <div class="glow-panel p-6 md:p-8">
+          <div
+            class="rounded-[var(--radius-xl)] border border-[rgb(var(--color-border)/0.3)] bg-[rgb(var(--color-surface)/0.48)] p-6 md:p-8"
+          >
+            <p class="section-kicker">
+              <HeartHandshake class="size-4" aria-hidden="true" />
+              Why Mini Me?
+            </p>
+
+            <h2 class="mt-5">
+              A familiar place where children feel seen, safe, and excited to
+              learn.
+            </h2>
+
+            <p class="lead mt-5">
+              For families, choosing a learning center is emotional. The site
+              should feel warm and trustworthy from the first screen, with clear
+              paths to locations, enrollment, programs, and contact.
+            </p>
+
+            <div class="mt-8 grid gap-4">
+              {
+                [
+                  "Parent-friendly navigation",
+                  "Playful but professional design",
+                  "Built for future content",
+                ].map((title, index) => (
+                  <div class="flex gap-4">
+                    <span class="mt-1 grid size-9 shrink-0 place-items-center rounded-full bee-gradient font-black text-[rgb(var(--color-ink))]">
+                      {index + 1}
+                    </span>
+                    <div>
+                      <h3 class="text-xl">{title}</h3>
+                      <p class="mt-2 text-[rgb(var(--color-text-soft))]">
+                        {index === 0 &&
+                          "Clear calls to action for enrollment, visits, programs, and location details."}
+                        {index === 1 &&
+                          "Inspired by the bee mascot, with soft dark mode, honey accents, rounded cards, and gentle animation."}
+                        {index === 2 &&
+                          "Ready for dedicated location pages, program pages, FAQ sections, forms, and smooth Astro transitions."}
+                      </p>
+                    </div>
+                  </div>
+                ))
+              }
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <p class="section-kicker">
+            <Sparkles class="size-4" aria-hidden="true" />
+            The experience
+          </p>
+
+          <h2 class="mt-5">A website that feels as welcoming as the classroom.</h2>
+
+          <p class="lead mt-5">
+            The visual direction combines the logo’s yellow, black, and soft
+            blue palette with friendly typography, rounded shapes, and warm
+            educational content.
+          </p>
+
+          <div class="mt-8 grid gap-4 sm:grid-cols-2">
+            <div class="card p-5">
+              <Sparkles class="size-8 text-[rgb(var(--color-bee-yellow))]" aria-hidden="true" />
+              <h3 class="mt-4 text-2xl">Mascot energy</h3>
+              <p class="mt-3 text-[rgb(var(--color-text-soft))]">
+                The bee becomes a friendly visual anchor across the site.
+              </p>
+            </div>
+
+            <div class="card p-5">
+              <Sun class="size-8 text-[rgb(var(--color-bee-yellow))]" aria-hidden="true" />
+              <h3 class="mt-4 text-2xl">Soft contrast</h3>
+              <p class="mt-3 text-[rgb(var(--color-text-soft))]">
+                Dark mode is prioritized, but it stays bright, calm, and easy to
+                read.
+              </p>
+            </div>
+
+            <div class="card p-5">
+              <Puzzle class="size-8 text-[rgb(var(--color-wing-blue))]" aria-hidden="true" />
+              <h3 class="mt-4 text-2xl">Modular sections</h3>
+              <p class="mt-3 text-[rgb(var(--color-text-soft))]">
+                Easy to convert into reusable Astro components later.
+              </p>
+            </div>
+
+            <div class="card p-5">
+              <CheckCircle2 class="size-8 text-[rgb(var(--color-wing-blue))]" aria-hidden="true" />
+              <h3 class="mt-4 text-2xl">Motion-ready</h3>
+              <p class="mt-3 text-[rgb(var(--color-text-soft))]">
+                Prepared for view transitions and playful Tailwind animation
+                utilities.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-shell">
+    <div class="container-shell">
+      <div class="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
+        <div class="max-w-3xl">
+          <p class="section-kicker">
+            <MapPin class="size-4" aria-hidden="true" />
+            Our Locations
+          </p>
+
+          <h2 class="mt-5">Four centers serving families across South Florida.</h2>
+
+          <p class="lead mt-5">
+            Help parents quickly find the nearest center, call directly, or
+            begin the enrollment process.
+          </p>
+        </div>
+
+        <a href="/locations" class="btn btn-outline">
+          Explore All Locations
+          <MoveRight class="size-4" aria-hidden="true" />
+        </a>
+      </div>
+
+      <div class="mt-10 grid gap-5 md:grid-cols-2">
+        {
+          locations.map((location) => (
+            <article class="card location-card">
+              <div class="flex items-start justify-between gap-4">
+                <div>
+                  <p class="location-card__title">{location.name}</p>
+                  <p class="mt-3 leading-7 text-[rgb(var(--color-text-soft))]">
+                    {location.address}
+                  </p>
+                </div>
+
+                <span class="grid size-12 shrink-0 place-items-center rounded-full bg-[rgb(var(--color-bee-yellow)/0.14)] text-[rgb(var(--color-bee-yellow))]">
+                  <MapPin class="size-6" aria-hidden="true" />
+                </span>
+              </div>
+
+              <div class="location-card__meta">
+                <a
+                  href={`tel:+1${cleanPhone(location.phone)}`}
+                  class="inline-flex items-center gap-2 font-black transition hover:text-[rgb(var(--color-bee-yellow))]"
+                >
+                  <Phone class="size-4" aria-hidden="true" />
+                  {location.phone}
+                </a>
+
+                <a
+                  href={`mailto:${location.email}`}
+                  class="inline-flex items-center gap-2 font-bold transition hover:text-[rgb(var(--color-wing-blue))]"
+                >
+                  <Mail class="size-4" aria-hidden="true" />
+                  {location.email}
+                </a>
+              </div>
+
+              <div class="mt-2 flex flex-col gap-3 sm:flex-row">
+                <a href={location.href} class="btn btn-primary min-h-11 px-5 text-sm">
+                  View Details
+                  <MoveRight class="size-4" aria-hidden="true" />
+                </a>
+
+                <a
+                  href={`mailto:${location.email}`}
+                  class="btn btn-outline min-h-11 px-5 text-sm"
+                >
+                  Contact Center
+                  <Mail class="size-4" aria-hidden="true" />
+                </a>
+              </div>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="section-shell">
+    <div class="container-shell">
+      <div class="glow-panel p-6 md:p-10 lg:p-12">
+        <div class="grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
+          <div>
+            <p class="section-kicker">
+              <CalendarDays class="size-4" aria-hidden="true" />
+              Enrollment Path
+            </p>
+
+            <h2 class="mt-5">Make the next step simple for busy parents.</h2>
+
+            <p class="lead mt-5">
+              The homepage should reduce friction and guide families toward the
+              most important action: contacting a center or starting enrollment.
+            </p>
+
+            <div class="mt-8 flex flex-col gap-3 sm:flex-row">
+              <a href="/enroll" class="btn btn-primary">
+                Start Enrollment
+                <MoveRight class="size-4" aria-hidden="true" />
+              </a>
+
+              <a href="/contact" class="btn btn-outline">
+                Ask a Question
+                <CircleHelp class="size-4" aria-hidden="true" />
+              </a>
+            </div>
+          </div>
+
+          <div class="grid gap-4">
+            {
+              steps.map((step, index) => (
+                <div class="card flex gap-5 p-5">
+                  <div class="grid size-12 shrink-0 place-items-center rounded-full brand-gradient font-display text-xl font-black text-[rgb(var(--color-ink))]">
+                    {index + 1}
+                  </div>
+
+                  <div>
+                    <h3 class="text-2xl">{step.title}</h3>
+                    <p class="mt-2 leading-7 text-[rgb(var(--color-text-soft))]">
+                      {step.description}
+                    </p>
+                  </div>
+                </div>
+              ))
+            }
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-shell">
+    <div class="container-shell">
+      <div class="mx-auto max-w-3xl text-center">
+        <p class="section-kicker mx-auto">
+          <CircleHelp class="size-4" aria-hidden="true" />
+          Parent Questions
+        </p>
+
+        <h2 class="mt-5">Clear answers for families exploring Mini Me.</h2>
+
+        <p class="lead mt-5">
+          This preview can later connect to a full FAQ page with enrollment,
+          programs, scholarships, documents, and classroom questions.
+        </p>
+      </div>
+
+      <div class="mx-auto mt-10 grid max-w-4xl gap-4">
+        {
+          faqs.map((faq) => (
+            <details class="card group p-5">
+              <summary class="flex cursor-pointer list-none items-center justify-between gap-5">
+                <span class="font-display text-xl font-black tracking-[-0.03em] text-[rgb(var(--color-heading))]">
+                  {faq.question}
+                </span>
+
+                <span class="grid size-9 shrink-0 place-items-center rounded-full bg-[rgb(var(--color-bee-yellow)/0.14)] font-black text-[rgb(var(--color-bee-yellow))] transition group-open:rotate-45">
+                  <Plus class="size-5" aria-hidden="true" />
+                </span>
+              </summary>
+
+              <p class="mt-4 leading-7 text-[rgb(var(--color-text-soft))]">
+                {faq.answer}
+              </p>
+            </details>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="section-shell-sm">
+    <div class="container-shell">
+      <div class="glow-panel p-8 text-center md:p-12">
+        <p class="section-kicker mx-auto">
+          <UsersRound class="size-4" aria-hidden="true" />
+          Let’s grow together
+        </p>
+
+        <h2 class="mx-auto mt-5 max-w-4xl">
+          Ready to find the right Mini Me Learning Center for your family?
+        </h2>
+
+        <p class="lead mx-auto mt-5 max-w-2xl">
+          Visit a location, ask about enrollment, or connect with the center
+          closest to your home or work.
+        </p>
+
+        <div class="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
+          <a href="/locations" class="btn btn-primary">
+            Find a Location
+            <MapPin class="size-4" aria-hidden="true" />
+          </a>
+
+          <a href="/enroll" class="btn btn-secondary">
+            Enrollment Info
+            <MoveRight class="size-4" aria-hidden="true" />
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</MainLayout>

@@ -1,0 +1,281 @@
+---
+import {
+  Sun,
+  Moon,
+  Menu,
+  X,
+  MapPin,
+  MoveRight,
+} from "@lucide/astro";
+
+const navItems = [
+  { label: "Home", href: "/" },
+  { label: "Locations", href: "/locations" },
+  { label: "Programs", href: "/programs" },
+  { label: "Enroll", href: "/enroll" },
+  { label: "Careers", href: "/careers" },
+  { label: "FAQ", href: "/faq" },
+];
+
+const currentPath = Astro.url.pathname;
+
+const isActive = (href: string) => {
+  if (href === "/") return currentPath === "/";
+  return currentPath.startsWith(href);
+};
+---
+
+<header class="site-header">
+  <div class="container-shell">
+    <nav
+      class="flex min-h-[var(--header-height)] items-center justify-between gap-4"
+      aria-label="Main navigation"
+    >
+      <a
+        href="/"
+        class="group flex items-center gap-3 transition-transform duration-300 hover:-translate-y-0.5 focus-visible:ring-4 focus-visible:ring-[rgb(var(--color-bee-yellow)/0.35)]"
+        aria-label="Mini Me Learning Centers home"
+        transition:name="site-logo"
+      >
+        <div
+          class="grid size-18 place-items-center p-1.5 backdrop-blur-md transition duration-300 group-hover:border-[rgb(var(--color-bee-yellow)/0.55)]"
+        >
+          <img
+            src="/images/mini-me-logo.webp"
+            alt="Mini Me Learning Centers logo"
+            class="logo-shadow h-full w-full object-contain"
+            width="56"
+            height="56"
+          />
+        </div>
+
+        <div class="hidden leading-none sm:block">
+          <span
+            class="block font-display text-[1.35rem] font-black tracking-[-0.04em] text-[rgb(var(--color-heading))]"
+          >
+            Mini Me
+          </span>
+          <span
+            class="mt-1 block text-[0.72rem] font-black uppercase tracking-[0.18em] text-[rgb(var(--color-text-muted))]"
+          >
+            Learning Centers
+          </span>
+        </div>
+      </a>
+
+      <div
+        class="hidden items-center gap-1 rounded-full border border-[rgb(var(--color-border)/0.28)] bg-[rgb(var(--color-surface)/0.48)] p-1 backdrop-blur-md lg:flex"
+      >
+        {
+          navItems.map((item) => (
+            <a
+              href={item.href}
+              class="nav-link"
+              aria-current={isActive(item.href) ? "page" : undefined}
+            >
+              {item.label}
+            </a>
+          ))
+        }
+      </div>
+
+      <div class="hidden items-center gap-2 lg:flex">
+        <button
+          type="button"
+          class="btn btn-outline min-h-11 px-4 text-sm"
+          data-theme-toggle
+          aria-label="Toggle color theme"
+        >
+          <span data-theme-icon-light>
+            <Sun class="size-4" aria-hidden="true" />
+          </span>
+
+          <span data-theme-icon-dark class="hidden">
+            <Moon class="size-4" aria-hidden="true" />
+          </span>
+
+          <!-- <span data-theme-label>Light mode</span> -->
+        </button>
+
+        <a href="/contact" class="btn btn-primary min-h-11 px-5 text-sm">
+          Schedule a Visit
+          <MapPin class="size-4" aria-hidden="true" />
+        </a>
+      </div>
+
+      <div class="flex items-center gap-2 lg:hidden">
+        <button
+          type="button"
+          class="grid size-11 place-items-center rounded-full border border-[rgb(var(--color-border)/0.38)] bg-[rgb(var(--color-surface)/0.65)] shadow-[var(--shadow-card)] backdrop-blur-md transition hover:-translate-y-0.5 hover:border-[rgb(var(--color-bee-yellow)/0.55)]"
+          data-theme-toggle
+          aria-label="Toggle color theme"
+        >
+          <span data-theme-icon-light>
+            <Sun class="size-5" aria-hidden="true" />
+          </span>
+
+          <span data-theme-icon-dark class="hidden">
+            <Moon class="size-5" aria-hidden="true" />
+          </span>
+        </button>
+
+        <button
+          type="button"
+          class="group grid size-11 place-items-center rounded-full border border-[rgb(var(--color-border)/0.38)] bg-[rgb(var(--color-surface)/0.65)] shadow-[var(--shadow-card)] backdrop-blur-md transition hover:-translate-y-0.5 hover:border-[rgb(var(--color-bee-yellow)/0.55)]"
+          aria-label="Open menu"
+          aria-expanded="false"
+          aria-controls="mobile-menu"
+          data-menu-toggle
+        >
+          <span data-menu-icon-open>
+            <Menu class="size-5" aria-hidden="true" />
+          </span>
+
+          <span data-menu-icon-close class="hidden">
+            <X class="size-5" aria-hidden="true" />
+          </span>
+        </button>
+      </div>
+    </nav>
+  </div>
+
+  <div
+    id="mobile-menu"
+    class="pointer-events-none absolute left-0 right-0 top-full z-40 origin-top scale-y-95 border-b border-[rgb(var(--color-border)/0.28)] bg-[rgb(var(--color-bg)/0.96)] opacity-0 shadow-[var(--shadow-soft)] backdrop-blur-xl transition duration-300 lg:hidden"
+    data-mobile-menu
+    hidden
+  >
+    <div class="container-shell py-4">
+      <div
+        class="overflow-hidden rounded-[var(--radius-xl)] border border-[rgb(var(--color-border)/0.3)] bg-[rgb(var(--color-surface)/0.72)] p-2"
+      >
+        {
+          navItems.map((item) => (
+            <a
+              href={item.href}
+              class:list={[
+                "flex items-center justify-between rounded-[var(--radius-md)] px-4 py-3 text-base font-black transition",
+                isActive(item.href)
+                  ? "bg-[rgb(var(--color-bee-yellow)/0.16)] text-[rgb(var(--color-heading))]"
+                  : "text-[rgb(var(--color-text-soft))] hover:bg-[rgb(var(--color-white)/0.07)] hover:text-[rgb(var(--color-heading))]",
+              ]}
+              aria-current={isActive(item.href) ? "page" : undefined}
+              data-mobile-link
+            >
+              <span>{item.label}</span>
+
+              <MoveRight
+                class:list={[
+                  "size-4",
+                  isActive(item.href)
+                    ? "text-[rgb(var(--color-bee-yellow))]"
+                    : "text-[rgb(var(--color-text-muted))]",
+                ]}
+                aria-hidden="true"
+              />
+            </a>
+          ))
+        }
+
+        <div class="mt-2 grid gap-2 border-t border-[rgb(var(--color-border)/0.25)] pt-2">
+          <a href="/contact" class="btn btn-primary w-full" data-mobile-link>
+            Schedule a Visit
+            <MapPin class="size-4" aria-hidden="true" />
+          </a>
+
+          <a href="/locations" class="btn btn-secondary w-full" data-mobile-link>
+            Find a Location
+            <MoveRight class="size-4" aria-hidden="true" />
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<script>
+  document.addEventListener("astro:page-load", () => {
+    const menuButton = document.querySelector("[data-menu-toggle]");
+    const mobileMenu = document.querySelector("[data-mobile-menu]");
+    const mobileLinks = document.querySelectorAll("[data-mobile-link]");
+    const openIcon = document.querySelector("[data-menu-icon-open]");
+    const closeIcon = document.querySelector("[data-menu-icon-close]");
+
+    if (!(menuButton instanceof HTMLButtonElement)) return;
+    if (!(mobileMenu instanceof HTMLElement)) return;
+
+    const syncMenuIcon = (isOpen: boolean) => {
+      openIcon?.classList.toggle("hidden", isOpen);
+      closeIcon?.classList.toggle("hidden", !isOpen);
+    };
+
+    const openMenu = () => {
+      menuButton.dataset.open = "true";
+      menuButton.setAttribute("aria-expanded", "true");
+      menuButton.setAttribute("aria-label", "Close menu");
+      syncMenuIcon(true);
+
+      mobileMenu.hidden = false;
+
+      requestAnimationFrame(() => {
+        mobileMenu.classList.remove(
+          "pointer-events-none",
+          "scale-y-95",
+          "opacity-0"
+        );
+
+        mobileMenu.classList.add(
+          "pointer-events-auto",
+          "scale-y-100",
+          "opacity-100"
+        );
+      });
+    };
+
+    const closeMenu = () => {
+      menuButton.dataset.open = "false";
+      menuButton.setAttribute("aria-expanded", "false");
+      menuButton.setAttribute("aria-label", "Open menu");
+      syncMenuIcon(false);
+
+      mobileMenu.classList.add(
+        "pointer-events-none",
+        "scale-y-95",
+        "opacity-0"
+      );
+
+      mobileMenu.classList.remove(
+        "pointer-events-auto",
+        "scale-y-100",
+        "opacity-100"
+      );
+
+      window.setTimeout(() => {
+        if (menuButton.dataset.open !== "true") {
+          mobileMenu.hidden = true;
+        }
+      }, 300);
+    };
+
+    const toggleMenu = () => {
+      const isOpen = menuButton.dataset.open === "true";
+      isOpen ? closeMenu() : openMenu();
+    };
+
+    closeMenu();
+
+    menuButton.addEventListener("click", toggleMenu);
+
+    mobileLinks.forEach((link) => {
+      link.addEventListener("click", closeMenu);
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") closeMenu();
+    });
+
+    window.addEventListener("resize", () => {
+      if (window.innerWidth >= 1024) closeMenu();
+    });
+  });
+</script>

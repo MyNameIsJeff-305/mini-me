@@ -1,0 +1,152 @@
+---
+import "../styles/global.css";
+import { ClientRouter } from "astro:transitions";
+
+import Header from "../components/layout/Header.astro";
+import Footer from "../components/layout/Footer.astro";
+
+interface Props {
+  title?: string;
+  description?: string;
+  image?: string;
+  canonical?: string;
+  noIndex?: boolean;
+  hideHeader?: boolean;
+  hideFooter?: boolean;
+}
+
+const {
+  title = "Mini Me Learning Centers | Early Learning Centers in South Florida",
+  description = "Mini Me Learning Centers provides nurturing early childhood education, childcare, and learning programs across Miami and South Florida.",
+  image = "/images/mini-me-og.jpg",
+  canonical,
+  noIndex = false,
+  hideHeader = false,
+  hideFooter = false,
+} = Astro.props;
+
+const siteName = "Mini Me Learning Centers";
+const baseUrl = Astro.site ?? new URL("https://minimelearning.org");
+
+const currentUrl = canonical
+  ? new URL(canonical, baseUrl).toString()
+  : new URL(Astro.url.pathname, baseUrl).toString();
+
+const pageTitle = title.includes(siteName) ? title : `${title} | ${siteName}`;
+---
+
+<!doctype html>
+<html lang="en" class="dark" data-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <ClientRouter />
+
+    <title>{pageTitle}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={currentUrl} />
+
+    {noIndex && <meta name="robots" content="noindex, nofollow" />}
+
+    <meta property="og:site_name" content={siteName} />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={currentUrl} />
+    <meta property="og:image" content={new URL(image, baseUrl).toString()} />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={pageTitle} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={new URL(image, baseUrl).toString()} />
+
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Nunito+Sans:wght@400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+
+    <meta name="theme-color" content="#1f3042" />
+
+    <script is:inline>
+      const storedTheme = localStorage.getItem("mini-me-theme");
+
+      if (storedTheme === "light") {
+        document.documentElement.classList.remove("dark");
+        document.documentElement.classList.add("light");
+        document.documentElement.dataset.theme = "light";
+      } else {
+        document.documentElement.classList.remove("light");
+        document.documentElement.classList.add("dark");
+        document.documentElement.dataset.theme = "dark";
+      }
+    </script>
+  </head>
+
+  <body>
+    <a href="#main-content" class="skip-link">Skip to content</a>
+
+    <div class="site-shell">
+      {!hideHeader && <Header />}
+
+      <main id="main-content" tabindex="-1">
+        <slot />
+      </main>
+
+      {!hideFooter && <Footer />}
+    </div>
+
+    <script is:inline>
+      document.addEventListener("astro:page-load", () => {
+        const themeToggleButtons = document.querySelectorAll("[data-theme-toggle]");
+
+        const syncThemeUI = (isLight) => {
+          document.querySelectorAll("[data-theme-label]").forEach((label) => {
+            label.textContent = isLight ? "Dark mode" : "Light mode";
+          });
+
+          document.querySelectorAll("[data-theme-icon-light]").forEach((icon) => {
+            icon.classList.toggle("hidden", isLight);
+          });
+
+          document.querySelectorAll("[data-theme-icon-dark]").forEach((icon) => {
+            icon.classList.toggle("hidden", !isLight);
+          });
+        };
+
+        const setTheme = (theme) => {
+          const root = document.documentElement;
+          const isLight = theme === "light";
+
+          root.classList.toggle("light", isLight);
+          root.classList.toggle("dark", !isLight);
+          root.dataset.theme = isLight ? "light" : "dark";
+
+          localStorage.setItem("mini-me-theme", isLight ? "light" : "dark");
+          syncThemeUI(isLight);
+        };
+
+        const initialTheme =
+          document.documentElement.dataset.theme === "light" ? "light" : "dark";
+
+        syncThemeUI(initialTheme === "light");
+
+        themeToggleButtons.forEach((button) => {
+          button.addEventListener("click", () => {
+            const currentTheme =
+              document.documentElement.dataset.theme === "light"
+                ? "light"
+                : "dark";
+
+            setTheme(currentTheme === "light" ? "dark" : "light");
+          });
+        });
+      });
+    </script>
+  </body>
+</html>
