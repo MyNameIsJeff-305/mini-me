@@ -935,3 +935,19 @@ html[data-theme="light"] .site-header {
         border-color: #ccc;
     }
 }
+
+.animate-ken-burns {
+    animation: ken-burns 5s ease-in-out both;
+    transform-origin: center;
+    will-change: transform;
+}
+
+@keyframes ken-burns {
+    0% {
+        transform: scale(1.02);
+    }
+
+    100% {
+        transform: scale(1.16);
+    }
+}
