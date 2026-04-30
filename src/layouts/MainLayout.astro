@@ -36,10 +36,35 @@ const pageTitle = title.includes(siteName) ? title : `${title} | ${siteName}`;
 ---
 
 <!doctype html>
-<html lang="en" class="dark" data-theme="dark">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Apply saved theme before the page paints -->
+    <script is:inline>
+      (() => {
+        const storedTheme = localStorage.getItem("mini-me-theme");
+        const theme = storedTheme === "light" ? "light" : "dark";
+        const root = document.documentElement;
+
+        root.classList.toggle("light", theme === "light");
+        root.classList.toggle("dark", theme === "dark");
+        root.dataset.theme = theme;
+      })();
+
+      document.addEventListener("astro:before-swap", (event) => {
+        const currentRoot = document.documentElement;
+        const newRoot = event.newDocument.documentElement;
+
+        const currentTheme =
+          currentRoot.dataset.theme === "light" ? "light" : "dark";
+
+        newRoot.classList.toggle("light", currentTheme === "light");
+        newRoot.classList.toggle("dark", currentTheme === "dark");
+        newRoot.dataset.theme = currentTheme;
+      });
+    </script>
 
     <ClientRouter />
 
@@ -72,20 +97,6 @@ const pageTitle = title.includes(siteName) ? title : `${title} | ${siteName}`;
     />
 
     <meta name="theme-color" content="#1f3042" />
-
-    <script is:inline>
-      const storedTheme = localStorage.getItem("mini-me-theme");
-
-      if (storedTheme === "light") {
-        document.documentElement.classList.remove("dark");
-        document.documentElement.classList.add("light");
-        document.documentElement.dataset.theme = "light";
-      } else {
-        document.documentElement.classList.remove("light");
-        document.documentElement.classList.add("dark");
-        document.documentElement.dataset.theme = "dark";
-      }
-    </script>
   </head>
 
   <body>
@@ -103,20 +114,28 @@ const pageTitle = title.includes(siteName) ? title : `${title} | ${siteName}`;
 
     <script is:inline>
       document.addEventListener("astro:page-load", () => {
-        const themeToggleButtons = document.querySelectorAll("[data-theme-toggle]");
+        const themeToggleButtons = document.querySelectorAll(
+          "[data-theme-toggle]",
+        );
 
-        const syncThemeUI = (isLight) => {
+        const syncThemeUI = (theme) => {
+          const isLight = theme === "light";
+
           document.querySelectorAll("[data-theme-label]").forEach((label) => {
             label.textContent = isLight ? "Dark mode" : "Light mode";
           });
 
-          document.querySelectorAll("[data-theme-icon-light]").forEach((icon) => {
-            icon.classList.toggle("hidden", isLight);
-          });
+          document
+            .querySelectorAll("[data-theme-icon-light]")
+            .forEach((icon) => {
+              icon.classList.toggle("hidden", isLight);
+            });
 
-          document.querySelectorAll("[data-theme-icon-dark]").forEach((icon) => {
-            icon.classList.toggle("hidden", !isLight);
-          });
+          document
+            .querySelectorAll("[data-theme-icon-dark]")
+            .forEach((icon) => {
+              icon.classList.toggle("hidden", !isLight);
+            });
         };
 
         const setTheme = (theme) => {
@@ -125,16 +144,16 @@ const pageTitle = title.includes(siteName) ? title : `${title} | ${siteName}`;
 
           root.classList.toggle("light", isLight);
           root.classList.toggle("dark", !isLight);
-          root.dataset.theme = isLight ? "light" : "dark";
+          root.dataset.theme = theme;
 
-          localStorage.setItem("mini-me-theme", isLight ? "light" : "dark");
-          syncThemeUI(isLight);
+          localStorage.setItem("mini-me-theme", theme);
+          syncThemeUI(theme);
         };
 
         const initialTheme =
           document.documentElement.dataset.theme === "light" ? "light" : "dark";
 
-        syncThemeUI(initialTheme === "light");
+        syncThemeUI(initialTheme);
 
         themeToggleButtons.forEach((button) => {
           button.addEventListener("click", () => {
@@ -143,7 +162,9 @@ const pageTitle = title.includes(siteName) ? title : `${title} | ${siteName}`;
                 ? "light"
                 : "dark";
 
-            setTheme(currentTheme === "light" ? "dark" : "light");
+            const nextTheme = currentTheme === "light" ? "dark" : "light";
+
+            setTheme(nextTheme);
           });
         });
       });

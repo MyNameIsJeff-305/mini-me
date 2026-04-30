@@ -1,0 +1,410 @@
+---
+import MainLayout from "../../layouts/MainLayout.astro";
+
+import {
+  MapPin,
+  Phone,
+  Mail,
+  MoveRight,
+  Search,
+  Navigation,
+  Building2,
+  Clock,
+  CheckCircle2,
+} from "@lucide/astro";
+
+const locations = [
+  {
+    id: "mini-me-1",
+    name: "Mini Me Learning Center I",
+    address: "9851 SW 1st St, Fountainebleau, FL 33174",
+    email: "Minimelc1@att.net",
+    phone: "(305) 227-2289",
+    href: "/locations/mini-me-1",
+    image: "/images/locations/mini-me-1.webp",
+    area: "Fountainebleau",
+    mapQuery: "9851 SW 1st St, Fountainebleau, FL 33174",
+  },
+  {
+    id: "mini-me-2",
+    name: "Mini Me Learning Center II",
+    address: "11865 Southwest 26th Street, Miami, FL 33175",
+    email: "Minimedaycare@bellsouth.net",
+    phone: "(305) 227-9111",
+    href: "/locations/mini-me-2",
+    image: "/images/locations/mini-me-2.webp",
+    area: "Westchester / Tamiami",
+    mapQuery: "11865 Southwest 26th Street, Miami, FL 33175",
+  },
+  {
+    id: "mini-me-3",
+    name: "Mini Me Learning Center III",
+    address: "7300 SW 152 Ave, Miami, FL 33193",
+    email: "Minimelc3@att.net",
+    phone: "(305) 388-2098",
+    href: "/locations/mini-me-3",
+    image: "/images/locations/mini-me-3.webp",
+    area: "Kendall / West Kendall",
+    mapQuery: "7300 SW 152 Ave, Miami, FL 33193",
+  },
+  {
+    id: "mini-me-4",
+    name: "Mini Me Learning Center IV",
+    address: "15260 SW 280 St, Homestead, FL 33032",
+    email: "Minimelc4@att.net",
+    phone: "(786) 410-8991",
+    href: "/locations/mini-me-4",
+    image: "/images/locations/mini-me-4.webp",
+    area: "Homestead",
+    mapQuery: "15260 SW 280 St, Homestead, FL 33032",
+  },
+];
+
+const cleanPhone = (phone: string) => phone.replace(/\D/g, "");
+
+const getDirectionsUrl = (address: string) =>
+  `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(
+    address,
+  )}`;
+
+const getMapEmbedUrl = (address: string) =>
+  `https://www.google.com/maps?q=${encodeURIComponent(address)}&output=embed`;
+
+const defaultMapUrl = getMapEmbedUrl(locations[0].address);
+---
+
+<MainLayout
+  title="Mini Me Learning Center Locations"
+  description="Find the Mini Me Learning Center nearest you. View addresses, phone numbers, emails, directions, and map details for all four South Florida locations."
+>
+  <section class="hero-shell">
+    <div class="hero-orb hero-orb-yellow animate-float-slow"></div>
+    <div class="hero-orb hero-orb-blue animate-float-soft"></div>
+
+    <div class="container-shell">
+      <div class="mx-auto max-w-4xl text-center">
+        <p class="hero-badge mx-auto">
+          <MapPin class="size-4 fill-current" aria-hidden="true" />
+          Our Locations
+        </p>
+
+        <h1 class="mt-6">
+          Find the Mini Me Learning Center closest to your family.
+        </h1>
+
+        <p class="lead mx-auto mt-6 max-w-3xl">
+          Explore our four learning centers across Miami and South Florida.
+          Select a location to view it on the map, call directly, send an email,
+          or get directions through Google Maps.
+        </p>
+      </div>
+    </div>
+    <div class="container-shell">
+      <div
+        class="surface grid gap-4 p-5 sm:grid-cols-3 md:p-6"
+        aria-label="Location highlights"
+      >
+        <div class="flex items-center gap-4">
+          <span
+            class="grid size-12 place-items-center rounded-full bee-gradient"
+          >
+            <Building2
+              class="size-6 text-[rgb(var(--color-ink))]"
+              aria-hidden="true"
+            />
+          </span>
+          <div>
+            <p class="font-black text-[rgb(var(--color-heading))]">
+              4 Learning Centers
+            </p>
+            <p
+              class="text-sm font-semibold text-[rgb(var(--color-text-muted))]"
+            >
+              Serving Miami and Homestead.
+            </p>
+          </div>
+        </div>
+
+        <div class="flex items-center gap-4">
+          <span
+            class="grid size-12 place-items-center rounded-full wing-gradient"
+          >
+            <Navigation
+              class="size-6 text-[rgb(var(--color-ink))]"
+              aria-hidden="true"
+            />
+          </span>
+          <div>
+            <p class="font-black text-[rgb(var(--color-heading))]">
+              Easy Directions
+            </p>
+            <p
+              class="text-sm font-semibold text-[rgb(var(--color-text-muted))]"
+            >
+              Open routes in Google Maps.
+            </p>
+          </div>
+        </div>
+
+        <div class="flex items-center gap-4">
+          <span
+            class="grid size-12 place-items-center rounded-full bee-gradient"
+          >
+            <CheckCircle2
+              class="size-6 text-[rgb(var(--color-ink))]"
+              aria-hidden="true"
+            />
+          </span>
+          <div>
+            <p class="font-black text-[rgb(var(--color-heading))]">
+              Family-Friendly Access
+            </p>
+            <p
+              class="text-sm font-semibold text-[rgb(var(--color-text-muted))]"
+            >
+              Call or email each center directly.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-shell">
+    <div class="container-shell">
+      <div class="mx-auto max-w-3xl text-center">
+        <p class="section-kicker mx-auto">
+          <MapPin class="size-4" aria-hidden="true" />
+          Our Locations
+        </p>
+
+        <h2 class="mt-5">
+          Find the Mini Me Learning Center closest to your family.
+        </h2>
+
+        <p class="lead mt-5">
+          Each Mini Me center is designed to feel warm, welcoming, and easy for
+          families to access. Explore our locations below, view them on the map,
+          and choose the center that best fits your daily routine.
+        </p>
+      </div>
+
+      <div class="mt-12 grid lg:grid-cols-4 gap-4">
+        {
+          locations.map((location) => (
+            <article class="card overflow-hidden p-0">
+              <div class="grid gap-0">
+                {/* Location Image */}
+
+                {/* Location Map */}
+                <div class="relative min-h-[200px] overflow-hidden bg-[rgb(var(--color-surface-soft))] sm:min-h-[250px] lg:min-h-[250px]">
+                  <iframe
+                    src={getMapEmbedUrl(location.address)}
+                    title={`${location.name} map`}
+                    class="absolute inset-0 h-full w-full border-0"
+                    loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"
+                  />
+
+                  <div class="pointer-events-none absolute inset-x-0 top-0 h-20 bg-gradient-to-b from-[rgb(var(--color-bg)/0.35)] to-transparent" />
+                </div>
+              </div>
+
+              {/* Location Content */}
+              <div class="p-5 sm:p-6 lg:p-7">
+                <div class="flex h-full flex-col justify-between gap-6">
+                  <div class="grid gap-2">
+                    <p class="inline-flex w-fit rounded-full bg-[rgb(var(--color-bee-yellow)/0.14)] px-3 py-1 text-[0.7rem] font-black uppercase tracking-[0.16em] text-[rgb(var(--color-bee-yellow))]">
+                      {location.area}
+                    </p>
+
+                    <h3 class="mt-2 leading-[1.05] tracking-[-0.04em]">
+                      {location.name}
+                    </h3>
+
+                    <a
+                      href={getDirectionsUrl(location.address)}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="mt-4 inline-flex items-start gap-2 font-semibold leading-6 text-[rgb(var(--color-text-soft))] transition hover:text-[rgb(var(--color-bee-yellow))] md:text-base md:leading-7"
+                    >
+                      <MapPin class="mt-1 size-4 shrink-0" aria-hidden="true" />
+                      <span>{location.address}</span>
+                    </a>
+
+                    <div class="mt-5 grid gap-3 text-sm md:text-base">
+                      <a
+                        href={`tel:+1${cleanPhone(location.phone)}`}
+                        class="inline-flex items-center gap-2 font-black transition hover:text-[rgb(var(--color-bee-yellow))]"
+                      >
+                        <Phone class="size-4 shrink-0" aria-hidden="true" />
+                        {location.phone}
+                      </a>
+
+                      <a
+                        href={`mailto:${location.email}`}
+                        class="inline-flex items-center gap-2 break-all font-bold transition hover:text-[rgb(var(--color-wing-blue))] sm:text-sm"
+                      >
+                        <Mail class="size-4 shrink-0" aria-hidden="true" />
+                        {location.email}
+                      </a>
+                    </div>
+                  </div>
+
+                  <div class="grid gap-3">
+                    <a
+                      href={getDirectionsUrl(location.address)}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="btn btn-outline min-h-11 w-full px-5 text-sm"
+                    >
+                      Get Directions
+                      <Navigation class="size-4" aria-hidden="true" />
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="section-shell-sm">
+    <div class="container-shell">
+      <div
+        class="glow-panel flex flex-col items-center p-8 text-center md:p-12"
+      >
+        <p class="section-kicker mx-auto justify-center text-center">
+          <Clock class="size-4" aria-hidden="true" />
+          Ready to Visit?
+        </p>
+
+        <h2 class="mx-auto mt-5 max-w-4xl text-center">
+          Schedule a visit and see which Mini Me location feels right for your
+          child.
+        </h2>
+
+        <p class="lead mx-auto mt-5 max-w-2xl text-center">
+          Connect with the center closest to your home, work, or daily routine.
+          Our team can help answer questions about availability, enrollment, and
+          next steps.
+        </p>
+
+        <div
+          class="mt-8 flex w-full flex-col justify-center gap-3 sm:w-auto sm:flex-row"
+        >
+          <a href="/enroll" class="btn btn-primary">
+            Start Enrollment
+            <MoveRight class="size-4" aria-hidden="true" />
+          </a>
+
+          <a href="/contact" class="btn btn-outline">
+            Contact Us
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    document.addEventListener("astro:page-load", () => {
+      const searchInput = document.querySelector("[data-location-search]");
+      const cards = Array.from(
+        document.querySelectorAll("[data-location-card]"),
+      );
+      const map = document.querySelector("[data-location-map]");
+      const selectedName = document.querySelector(
+        "[data-selected-location-name]",
+      );
+      const selectedDirections = document.querySelector(
+        "[data-selected-location-directions]",
+      );
+      const count = document.querySelector("[data-location-count]");
+      const empty = document.querySelector("[data-location-empty]");
+
+      if (
+        !(searchInput instanceof HTMLInputElement) ||
+        !(map instanceof HTMLIFrameElement)
+      ) {
+        return;
+      }
+
+      const setActiveCard = (activeCard: Element) => {
+        cards.forEach((card) => {
+          card.classList.remove("ring-2");
+          card.classList.remove("ring-[rgb(var(--color-bee-yellow)/0.65)]");
+        });
+
+        activeCard.classList.add("ring-2");
+        activeCard.classList.add("ring-[rgb(var(--color-bee-yellow)/0.65)]");
+
+        const mapUrl = activeCard.getAttribute("data-location-map");
+        const locationName = activeCard.getAttribute("data-location-name");
+        const directionsUrl = activeCard.getAttribute(
+          "data-location-directions",
+        );
+
+        if (mapUrl) map.src = mapUrl;
+
+        if (selectedName && locationName) {
+          selectedName.textContent = locationName;
+        }
+
+        if (selectedDirections instanceof HTMLAnchorElement && directionsUrl) {
+          selectedDirections.href = directionsUrl;
+        }
+      };
+
+      cards.forEach((card) => {
+        const selectButtons = card.querySelectorAll("[data-location-select]");
+
+        selectButtons.forEach((button) => {
+          button.addEventListener("click", () => {
+            setActiveCard(card);
+          });
+        });
+      });
+
+      searchInput.addEventListener("input", () => {
+        const query = searchInput.value.trim().toLowerCase();
+        let visibleCount = 0;
+
+        cards.forEach((card) => {
+          const name = card.getAttribute("data-location-name") || "";
+          const address = card.getAttribute("data-location-address") || "";
+          const area = card.getAttribute("data-location-area") || "";
+          const email = card.getAttribute("data-location-email") || "";
+          const phone = card.getAttribute("data-location-phone") || "";
+
+          const searchableText =
+            `${name} ${address} ${area} ${email} ${phone}`.toLowerCase();
+
+          const isVisible = searchableText.includes(query);
+
+          card.classList.toggle("hidden", !isVisible);
+
+          if (isVisible) visibleCount += 1;
+        });
+
+        if (count) {
+          count.textContent =
+            visibleCount === 1 ? "1 location" : `${visibleCount} locations`;
+        }
+
+        if (empty) {
+          empty.classList.toggle("hidden", visibleCount !== 0);
+        }
+
+        const firstVisibleCard = cards.find(
+          (card) => !card.classList.contains("hidden"),
+        );
+
+        if (firstVisibleCard) {
+          setActiveCard(firstVisibleCard);
+        }
+      });
+    });
+  </script>
+</MainLayout>
