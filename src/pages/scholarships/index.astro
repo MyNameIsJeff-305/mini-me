@@ -1,0 +1,458 @@
+---
+import MainLayout from "../../layouts/MainLayout.astro";
+
+import {
+  GraduationCap,
+  HeartHandshake,
+  BookOpenCheck,
+  Baby,
+  ShieldCheck,
+  MoveRight,
+  Phone,
+  CheckCircle2,
+  Sparkles,
+  School,
+  UsersRound,
+  HandCoins,
+  FileText,
+  ExternalLink,
+} from "@lucide/astro";
+
+const scholarshipCategories = [
+  {
+    name: "Early Learning Coalition",
+    shortName: "ELC",
+    description:
+      "Programs that help eligible families access childcare assistance, VPK, school readiness support, and early learning resources.",
+    logo: "/images/scholarships/elc-logo.webp",
+    href: "https://www.elcmdm.org/",
+    accent: "bee",
+    programs: [
+      {
+        name: "School Readiness Program",
+        description:
+          "Childcare tuition assistance for eligible families, helping children prepare for school while parents work, attend school, or meet program requirements.",
+        logo: "/images/scholarships/elc-logo.webp",
+        href: "https://www.elcmdm.org/o/elmdm/page/school-readiness",
+      },
+      {
+        name: "Voluntary Prekindergarten Program",
+        description:
+          "Florida’s free VPK program helps 4-year-old children build early learning, classroom routines, and school-readiness skills before kindergarten.",
+        logo: "/images/scholarships/elc-logo.webp",
+        href: "https://familyservices.floridaearlylearning.com/",
+      },
+      {
+        name: "School Readiness Match Program",
+        description:
+          "A childcare assistance option connected to qualifying employees and participating early care and education providers.",
+        logo: "/images/scholarships/elc-logo.webp",
+        href: "https://www.elcmdm.org/page/school-readiness-program-match",
+      },
+    ],
+  },
+  {
+    name: "The Children’s Trust",
+    shortName: "Children’s Trust",
+    description:
+      "Community-funded programs that support children, families, teachers, and early learning providers across Miami-Dade County.",
+    logo: "/images/scholarships/childrens-trust-logo.webp",
+    href: "https://www.thechildrenstrust.org/",
+    accent: "wing",
+    programs: [
+      {
+        name: "Thrive by 5",
+        description:
+          "An integrated system of support for young children, families, teachers, and early learning providers.",
+        logo: "/images/scholarships/childrens-trust-logo.webp",
+        href: "https://www.thechildrenstrust.org/about-us/what-we-fund/thrive-by-5/",
+      },
+      {
+        name: "Families Forward Child Care Scholarships",
+        description:
+          "Scholarship support for families who may not qualify for other childcare subsidies but still need help affording quality childcare.",
+        logo: "/images/scholarships/childrens-trust-logo.webp",
+        href: "https://www.thechildrenstrust.org/parent/programs/",
+      },
+    ],
+  },
+  {
+    name: "Step Up For Students",
+    shortName: "Step Up",
+    description:
+      "Florida scholarship options that help families access private education, unique abilities support, reading support, and other educational choices.",
+    logo: "/images/scholarships/step-up-logo.webp",
+    href: "https://www.stepupforstudents.org/scholarships/",
+    accent: "bee",
+    programs: [
+      {
+        name: "Florida Tax Credit Scholarship",
+        description:
+          "A scholarship pathway that may help eligible Florida students access private school or other educational options.",
+        logo: "/images/scholarships/step-up-logo.webp",
+        href: "https://www.stepupforstudents.org/scholarships/private-school/",
+      },
+      {
+        name: "Family Empowerment Scholarship for Educational Options",
+        description:
+          "A Florida scholarship option that helps eligible families choose the learning environment that best fits their child.",
+        logo: "/images/scholarships/step-up-logo.webp",
+        href: "https://www.stepupforstudents.org/scholarships/private-school/",
+      },
+      {
+        name: "Family Empowerment Scholarship for Unique Abilities",
+        description:
+          "A scholarship that helps eligible students with unique abilities access educational services, supports, and learning options.",
+        logo: "/images/scholarships/step-up-logo.webp",
+        href: "https://www.stepupforstudents.org/scholarships/unique-abilities/",
+      },
+      {
+        name: "Personalized Education Program",
+        description:
+          "A Step Up option for eligible Florida students who are not full-time private or public school students.",
+        logo: "/images/scholarships/step-up-logo.webp",
+        href: "https://www.stepupforstudents.org/scholarships/personalized-education-program/",
+      },
+      {
+        name: "New Worlds Scholarship Accounts",
+        description:
+          "A reading and math support scholarship account program for eligible students who need targeted academic support.",
+        logo: "/images/scholarships/step-up-logo.webp",
+        href: "https://www.stepupforstudents.org/scholarships/new-worlds-scholarship-accounts/",
+      },
+    ],
+  },
+];
+
+const highlights = [
+  {
+    title: "Childcare Support",
+    description: "Helpful programs for eligible families.",
+    icon: HandCoins,
+    gradient: "bee-gradient",
+  },
+  {
+    title: "School Readiness",
+    description: "Preparing children for the next step.",
+    icon: BookOpenCheck,
+    gradient: "wing-gradient",
+  },
+  {
+    title: "Family Guidance",
+    description: "Our team can help point you forward.",
+    icon: CheckCircle2,
+    gradient: "bee-gradient",
+  },
+];
+
+const steps = [
+  {
+    title: "Explore your options",
+    description:
+      "Review the scholarship and assistance programs that may apply to your child and family.",
+  },
+  {
+    title: "Contact your preferred center",
+    description:
+      "Reach out to the Mini Me location closest to you for guidance and enrollment information.",
+  },
+  {
+    title: "Apply through the program",
+    description:
+      "Some programs require families to apply directly through the scholarship or assistance provider.",
+  },
+];
+---
+
+<MainLayout
+  title="Scholarships & Childcare Assistance"
+  description="Explore scholarship programs, VPK, School Readiness, ELC, Children’s Trust, and Step Up options available for families at Mini Me Learning Centers."
+>
+  <section class="hero-shell">
+    <div class="hero-orb hero-orb-yellow animate-float-slow"></div>
+    <div class="hero-orb hero-orb-blue animate-float-soft"></div>
+
+    <div class="container-shell">
+      <div class="mx-auto max-w-4xl text-center">
+        <p class="hero-badge mx-auto">
+          <GraduationCap class="size-4 fill-current" aria-hidden="true" />
+          Scholarships & Assistance
+        </p>
+
+        <h1 class="mt-6">Helping families access quality early learning.</h1>
+
+        <p class="lead mx-auto mt-6 max-w-3xl">
+          Mini Me Learning Centers welcomes families using scholarship programs,
+          childcare assistance, VPK, School Readiness, and other early education
+          support options.
+        </p>
+
+        <div class="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
+          <a href="#scholarship-programs" class="btn btn-primary">
+            View Programs
+            <MoveRight class="size-4" aria-hidden="true" />
+          </a>
+
+          <a href="/contact" class="btn btn-outline">
+            Ask a Question
+            <Phone class="size-4" aria-hidden="true" />
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="container-shell">
+      <div
+        class="surface grid gap-4 p-5 sm:grid-cols-3 md:p-6"
+        aria-label="Scholarship highlights"
+      >
+        {
+          highlights.map(({ title, description, icon: Icon, gradient }) => (
+            <div class="flex items-center gap-4">
+              <span
+                class:list={[
+                  "grid size-12 place-items-center rounded-full",
+                  gradient,
+                ]}
+              >
+                <Icon
+                  class="size-6 text-[rgb(var(--color-ink))]"
+                  aria-hidden="true"
+                />
+              </span>
+
+              <div>
+                <p class="font-black text-[rgb(var(--color-heading))]">
+                  {title}
+                </p>
+
+                <p class="text-sm font-semibold text-[rgb(var(--color-text-muted))]">
+                  {description}
+                </p>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section id="scholarship-programs" class="section-shell">
+    <div class="container-shell">
+      <div class="mx-auto max-w-3xl text-center">
+        <p class="section-kicker mx-auto justify-center text-center">
+          <HeartHandshake class="size-4" aria-hidden="true" />
+          Available Support
+        </p>
+
+        <h2 class="mx-auto mt-5 max-w-4xl text-center">
+          Scholarship and assistance programs by category.
+        </h2>
+
+        <p class="lead mx-auto mt-5 max-w-2xl text-center">
+          Explore the main scholarship and childcare assistance options accepted
+          by Mini Me Learning Centers. Each category links to the official
+          organization, and each program card includes a direct program link.
+        </p>
+      </div>
+
+      <div class="mt-12 grid gap-10">
+        {
+          scholarshipCategories.map((category) => (
+            <section
+              class="card overflow-hidden p-0"
+              aria-labelledby={`${category.shortName
+                .toLowerCase()
+                .replaceAll(" ", "-")}-heading`}
+            >
+              {/* Category Header */}
+              <div
+                class:list={[
+                  "relative overflow-hidden border-b border-[rgb(var(--color-border)/0.35)] p-6 md:p-8 lg:p-10",
+                  category.accent === "bee"
+                    ? "bg-[rgb(var(--color-bee-yellow)/0.06)]"
+                    : "bg-[rgb(var(--color-wing-blue)/0.06)]",
+                ]}
+              >
+                <div
+                  class:list={[
+                    "absolute -right-20 -top-20 size-56 rounded-full blur-3xl",
+                    category.accent === "bee"
+                      ? "bg-[rgb(var(--color-bee-yellow)/0.18)]"
+                      : "bg-[rgb(var(--color-wing-blue)/0.18)]",
+                  ]}
+                />
+
+                <div class="relative grid gap-6 lg:grid-cols-[0.5fr_1fr_0.5fr] lg:items-center">
+                  <img
+                    src={category.logo}
+                    alt={`${category.name} logo`}
+                    class="mx-auto h-12 w-auto max-w-[11rem] object-contain sm:h-14 sm:max-w-[12rem] md:h-16 md:max-w-[14rem] lg:mx-0 lg:h-16 lg:max-w-[15rem] rounded-xl"
+                    width="240"
+                    height="120"
+                    loading="lazy"
+                  />
+
+                  <div class="relative mx-auto flex max-w-2xl flex-col gap-6 text-center lg:mx-0 lg:max-w-none lg:pr-10 lg:text-left">
+                    <p class="inline-flex w-fit rounded-full bg-[rgb(var(--color-bee-yellow)/0.14)] px-3 py-1 text-[0.7rem] font-black uppercase tracking-[0.16em] text-[rgb(var(--color-bee-yellow))] mx-auto lg:mx-0">
+                      {category.shortName}
+                    </p>
+
+                    <h3
+                      id={`${category.shortName
+                        .toLowerCase()
+                        .replaceAll(" ", "-")}-heading`}
+                      class="text-3xl leading-[1.05] tracking-[-0.04em] md:text-4xl"
+                    >
+                      {category.name}
+                    </h3>
+
+                    <p class="max-w-3xl leading-7 text-[rgb(var(--color-text-soft))]">
+                      {category.description}
+                    </p>
+                  </div>
+
+                  <a
+                    href={category.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="btn btn-outline min-h-11 px-5 text-sm"
+                  >
+                    Visit Website
+                    <ExternalLink class="size-4" aria-hidden="true" />
+                  </a>
+                </div>
+              </div>
+
+              {/* Program Cards */}
+              <div class={`grid gap-4 p-5 sm:p-6 md:grid-cols-2 lg:grid-cols-${category.programs.length} lg:p-7`}>
+                {category.programs.map((program) => (
+                  <article class="rounded-[var(--radius-xl)] border border-[rgb(var(--color-border)/0.3)] bg-[rgb(var(--color-surface)/0.48)] p-5 shadow-[var(--shadow-soft)]">
+                    <div class="flex h-full flex-col justify-between gap-6">
+                      <div class="relative flex h-full flex-col gap-4">
+                        <div class="flex items-start justify-between gap-4">
+                          <span class="grid size-9 shrink-0 place-items-center rounded-full bg-[rgb(var(--color-bee-yellow)/0.14)] text-[rgb(var(--color-bee-yellow))]">
+                            <CheckCircle2 class="size-5" aria-hidden="true" />
+                          </span>
+                        </div>
+
+                        <h4 class="mt-5 font-display text-2xl font-black leading-[1.05] tracking-[-0.04em] text-[rgb(var(--color-heading))]">
+                          {program.name}
+                        </h4>
+
+                        <p class="mt-4 leading-7 text-[rgb(var(--color-text-soft))]">
+                          {program.description}
+                        </p>
+                      </div>
+
+                      <a
+                        href={program.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="inline-flex items-center gap-2 text-sm font-black text-[rgb(var(--color-bee-yellow))] transition hover:gap-3"
+                      >
+                        Learn More
+                        <ExternalLink class="size-4" aria-hidden="true" />
+                      </a>
+                    </div>
+                  </article>
+                ))}
+              </div>
+            </section>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="section-shell">
+    <div class="container-shell">
+      <div class="glow-panel p-6 md:p-10 lg:p-12">
+        <div class="grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
+          <div>
+            <p class="section-kicker">
+              <Sparkles class="size-4" aria-hidden="true" />
+              Getting Started
+            </p>
+
+            <h2 class="mt-5">
+              A simple path for families exploring scholarship support.
+            </h2>
+
+            <p class="lead mt-5">
+              Understanding childcare assistance can feel overwhelming, but you
+              do not have to figure it out alone. Start with these simple steps
+              and connect with the Mini Me team for guidance.
+            </p>
+
+            <div class="mt-8 flex flex-col gap-3 sm:flex-row">
+              <a href="/contact" class="btn btn-primary">
+                Contact Us
+                <Phone class="size-4" aria-hidden="true" />
+              </a>
+
+              <a href="/locations" class="btn btn-outline">
+                Find a Location
+                <MoveRight class="size-4" aria-hidden="true" />
+              </a>
+            </div>
+          </div>
+
+          <div class="grid gap-4">
+            {
+              steps.map((step, index) => (
+                <div class="card flex gap-5 p-5">
+                  <div class="grid size-12 shrink-0 place-items-center rounded-full brand-gradient font-display text-xl font-black text-[rgb(var(--color-ink))]">
+                    {index + 1}
+                  </div>
+
+                  <div>
+                    <h3 class="text-2xl">{step.title}</h3>
+
+                    <p class="mt-2 leading-7 text-[rgb(var(--color-text-soft))]">
+                      {step.description}
+                    </p>
+                  </div>
+                </div>
+              ))
+            }
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-shell-sm">
+    <div class="container-shell">
+      <div
+        class="glow-panel flex flex-col items-center p-8 text-center md:p-12"
+      >
+        <p class="section-kicker mx-auto justify-center text-center">
+          <UsersRound class="size-4" aria-hidden="true" />
+          Need Help Choosing?
+        </p>
+
+        <h2 class="mx-auto mt-5 max-w-4xl text-center">
+          We’re here to help your family take the next step.
+        </h2>
+
+        <p class="lead mx-auto mt-5 max-w-2xl text-center">
+          Whether you are exploring VPK, School Readiness, Step Up, or another
+          childcare support option, our team can help guide you toward the right
+          place to begin.
+        </p>
+
+        <div
+          class="mt-8 flex w-full flex-col justify-center gap-3 sm:w-auto sm:flex-row"
+        >
+          <a href="/contact" class="btn btn-primary">
+            Contact Us
+            <Phone class="size-4" aria-hidden="true" />
+          </a>
+
+          <a href="/locations" class="btn btn-outline"> View Locations </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</MainLayout>
