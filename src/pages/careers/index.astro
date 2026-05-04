@@ -1,0 +1,501 @@
+---
+import MainLayout from "../../layouts/MainLayout.astro";
+import {
+    HeartHandshake,
+    GraduationCap,
+    Baby,
+    MapPin,
+    UsersRound,
+    Sparkles,
+    CheckCircle2,
+    FileText,
+    Mail,
+    Phone,
+    Clock,
+    BriefcaseBusiness,
+    ArrowRight,
+} from "@lucide/astro";
+import { locations, positions, benefits, qualities, hiringSteps } from "../../data/careersPage";
+---
+
+<MainLayout
+    title="Careers | Mini Me Learning Centers"
+    description="Explore career opportunities with Mini Me Learning Centers. Apply for childcare, teaching, assistant teacher, and early childhood education positions."
+>
+    <section class="section-shell relative overflow-hidden">
+        <div class="pointer-events-none absolute inset-0 -z-10">
+        <div class="absolute left-[-12rem] top-16 h-80 w-80 rounded-full bg-[rgb(var(--color-bee-yellow)/0.18)] blur-3xl"></div>
+        <div class="absolute right-[-10rem] top-40 h-96 w-96 rounded-full bg-[rgb(var(--color-sky-blue)/0.16)] blur-3xl"></div>
+        </div>
+
+        <div class="container-shell">
+        <div class="grid items-center gap-10 lg:grid-cols-[1.05fr_0.95fr]">
+            <div>
+            <p class="section-kicker">
+                <BriefcaseBusiness class="size-4" aria-hidden="true" />
+                Careers at Mini Me
+            </p>
+
+            <h1 class="mt-5 text-5xl leading-[1.02] tracking-[-0.05em] md:text-7xl">
+                Help little learners grow with confidence.
+            </h1>
+
+            <p class="lead mt-6 max-w-2xl">
+                Join a caring early childhood education team where every day is an
+                opportunity to guide, support, and inspire children during their most
+                important years.
+            </p>
+
+            <div class="mt-8 flex flex-col gap-3 sm:flex-row">
+                <a href="#apply" class="btn btn-primary">
+                Apply Now
+                <ArrowRight class="size-4" aria-hidden="true" />
+                </a>
+
+                <a href="#roles" class="btn btn-secondary">
+                View Positions
+                <BriefcaseBusiness class="size-4" aria-hidden="true" />
+                </a>
+            </div>
+            </div>
+
+            <div class="glow-panel p-6 md:p-8">
+            <div class="rounded-[var(--radius-2xl)] border border-[rgb(var(--color-border)/0.32)] bg-[rgb(var(--color-surface)/0.5)] p-6">
+                <div style="border-radius:20px; padding:10px;" class="grid w-fit place-items-center rounded-[1rem] bg-[rgb(var(--color-bee-yellow)/0.16)] text-[rgb(var(--color-bee-yellow))]">
+                    <Sparkles class="h-7 w-7" aria-hidden="true" />
+                </div>
+
+                <h2 class="mt-6 text-3xl tracking-[-0.04em]">
+                We’re looking for caring, dependable people.
+                </h2>
+
+                <p class="mt-4 leading-7 text-[rgb(var(--color-text-soft))]">
+                Whether you’re an experienced teacher or starting your journey in
+                childcare, Mini Me is a place where your heart for children matters.
+                </p>
+
+                <div class="mt-6 grid gap-3">
+                <div class="flex items-center gap-3 rounded-[var(--radius-lg)] bg-[rgb(var(--color-surface)/0.6)] p-4">
+                    <CheckCircle2 class="size-5 shrink-0 text-[rgb(var(--color-bee-yellow))]" />
+                    <span class="text-sm font-black text-[rgb(var(--color-heading))]">
+                    Early childhood education
+                    </span>
+                </div>
+
+                <div class="flex items-center gap-3 rounded-[var(--radius-lg)] bg-[rgb(var(--color-surface)/0.6)] p-4">
+                    <CheckCircle2 class="size-5 shrink-0 text-[rgb(var(--color-bee-yellow))]" />
+                    <span class="text-sm font-black text-[rgb(var(--color-heading))]">
+                    Teaching and classroom support
+                    </span>
+                </div>
+
+                <div class="flex items-center gap-3 rounded-[var(--radius-lg)] bg-[rgb(var(--color-surface)/0.6)] p-4">
+                    <CheckCircle2 class="size-5 shrink-0 text-[rgb(var(--color-bee-yellow))]" />
+                    <span class="text-sm font-black text-[rgb(var(--color-heading))]">
+                    Multiple center locations
+                    </span>
+                </div>
+                </div>
+            </div>
+            </div>
+        </div>
+        </div>
+    </section>
+
+    <section class="section-shell-sm">
+        <div class="container-shell">
+        <div class="flex flex-col items-center justify-center mx-auto max-w-3xl text-center">
+            <p class="section-kicker mx-auto">
+                <HeartHandshake class="size-4" aria-hidden="true" />
+                Why Work With Us
+            </p>
+
+            <h2 class="mt-5 text-4xl tracking-[-0.05em] md:text-6xl">
+                A workplace built around care, growth, and purpose.
+            </h2>
+
+            <p class="lead mx-auto mt-5 max-w-2xl">
+            At Mini Me, team members play an important role in creating a safe,
+            welcoming, and joyful learning environment for children and families.
+            </p>
+        </div>
+
+        <div class="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-4">
+            {
+                benefits.map((benefit) => {
+                    return (
+                    <article class="glow-panel group overflow-hidden rounded-[var(--radius-xl)] border border-[rgb(var(--color-border)/0.32)] bg-[rgb(var(--color-surface)/0.55)] shadow-sm transition duration-300 hover:-translate-y-1 hover:border-[rgb(var(--color-bee-yellow)/0.45)]">
+                        <div class="relative aspect-[4/3] overflow-hidden bg-[rgb(var(--color-surface)/0.6)]">
+                        <img
+                            src={benefit.image}
+                            alt={benefit.title}
+                            class="h-full w-full object-cover transition duration-500 group-hover:scale-105"
+                            loading="lazy"
+                        />
+
+                        <div class="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/45 via-black/10 to-transparent"></div>
+                        </div>
+
+                        <div class="p-6">
+                        <h3 class="text-xl tracking-[-0.03em] text-[rgb(var(--color-heading))]">
+                            {benefit.title}
+                        </h3>
+
+                        <p class="mt-3 text-sm leading-6 text-[rgb(var(--color-text-soft))]">
+                            {benefit.description}
+                        </p>
+                        </div>
+                    </article>
+                    );
+                })
+            }
+        </div>
+        </div>
+    </section>
+
+    <section id="roles" class="section-shell-sm">
+        <div class="container-shell">
+        <div class="grid gap-8 lg:grid-cols-[0.85fr_1.15fr] lg:items-start">
+            <div>
+            <p class="section-kicker">
+                <BriefcaseBusiness class="size-4" aria-hidden="true" />
+                Open Roles
+            </p>
+            <h2 class="mt-5 text-4xl tracking-tighter md:text-6xl">
+                Positions we commonly hire for.
+            </h2>
+
+            <p class="lead mt-5">
+                Availability may vary by location, but you can submit your
+                application and let us know which role fits your experience. Bring your care, energy, and heart to Mini Me.
+            </p>
+            </div>
+
+            <div class="grid gap-4 sm:grid-cols-2">
+            {
+                positions.slice(0, 8).map((position) => (
+                <div class="glow-panel rounded-xl border border-[rgb(var(--color-border)/0.32)] bg-[rgb(var(--color-surface)/0.55)] p-5">
+                    <p class="flex items-center gap-3 font-black text-[rgb(var(--color-heading))]">
+                    <CheckCircle2 class="size-5 shrink-0 text-[rgb(var(--color-bee-yellow))]" />
+                    {position}
+                    </p>
+                </div>
+                ))
+            }
+            </div>
+        </div>
+        </div>
+    </section>
+
+    <section class="section-shell-sm">
+        <div class="container-shell">
+        <div class="glow-panel grid gap-8 p-6 md:p-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
+            <div>
+            <p class="section-kicker">
+                <UsersRound class="size-4" aria-hidden="true" />
+                What We Look For
+            </p>
+
+            <h2 class="mt-5 text-4xl tracking-tighter md:text-5xl">
+                Great childcare starts with great people.
+            </h2>
+
+            <p class="mt-5 leading-7 text-[rgb(var(--color-text-soft))]">
+                We value team members who are loving, responsible, patient, and
+                ready to help children feel safe, supported, and excited to learn.
+            </p>
+            </div>
+
+            <div class="grid gap-3">
+            {
+                qualities.map((quality) => (
+                <div class="flex gap-3 rounded-lg border border-[rgb(var(--color-border)/0.3)] bg-[rgb(var(--color-surface)/0.45)] p-4">
+                    <CheckCircle2 class="mt-0.5 size-5 shrink-0 text-[rgb(var(--color-bee-yellow))]" />
+                    <p class="text-sm font-bold leading-6 text-[rgb(var(--color-text-soft))]">
+                    {quality}
+                    </p>
+                </div>
+                ))
+            }
+            </div>
+        </div>
+        </div>
+    </section>
+
+    <section id="apply" class="section-shell">
+        <div class="container-shell">
+            <div class="mx-auto flex max-w-3xl flex-col items-center justify-center text-center">
+                <p class="section-kicker mx-auto inline-flex items-center justify-center text-center">
+                    <FileText class="size-4" aria-hidden="true" />
+                    Apply Online
+                </p>
+
+                <h2 class="mx-auto mt-5 text-center text-4xl tracking-tighter md:text-6xl">
+                    Ready to apply?
+                </h2>
+
+                <p class="lead mx-auto mt-5 max-w-2xl text-center">
+                    Complete the form below and attach your resume. A Mini Me Learning
+                    Center team member may contact you if your application matches a
+                    current opportunity.
+                </p>
+            </div>
+
+            <div class="mx-auto mt-10 max-w-4xl">
+                <form
+                name="career-application"
+                method="POST"
+                action="/thank-you"
+                data-netlify="true"
+                netlify-honeypot="bot-field"
+                enctype="multipart/form-data"
+                class="glow-panel grid gap-5 p-6 md:grid-cols-2 md:p-8"
+                >
+                    <input type="hidden" name="form-name" value="career-application" />
+
+                    <p class="hidden">
+                        <label>
+                        Don’t fill this out if you’re human:
+                        <input name="bot-field" />
+                        </label>
+                    </p>
+
+                    <label class="field-label">
+                        Full Name
+                        <input
+                        type="text"
+                        name="full_name"
+                        required
+                        class="field-input"
+                        placeholder="Your full name"
+                        />
+                    </label>
+
+                    <label class="field-label">
+                        Phone Number
+                        <input
+                        type="tel"
+                        name="phone"
+                        required
+                        class="field-input"
+                        placeholder="(305) 000-0000"
+                        />
+                    </label>
+
+                    <label class="field-label">
+                        Email Address
+                        <input
+                        type="email"
+                        name="email"
+                        required
+                        class="field-input"
+                        placeholder="you@example.com"
+                        />
+                    </label>
+
+                    <label class="field-label">
+                        Preferred Location
+                        <select name="preferred_location" required class="field-input">
+                        <option value="">Select a location</option>
+                        {locations.map((location) => <option value={location}>{location}</option>)}
+                        <option value="Any location">Any location</option>
+                        </select>
+                    </label>
+
+                    <label class="field-label">
+                        Position Interested In
+                        <select name="position_interested_in" required class="field-input">
+                        <option value="">Select a position</option>
+                        {positions.map((position) => <option value={position}>{position}</option>)}
+                        </select>
+                    </label>
+
+                    <label class="field-label">
+                        Years of Childcare Experience
+                        <select name="childcare_experience" class="field-input">
+                        <option value="">Select one</option>
+                        <option value="No experience yet">No experience yet</option>
+                        <option value="Less than 1 year">Less than 1 year</option>
+                        <option value="1-2 years">1-2 years</option>
+                        <option value="3-5 years">3-5 years</option>
+                        <option value="5+ years">5+ years</option>
+                        </select>
+                    </label>
+
+                    <label class="field-label">
+                        DCF / Childcare Credentials
+                        <select name="credentials" class="field-input">
+                        <option value="">Select one</option>
+                        <option value="DCF training completed">DCF training completed</option>
+                        <option value="CDA">CDA</option>
+                        <option value="Degree in Early Childhood Education">
+                            Degree in Early Childhood Education
+                        </option>
+                        <option value="In progress">In progress</option>
+                        <option value="None yet">None yet</option>
+                        <option value="Other">Other</option>
+                        </select>
+                    </label>
+
+                    <label class="field-label">
+                        Availability
+                        <select name="availability" class="field-input">
+                        <option value="">Select one</option>
+                        <option value="Full-time">Full-time</option>
+                        <option value="Part-time">Part-time</option>
+                        <option value="Morning">Morning</option>
+                        <option value="Afternoon">Afternoon</option>
+                        <option value="Flexible">Flexible</option>
+                        </select>
+                    </label>
+
+                    <label class="field-label md:col-span-2">
+                        Upload Resume
+                        <input
+                        type="file"
+                        name="resume"
+                        accept=".pdf,.doc,.docx"
+                        class="field-input"
+                        />
+                    </label>
+
+                    <label class="field-label md:col-span-2">
+                        Message
+                        <textarea
+                        name="message"
+                        rows="5"
+                        class="field-input resize-none"
+                        placeholder="Tell us briefly about your experience, availability, or why you’d like to work with Mini Me."
+                        ></textarea>
+                    </label>
+
+                    <label class="md:col-span-2 flex items-start gap-3 rounded-lg border border-[rgb(var(--color-border)/0.35)] bg-[rgb(var(--color-surface)/0.42)] p-4 text-sm leading-6 text-[rgb(var(--color-text-soft))]">
+                        <input
+                        type="checkbox"
+                        name="consent_to_contact"
+                        value="Yes"
+                        required
+                        class="mt-1 size-4 accent-[rgb(var(--color-bee-yellow))]"
+                        />
+                        <span>
+                        I confirm that the information provided is accurate and authorize
+                        Mini Me Learning Centers to contact me about career opportunities.
+                        </span>
+                    </label>
+
+                    <div class="md:col-span-2 flex justify-center pt-3">
+                        <button type="submit" class="btn btn-primary">
+                        Submit Application
+                        <ArrowRight class="size-4" aria-hidden="true" />
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-shell-sm">
+        <div class="container-shell">
+            <div class="grid gap-8 lg:grid-cols-[0.85fr_1.15fr] lg:items-start">
+                <div>
+                <p class="section-kicker">
+                    <Clock class="size-4" aria-hidden="true" />
+                    Hiring Process
+                </p>
+
+                <h2 class="mt-5 text-4xl tracking-tighter md:text-6xl">
+                    What happens after you apply?
+                </h2>
+                </div>
+
+                <div class="grid gap-4">
+                {
+                    hiringSteps.map((step, index) => (
+                    <div class="glow-panel rounded-xl border border-[rgb(var(--color-border)/0.32)] bg-[rgb(var(--color-surface)/0.55)] p-5">
+                        <div class="flex gap-4">
+                            <div class="grid size-10 shrink-0 place-items-center rounded-full bg-[rgb(var(--color-bee-yellow)/0.16)] text-sm font-black text-[rgb(var(--color-bee-yellow))]">
+                                {index + 1}
+                            </div>
+
+                            <div>
+                                <h3 class="text-xl tracking-[-0.03em]">{step.title}</h3>
+                                <p class="mt-2 text-sm leading-6 text-[rgb(var(--color-text-soft))]">
+                                {step.description}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    ))
+                }
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-shell-sm">
+        <div class="container-shell">
+            <div class="flex flex-col items-center glow-panel p-8 text-center md:p-12">
+                <p class="section-kicker mx-auto">
+                    <HeartHandshake class="size-4" aria-hidden="true" />
+                    Join Our Team
+                </p>
+
+                <h2 class="mx-auto mt-5 max-w-4xl text-4xl tracking-tighter md:text-6xl">
+                    Bring your care, energy, and heart to Mini Me.
+                </h2>
+
+                <p class="lead mx-auto mt-5 max-w-2xl">
+                    If you love working with children and want to be part of a supportive
+                    childcare team, we’d love to hear from you.
+                </p>
+
+                <div class="mt-8 flex justify-center">
+                    <a href="#apply" class="btn btn-primary">
+                        Start Application
+                        <ArrowRight class="size-4" aria-hidden="true" />
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+</MainLayout>
+
+<style>
+    .field-label {
+        display: grid;
+        gap: 0.6rem;
+        font-size: 0.9rem;
+        font-weight: 900;
+        color: rgb(var(--color-heading));
+    }
+
+    .field-input {
+        width: 100%;
+        border-radius: var(--radius-lg);
+        border: 1px solid rgb(var(--color-border) / 0.4);
+        background: rgb(var(--color-surface) / 0.72);
+        padding: 0.95rem 1rem;
+        font-size: 0.95rem;
+        font-weight: 600;
+        color: rgb(var(--color-text));
+        outline: none;
+        transition:
+        border-color 180ms ease,
+        box-shadow 180ms ease,
+        background 180ms ease;
+    }
+
+    .field-input::placeholder {
+        color: rgb(var(--color-text-soft) / 0.72);
+    }
+
+    .field-input:focus {
+        border-color: rgb(var(--color-bee-yellow) / 0.82);
+        box-shadow: 0 0 0 4px rgb(var(--color-bee-yellow) / 0.12);
+        background: rgb(var(--color-surface) / 0.95);
+    }
+
+    input[type="file"].field-input {
+        cursor: pointer;
+    }
+</style>

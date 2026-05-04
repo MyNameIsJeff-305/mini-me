@@ -1,0 +1,529 @@
+---
+import MainLayout from "../layouts/MainLayout.astro";
+
+import {
+    Baby,
+    HeartHandshake,
+    BookOpenCheck,
+    CheckCircle2,
+    Sparkles,
+    UsersRound,
+    Phone,
+    MoveRight,
+    MapPin,
+    GraduationCap,
+    School,
+    ShieldCheck,
+    HelpCircle,
+    Home,
+    Smile,
+    Route,
+    HandCoins,
+    FileText,
+    Building2,
+} from "@lucide/astro";
+import { nearbyAreas, highlights, programs, whyFamiliesChoose, steps, relatedPages, faqs } from "../data/daycareHomesteadPage";
+---
+
+<MainLayout
+    title="Daycare in Homestead, FL | Childcare & Preschool Near Homestead | Mini Me Learning Centers"
+    description="Looking for daycare in Homestead, FL? Mini Me Learning Centers provides caring childcare, preschool, early learning, VPK guidance, and family support near Homestead, Florida City, Redland, and South Miami-Dade."
+>
+    <section class="hero-shell">
+        <div class="hero-orb hero-orb-yellow animate-float-slow"></div>
+        <div class="hero-orb hero-orb-blue animate-float-soft"></div>
+
+        <div class="container-shell mb-10">
+            <div class="flex flex-col items-center mx-auto max-w-4xl text-center">
+                <p class="hero-badge mx-auto">
+                    <MapPin class="size-4" aria-hidden="true" />
+                    Daycare in Homestead, FL
+                </p>
+
+                <h1 class="mt-6">
+                    Caring daycare and early learning for Homestead families.
+                </h1>
+
+                <p class="lead mx-auto mt-6 max-w-3xl">
+                    Looking for daycare near Homestead, FL? Mini Me Learning
+                    Centers welcomes families searching for childcare, preschool,
+                    VPK guidance, School Readiness support, and a nurturing early
+                    learning environment in South Miami-Dade.
+                </p>
+
+                <div class="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
+                    <a href="/locations" class="btn btn-primary">
+                        Find a Location
+                        <MapPin class="size-4" aria-hidden="true" />
+                    </a>
+
+                    <a href="/contact" class="btn btn-outline">
+                        Ask About Enrollment
+                        <Phone class="size-4" aria-hidden="true" />
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="container-shell">
+            <div
+                class="surface grid gap-4 p-5 sm:grid-cols-3 md:p-6"
+                aria-label="Daycare in Homestead highlights"
+            >
+                {
+                    highlights.map(({ title, description, icon: Icon, gradient }) => (
+                        <div class="flex items-center gap-4">
+                            <span
+                                class:list={[
+                                    "grid size-12 shrink-0 place-items-center rounded-full",
+                                    gradient,
+                                ]}
+                            >
+                                <Icon
+                                    class="size-6 text-[rgb(var(--color-ink))]"
+                                    aria-hidden="true"
+                                />
+                            </span>
+
+                            <div>
+                                <p class="font-black text-[rgb(var(--color-heading))]">
+                                    {title}
+                                </p>
+
+                                <p class="text-sm font-semibold text-[rgb(var(--color-text-muted))]">
+                                    {description}
+                                </p>
+                            </div>
+                        </div>
+                    ))
+                }
+            </div>
+        </div>
+    </section>
+
+    <section class="section-shell">
+        <div class="container-shell">
+            <div class="grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
+                <div>
+                    <p class="section-kicker">
+                        <HeartHandshake class="size-4" aria-hidden="true" />
+                        For Homestead Families
+                    </p>
+
+                    <h2 class="mt-5">
+                        A caring early learning option for families near Homestead.
+                    </h2>
+
+                    <p class="lead mt-5">
+                        Homestead is one of South Miami-Dade’s most recognizable
+                        family communities, with parents balancing work, school,
+                        commute times, and daily routines across the area.
+                        Choosing the right daycare can help children feel safe,
+                        supported, and ready to grow.
+                    </p>
+
+                    <p class="mt-5 leading-7 text-[rgb(var(--color-text-soft))]">
+                        Mini Me Learning Centers serves families looking for
+                        daycare, preschool, VPK guidance, and early learning
+                        support near Homestead, Florida City, Redland, Leisure
+                        City, Naranja, Princeton, Goulds, Cutler Bay, and nearby
+                        South Miami-Dade communities.
+                    </p>
+
+                    <div class="mt-8 flex flex-col gap-3 sm:flex-row">
+                        <a href="/locations" class="btn btn-primary">
+                            View Locations
+                            <MapPin class="size-4" aria-hidden="true" />
+                        </a>
+
+                        <a href="#faq" class="btn btn-outline">
+                            Read FAQs
+                            <HelpCircle class="size-4" aria-hidden="true" />
+                        </a>
+                    </div>
+                </div>
+
+                <div class="glow-panel p-6 md:p-8">
+                    <p class="section-kicker">
+                        <Route class="size-4" aria-hidden="true" />
+                        Nearby Areas We Serve
+                    </p>
+
+                    <div class="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-2">
+                        {
+                            nearbyAreas.map((area) => (
+                                <div class="rounded-full border border-[rgb(var(--color-border)/0.3)] bg-[rgb(var(--color-surface)/0.48)] px-4 py-3 text-center text-sm font-black text-[rgb(var(--color-heading))]">
+                                    {area}
+                                </div>
+                            ))
+                        }
+                    </div>
+
+                    <p class="mt-6 leading-7 text-[rgb(var(--color-text-soft))]">
+                        Whether you live in Homestead or commute through South
+                        Miami-Dade, our team can help you find the Mini Me
+                        location that best fits your family’s routine.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-shell">
+        <div class="container-shell">
+            <div class="flex flex-col items-center mx-auto max-w-3xl text-center">
+                <p class="section-kicker mx-auto justify-center text-center">
+                    <Baby class="size-4" aria-hidden="true" />
+                    Daycare & Early Learning
+                </p>
+
+                <h2 class="mx-auto mt-5 max-w-4xl text-center">
+                    Childcare support for every early learning stage.
+                </h2>
+
+                <p class="lead mx-auto mt-5 max-w-2xl text-center">
+                    Families searching for daycare in Homestead often need more
+                    than supervision. They want a warm environment where children
+                    can build confidence, routines, social skills, and school
+                    readiness.
+                </p>
+            </div>
+
+            <div class="mt-12 grid gap-5 md:grid-cols-2 lg:grid-cols-4">
+                {
+                    programs.map(({ title, description, icon: Icon }) => (
+                        <article class="card p-6">
+                            <span class="grid size-12 place-items-center rounded-full bg-[rgb(var(--color-bee-yellow)/0.14)] text-[rgb(var(--color-bee-yellow))] mb-10">
+                                <Icon class="size-6" aria-hidden="true" />
+                            </span>
+
+                            <h3 class="mt-5 text-2xl">{title}</h3>
+
+                            <p class="mt-3 leading-7 text-[rgb(var(--color-text-soft))]">
+                                {description}
+                            </p>
+                        </article>
+                    ))
+                }
+            </div>
+        </div>
+    </section>
+
+    <section class="section-shell">
+        <div class="container-shell">
+            <div class="grid gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
+                <div class="glow-panel p-6 md:p-8 lg:p-10">
+                    <p class="section-kicker">
+                        <Sparkles class="size-4" aria-hidden="true" />
+                        Why Choose Mini Me
+                    </p>
+
+                    <h2 class="mt-5">
+                        A warm place for children to learn, play, and grow.
+                    </h2>
+
+                    <p class="lead mt-5">
+                        The early years shape how children feel about learning.
+                        Mini Me Learning Centers focuses on creating a caring
+                        setting where children can feel comfortable, build trust,
+                        practice routines, and prepare for the next stage.
+                    </p>
+
+                    <p class="mt-5 leading-7 text-[rgb(var(--color-text-soft))]">
+                        If your family is looking for daycare near Homestead, our
+                        team can help you compare locations, ask the right
+                        enrollment questions, and understand program options such
+                        as preschool, VPK, and School Readiness guidance.
+                    </p>
+
+                    <div class="mt-8 flex flex-col gap-3 sm:flex-row">
+                        <a href="/contact" class="btn btn-primary">
+                            Contact Us
+                            <Phone class="size-4" aria-hidden="true" />
+                        </a>
+
+                        <a href="/scholarships" class="btn btn-outline">
+                            View Scholarships
+                            <HandCoins class="size-4" aria-hidden="true" />
+                        </a>
+                    </div>
+                </div>
+
+                <div class="grid gap-4">
+                    {
+                        whyFamiliesChoose.map(({ title, description, icon: Icon }) => (
+                            <div class="card p-5">
+                                <span class="grid size-12 place-items-center rounded-full bg-[rgb(var(--color-bee-yellow)/0.14)] text-[rgb(var(--color-bee-yellow))]">
+                                    <Icon class="size-6" aria-hidden="true" />
+                                </span>
+
+                                <h3 class="mt-5 text-2xl">{title}</h3>
+
+                                <p class="mt-3 leading-7 text-[rgb(var(--color-text-soft))]">
+                                    {description}
+                                </p>
+                            </div>
+                        ))
+                    }
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-shell">
+        <div class="container-shell">
+            <div class="glow-panel p-6 md:p-10 lg:p-12">
+                <div class="grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
+                    <div>
+                        <p class="section-kicker">
+                            <CheckCircle2 class="size-4" aria-hidden="true" />
+                            How to Get Started
+                        </p>
+
+                        <h2 class="mt-5">
+                            Finding daycare near Homestead can start with one conversation.
+                        </h2>
+
+                        <p class="lead mt-5">
+                            The best daycare choice depends on your child’s age,
+                            your family schedule, location preference, and
+                            program needs. Our team can help you take the next
+                            step with clarity.
+                        </p>
+
+                        <div class="mt-8 flex flex-col gap-3 sm:flex-row">
+                            <a href="/contact" class="btn btn-primary">
+                                Ask About Enrollment
+                                <Phone class="size-4" aria-hidden="true" />
+                            </a>
+
+                            <a href="/locations" class="btn btn-outline">
+                                View Locations
+                                <MapPin class="size-4" aria-hidden="true" />
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="grid gap-4">
+                        {
+                            steps.map((step, index) => (
+                                <div class="card flex gap-5 p-5">
+                                    <div class="grid size-12 shrink-0 place-items-center rounded-full brand-gradient font-display text-xl font-black text-[rgb(var(--color-ink))]">
+                                        {index + 1}
+                                    </div>
+
+                                    <div>
+                                        <h3 class="text-2xl">{step.title}</h3>
+
+                                        <p class="mt-2 leading-7 text-[rgb(var(--color-text-soft))]">
+                                            {step.description}
+                                        </p>
+                                    </div>
+                                </div>
+                            ))
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-shell">
+        <div class="container-shell">
+            <div class="flex flex-col items-center mx-auto max-w-3xl text-center">
+                <p class="section-kicker mx-auto justify-center text-center">
+                    <Home class="size-4" aria-hidden="true" />
+                    Mini Me Learning Centers
+                </p>
+
+                <h2 class="mx-auto mt-5 max-w-4xl text-center">
+                    Find the Mini Me location that fits your Homestead-area routine.
+                </h2>
+
+                <p class="lead mx-auto mt-5 max-w-2xl text-center">
+                    Mini Me Learning Centers has multiple Miami-Dade locations
+                    serving families looking for daycare, preschool, VPK, and
+                    early learning support near Homestead and surrounding areas.
+                </p>
+            </div>
+
+            <div class="mt-10 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+                <a
+                    href="/locations/mini-me-1"
+                    class="card group p-5 transition hover:-translate-y-1"
+                >
+                    <h3 class="mt-4 text-xl">Mini Me Learning Center I</h3>
+
+                    <p class="mt-2 text-sm font-semibold leading-6 text-[rgb(var(--color-text-soft))]">
+                        Fontainebleau / West Miami area
+                    </p>
+
+                    <span class="mt-5 inline-flex items-center gap-2 text-sm font-black text-[rgb(var(--color-bee-yellow))] transition group-hover:gap-3">
+                        View Location
+                        <MoveRight class="size-4" aria-hidden="true" />
+                    </span>
+                </a>
+
+                <a
+                    href="/locations/mini-me-2"
+                    class="card group p-5 transition hover:-translate-y-1"
+                >
+                    <h3 class="mt-4 text-xl">Mini Me Learning Center II</h3>
+
+                    <p class="mt-2 text-sm font-semibold leading-6 text-[rgb(var(--color-text-soft))]">
+                        Tamiami / Kendall-area families
+                    </p>
+
+                    <span class="mt-5 inline-flex items-center gap-2 text-sm font-black text-[rgb(var(--color-bee-yellow))] transition group-hover:gap-3">
+                        View Location
+                        <MoveRight class="size-4" aria-hidden="true" />
+                    </span>
+                </a>
+
+                <a
+                    href="/locations/mini-me-3"
+                    class="card group p-5 transition hover:-translate-y-1"
+                >
+                    <h3 class="mt-4 text-xl">Mini Me Learning Center III</h3>
+
+                    <p class="mt-2 text-sm font-semibold leading-6 text-[rgb(var(--color-text-soft))]">
+                        Miami-Dade families
+                    </p>
+
+                    <span class="mt-5 inline-flex items-center gap-2 text-sm font-black text-[rgb(var(--color-bee-yellow))] transition group-hover:gap-3">
+                        View Location
+                        <MoveRight class="size-4" aria-hidden="true" />
+                    </span>
+                </a>
+
+                <a
+                    href="/locations/mini-me-4"
+                    class="card group p-5 transition hover:-translate-y-1"
+                >
+                    <h3 class="mt-4 text-xl">Mini Me Learning Center IV</h3>
+
+                    <p class="mt-2 text-sm font-semibold leading-6 text-[rgb(var(--color-text-soft))]">
+                        Miami-Dade families
+                    </p>
+
+                    <span class="mt-5 inline-flex items-center gap-2 text-sm font-black text-[rgb(var(--color-bee-yellow))] transition group-hover:gap-3">
+                        View Location
+                        <MoveRight class="size-4" aria-hidden="true" />
+                    </span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-shell">
+        <div class="container-shell">
+            <div class="flex flex-col items-center mx-auto max-w-3xl text-center">
+                <p class="section-kicker mx-auto justify-center text-center">
+                    <FileText class="size-4" aria-hidden="true" />
+                    Helpful Parent Resources
+                </p>
+
+                <h2 class="mx-auto mt-5 max-w-4xl text-center">
+                    Explore daycare, preschool, and scholarship support.
+                </h2>
+
+                <p class="lead mx-auto mt-5 max-w-2xl text-center">
+                    These related guides can help Homestead-area families compare
+                    daycare assistance, preschool support, VPK, and early
+                    learning options.
+                </p>
+            </div>
+
+            <div class="mt-10 grid gap-5 md:grid-cols-3">
+                {
+                    relatedPages.map(({ title, description, href, icon: Icon }) => (
+                        <a href={href} class="card group p-6 transition hover:-translate-y-1">
+                            <span class="grid size-12 place-items-center rounded-full bg-[rgb(var(--color-bee-yellow)/0.14)] text-[rgb(var(--color-bee-yellow))] mb-10">
+                                <Icon class="size-6" aria-hidden="true" />
+                            </span>
+
+                            <h3 class="mt-5 text-2xl">{title}</h3>
+
+                            <p class="mt-3 leading-7 text-[rgb(var(--color-text-soft))]">
+                                {description}
+                            </p>
+
+                            <span class="mt-6 inline-flex items-center gap-2 text-sm font-black text-[rgb(var(--color-bee-yellow))] transition group-hover:gap-3">
+                                Read Guide
+                                <MoveRight class="size-4" aria-hidden="true" />
+                            </span>
+                        </a>
+                    ))
+                }
+            </div>
+        </div>
+    </section>
+
+    <section id="faq" class="section-shell">
+        <div class="container-shell">
+            <div class="flex flex-col items-center mx-auto max-w-3xl text-center">
+                <p class="section-kicker mx-auto justify-center text-center">
+                    <HelpCircle class="size-4" aria-hidden="true" />
+                    Daycare in Homestead FAQs
+                </p>
+
+                <h2 class="mx-auto mt-5 max-w-4xl text-center">
+                    Common questions from Homestead-area families.
+                </h2>
+
+                <p class="lead mx-auto mt-5 max-w-2xl text-center">
+                    Here are a few helpful answers for parents looking for
+                    daycare, preschool, VPK, and early learning options near
+                    Homestead.
+                </p>
+            </div>
+
+            <div class="mx-auto mt-10 grid max-w-4xl gap-4">
+                {
+                    faqs.map((faq) => (
+                        <article class="card p-6">
+                            <h3 class="text-2xl">{faq.question}</h3>
+
+                            <p class="mt-3 leading-7 text-[rgb(var(--color-text-soft))]">
+                                {faq.answer}
+                            </p>
+                        </article>
+                    ))
+                }
+            </div>
+        </div>
+    </section>
+
+    <section class="section-shell-sm">
+        <div class="container-shell">
+            <div class="glow-panel flex flex-col items-center p-8 text-center md:p-12">
+                <p class="section-kicker mx-auto justify-center text-center">
+                    <UsersRound class="size-4" aria-hidden="true" />
+                    Ready to Find Daycare Near Homestead?
+                </p>
+
+                <h2 class="mx-auto mt-5 max-w-4xl text-center">
+                    Let’s help your family take the next step.
+                </h2>
+
+                <p class="lead mx-auto mt-5 max-w-2xl text-center">
+                    Whether you are searching for daycare in Homestead, preschool
+                    support, VPK guidance, School Readiness information, or the
+                    right Mini Me location, our team is here to help.
+                </p>
+
+                <div class="mt-8 flex w-full flex-col justify-center gap-3 sm:w-auto sm:flex-row">
+                    <a href="/contact" class="btn btn-primary">
+                        Ask About Enrollment
+                        <Phone class="size-4" aria-hidden="true" />
+                    </a>
+
+                    <a href="/locations" class="btn btn-outline">
+                        View Locations
+                        <MapPin class="size-4" aria-hidden="true" />
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+</MainLayout>

@@ -22,144 +22,14 @@ import {
   ChevronLeft,
   ChevronRight,
 } from "@lucide/astro";
+import { heroSlides, stats, programs, locations, steps, faqs } from "../data/homePage";
+import { cleanPhone } from "../utils/formatters";
 
-const heroSlides = [
-  {
-    image: "/images/hero/mini-me-classroom-1.webp",
-    alt: "Children learning inside a Mini Me classroom",
-    label: "Learn · Play · Grow",
-  },
-  {
-    image: "/images/hero/mini-me-classroom-2.webp",
-    alt: "Early learning activities at Mini Me Learning Centers",
-    label: "Bright Beginnings",
-  },
-  {
-    image: "/images/hero/mini-me-play-1.webp",
-    alt: "Children enjoying playful learning activities",
-    label: "Playful Learning",
-  },
-  {
-    image: "/images/hero/mini-me-teacher-1.webp",
-    alt: "Teacher supporting children in a warm classroom",
-    label: "Caring Teachers",
-  },
-  {
-    image: "/images/hero/mini-me-center-1.webp",
-    alt: "Welcoming Mini Me Learning Center environment",
-    label: "Safe · Warm · Trusted",
-  },
-];
 
-const stats = [
-  { value: "1999", label: "Established" },
-  { value: "4", label: "Learning Centers" },
-  { value: "25+", label: "Years Serving Families" },
-];
-
-const programs = [
-  {
-    title: "Early Learning",
-    description:
-      "A warm introduction to learning where children build confidence, curiosity, communication skills, and a love for discovering new things.",
-    icon: BookOpen,
-  },
-  {
-    title: "School Readiness",
-    description:
-      "Daily routines, guided activities, and age-appropriate lessons that help children develop the skills they need for kindergarten and beyond.",
-    icon: GraduationCap,
-  },
-  {
-    title: "Safe Childcare",
-    description:
-      "A caring, structured, and secure environment where families can feel confident their children are protected, supported, and loved.",
-    icon: ShieldCheck,
-  },
-  {
-    title: "Inclusive Support",
-    description:
-      "A welcoming approach that respects every child’s personality, learning style, and developmental needs while helping them feel seen and valued.",
-    icon: HeartHandshake,
-  },
-];
-
-const locations = [
-  {
-    name: "Mini Me Learning Center I",
-    address: "9851 SW 1st St, Fountainebleau, FL 33174",
-    email: "Minimelc1@att.net",
-    phone: "(305) 227-2289",
-    href: "/locations/mini-me-1",
-    image: "/images/locations/mini-me-1.webp",
-  },
-  {
-    name: "Mini Me Learning Center II",
-    address: "11865 Southwest 26th Street, Miami, FL 33175",
-    email: "Minimedaycare@bellsouth.net",
-    phone: "(305) 227-9111",
-    href: "/locations/mini-me-2",
-    image: "/images/locations/mini-me-2.webp",
-  },
-  {
-    name: "Mini Me Learning Center III",
-    address: "7300 SW 152 Ave, Miami, FL 33193",
-    email: "Minimelc3@att.net",
-    phone: "(305) 388-2098",
-    href: "/locations/mini-me-3",
-    image: "/images/locations/mini-me-3.webp",
-  },
-  {
-    name: "Mini Me Learning Center IV",
-    address: "15260 SW 280 St, Homestead, FL 33032",
-    email: "Minimelc4@att.net",
-    phone: "(786) 410-8991",
-    href: "/locations/mini-me-4",
-    image: "/images/locations/mini-me-4.webp",
-  },
-];
-
-const steps = [
-  {
-    title: "Choose a location",
-    description:
-      "Find the Mini Me Learning Center closest to your family, work, or daily routine.",
-  },
-  {
-    title: "Schedule a visit",
-    description:
-      "Tour the center, meet the team, and ask questions about programs, classrooms, and availability.",
-  },
-  {
-    title: "Begin enrollment",
-    description:
-      "Get guidance on the next steps so your child can begin their learning journey with confidence.",
-  },
-];
-
-const faqs = [
-  {
-    question: "How many Mini Me Learning Centers are available?",
-    answer:
-      "Mini Me Learning Centers currently has four locations serving families across Miami and South Florida.",
-  },
-  {
-    question: "Can parents schedule a visit before enrolling?",
-    answer:
-      "Yes. The homepage encourages parents to schedule a visit and connect with the right location.",
-  },
-  {
-    question: "Does Mini Me support early learning and childcare?",
-    answer:
-      "Yes. Mini Me is positioned as a warm early learning and childcare environment focused on growth, care, and school readiness.",
-  },
-];
-
-const cleanPhone = (phone: string) => phone.replace(/\D/g, "");
 ---
 
 <MainLayout
-  title="Early Learning Centers in Miami & South Florida"
+  title="Daycare & Early Learning Centers in Miami, FL | Mini Me Learning Centers"
   description="Mini Me Learning Centers offers nurturing childcare and early education programs across four locations in Miami and South Florida."
 >
   <section class="hero-shell">
@@ -175,16 +45,14 @@ const cleanPhone = (phone: string) => phone.replace(/\D/g, "");
           </p>
 
           <h1 class="mt-6 max-w-5xl">
-            A bright place for <br />
-            <span class="text-gradient">little learners</span>
+            Daycare & <br />
+            <span class="text-gradient">Early Learning Centers</span>
             <br />
-            to grow.
+            in Miami and South Florida.
           </h1>
 
           <p class="lead mt-6 max-w-2xl">
-            Mini Me Learning Centers provides warm childcare, early education,
-            and school-readiness support for families across Miami and South
-            Florida.
+            A bright, nurturing place where little learners grow with confidence.
           </p>
 
           <div class="mt-8 flex flex-col gap-3 sm:flex-row">
@@ -309,79 +177,80 @@ const cleanPhone = (phone: string) => phone.replace(/\D/g, "");
         </div>
       </div>
     </div>
-  </section>
 
-  <section class="section-shell-sm">
-    <div class="container-shell">
-      <div
-        class="surface grid gap-4 p-5 sm:grid-cols-3 md:p-6"
-        aria-label="Mini Me highlights"
-      >
-        <div class="flex items-center gap-4">
-          <span
-            class="grid size-12 place-items-center rounded-full wing-gradient"
-          >
-            <Baby
-              class="size-6 text-[rgb(var(--color-ink))]"
-              aria-hidden="true"
-            />
-          </span>
-          <div>
-            <p class="font-black text-[rgb(var(--color-heading))]">
-              Child-centered care
-            </p>
-            <p
-              class="text-sm font-semibold text-[rgb(var(--color-text-muted))]"
+    <div class="section-shell-sm -mt-10">
+      <div class="container-shell">
+        <div
+          class="surface grid gap-4 p-5 sm:grid-cols-3 md:p-6"
+          aria-label="Mini Me highlights"
+        >
+          <div class="flex items-center gap-4">
+            <span
+              class="grid size-12 place-items-center rounded-full wing-gradient"
             >
-              Warm spaces for early growth.
-            </p>
+              <Baby
+                class="size-6 text-[rgb(var(--color-ink))]"
+                aria-hidden="true"
+              />
+            </span>
+            <div>
+              <p class="font-black text-[rgb(var(--color-heading))]">
+                Child-centered care
+              </p>
+              <p
+                class="text-sm font-semibold text-[rgb(var(--color-text-muted))]"
+              >
+                Warm spaces for early growth.
+              </p>
+            </div>
           </div>
-        </div>
-
-        <div class="flex items-center gap-4">
-          <span
-            class="grid size-12 place-items-center rounded-full bee-gradient"
-          >
-            <Sparkles
-              class="size-6 text-[rgb(var(--color-ink))]"
-              aria-hidden="true"
-            />
-          </span>
-          <div>
-            <p class="font-black text-[rgb(var(--color-heading))]">
-              Established since 1999
-            </p>
-            <p
-              class="text-sm font-semibold text-[rgb(var(--color-text-muted))]"
+  
+          <div class="flex items-center gap-4">
+            <span
+              class="grid size-12 place-items-center rounded-full bee-gradient"
             >
-              Trusted by South Florida families.
-            </p>
+              <Sparkles
+                class="size-6 text-[rgb(var(--color-ink))]"
+                aria-hidden="true"
+              />
+            </span>
+            <div>
+              <p class="font-black text-[rgb(var(--color-heading))]">
+                Established since 1999
+              </p>
+              <p
+                class="text-sm font-semibold text-[rgb(var(--color-text-muted))]"
+              >
+                Trusted by South Florida families.
+              </p>
+            </div>
           </div>
-        </div>
-
-        <div class="flex items-center gap-4">
-          <span
-            class="grid size-12 place-items-center rounded-full wing-gradient"
-          >
-            <MapPin
-              class="size-6 text-[rgb(var(--color-ink))]"
-              aria-hidden="true"
-            />
-          </span>
-          <div>
-            <p class="font-black text-[rgb(var(--color-heading))]">
-              Four convenient centers
-            </p>
-            <p
-              class="text-sm font-semibold text-[rgb(var(--color-text-muted))]"
+  
+          <div class="flex items-center gap-4">
+            <span
+              class="grid size-12 place-items-center rounded-full wing-gradient"
             >
-              Serving Miami and Homestead.
-            </p>
+              <MapPin
+                class="size-6 text-[rgb(var(--color-ink))]"
+                aria-hidden="true"
+              />
+            </span>
+            <div>
+              <p class="font-black text-[rgb(var(--color-heading))]">
+                Four convenient centers
+              </p>
+              <p
+                class="text-sm font-semibold text-[rgb(var(--color-text-muted))]"
+              >
+                Serving Miami and Homestead.
+              </p>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </section>
+
 
   <section class="section-shell">
     <div class="container-shell">
@@ -434,22 +303,23 @@ const cleanPhone = (phone: string) => phone.replace(/\D/g, "");
           </p>
 
           <h2 class="mt-10">
-            A familiar place where children feel seen, safe, and excited to
-            learn.
+            A warm, trusted place where your child can learn, grow, and feel at
+            home.
           </h2>
 
           <p class="lead mt-5">
-            For families, choosing a learning center is emotional. The site
-            should feel warm and trustworthy from the first screen, with clear
-            paths to locations, enrollment, programs, and contact.
+            Choosing the right learning center is a big decision. At Mini Me
+            Learning Center, we create a safe, caring, and joyful environment
+            where children feel supported, families feel confident, and every
+            day brings new opportunities to discover.
           </p>
 
           <div class="mt-8 grid gap-4">
             {
               [
-                "Parent-friendly navigation",
-                "Playful but professional design",
-                "Built for future content",
+                "Easy support for busy families",
+                "Playful learning with purpose",
+                "A place to grow with confidence",
               ].map((title, index) => (
                 <div class="flex gap-4">
                   <span class="mt-1 grid size-9 shrink-0 place-items-center rounded-full bee-gradient font-black text-[rgb(var(--color-ink))]">
@@ -459,11 +329,11 @@ const cleanPhone = (phone: string) => phone.replace(/\D/g, "");
                     <h3 class="text-xl">{title}</h3>
                     <p class="mt-2 text-[rgb(var(--color-text-soft))]">
                       {index === 0 &&
-                        "Clear calls to action for enrollment, visits, programs, and location details."}
+                        "From enrollment questions to location details, we make it simple for parents to find the information they need and take the next step with confidence."}
                       {index === 1 &&
-                        "Inspired by the bee mascot, with soft dark mode, honey accents, rounded cards, and gentle animation."}
+                        "Children learn best when they feel happy, curious, and encouraged. Our approach blends fun, structure, creativity, and care throughout the day."}
                       {index === 2 &&
-                        "Ready for dedicated location pages, program pages, FAQ sections, forms, and smooth Astro transitions."}
+                        "With caring teachers, age-appropriate activities, and a nurturing environment, we help children build the social, emotional, and early learning skills they need."}
                     </p>
                   </div>
                 </div>
@@ -480,19 +350,19 @@ const cleanPhone = (phone: string) => phone.replace(/\D/g, "");
       <div
         class="flex flex-col gap-6 md:flex-row md:items-end md:justify-between"
       >
-        <div class="max-w-3xl">
+        <div class="mx-auto max-w-3xl text-center">
           <p class="section-kicker">
             <MapPin class="size-4" aria-hidden="true" />
             Our Locations
           </p>
 
-          <h2 class="mt-5">
-            Four centers serving families across South Florida.
-          </h2>
+          <h2 class="mt-5">Find a Mini Me Learning Center near you.</h2>
 
           <p class="lead mt-5">
-            Help parents quickly find the nearest center, call directly, or
-            begin the enrollment process.
+            With four convenient locations across South Florida, Mini Me
+            Learning Center makes it easier for families to find trusted care
+            and early learning close to home. Explore the center nearest you and
+            take the next step toward enrollment.
           </p>
         </div>
       </div>
@@ -503,9 +373,7 @@ const cleanPhone = (phone: string) => phone.replace(/\D/g, "");
             <article class="card overflow-hidden p-0">
               <div class="grid h-full gap-0 lg:grid-cols-[0.75fr_1.25fr]">
                 {/* Location Image */}
-                <div
-                  class="group relative block overflow-hidden bg-[rgb(var(--color-surface-soft))]"
-                >
+                <div class="group relative block overflow-hidden bg-[rgb(var(--color-surface-soft))]">
                   <img
                     src={location.image}
                     alt={`${location.name} location`}
@@ -566,7 +434,7 @@ const cleanPhone = (phone: string) => phone.replace(/\D/g, "");
 
                   <div class="flex flex-col gap-3 sm:flex-row">
                     <a
-                      href={location.href}
+                      href={location.slug}
                       class="btn btn-primary min-h-11 px-5 text-sm"
                     >
                       Details
@@ -604,11 +472,11 @@ const cleanPhone = (phone: string) => phone.replace(/\D/g, "");
               Enrollment Path
             </p>
 
-            <h2 class="mt-5">Make the next step simple for busy parents.</h2>
+            <h2 class="mt-5">Start Your Child’s Journey with Confidence</h2>
 
             <p class="lead mt-5">
-              The homepage should reduce friction and guide families toward the
-              most important action: contacting a center or starting enrollment.
+              Explore our learning centers, find the location that fits your
+              family, and take the next step toward enrollment with ease.
             </p>
 
             <div class="mt-8 flex flex-col gap-3 sm:flex-row">
@@ -658,7 +526,8 @@ const cleanPhone = (phone: string) => phone.replace(/\D/g, "");
         <h2 class="mt-5">Clear answers for families exploring Mini Me.</h2>
 
         <p class="lead mt-5">
-          When considering a learning center, parents often have similar questions about programs, safety, enrollment, and more.
+          When considering a learning center, parents often have similar
+          questions about programs, safety, enrollment, and more.
         </p>
       </div>
 
@@ -688,7 +557,9 @@ const cleanPhone = (phone: string) => phone.replace(/\D/g, "");
 
   <section class="section-shell-sm">
     <div class="container-shell">
-      <div class="glow-panel p-8 text-center md:p-12">
+      <div
+        class="glow-panel flex flex-col items-center justify-center p-8 text-center md:p-12"
+      >
         <p class="section-kicker mx-auto">
           <UsersRound class="size-4" aria-hidden="true" />
           Let’s grow together
@@ -703,7 +574,9 @@ const cleanPhone = (phone: string) => phone.replace(/\D/g, "");
           closest to your home or work.
         </p>
 
-        <div class="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
+        <div
+          class="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row"
+        >
           <a href="#locations" class="btn btn-primary">
             Find a Location
             <MapPin class="size-4" aria-hidden="true" />

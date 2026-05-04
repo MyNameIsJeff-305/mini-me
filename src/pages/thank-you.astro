@@ -1,0 +1,35 @@
+---
+import MainLayout from "../layouts/MainLayout.astro";
+import { CheckCircle2, Home } from "@lucide/astro"
+---
+
+<MainLayout
+    title="Thank You | Mini Me Learning Centers"
+    description="Thank you for contacting Mini Me Learning Centers. Our team will follow up soon."
+>
+    <section class="section-shell">
+        <div class="container-shell">
+        <div class="glow-panel mx-auto max-w-3xl p-8 text-center md:p-12">
+            <div class="mx-auto grid size-16 place-items-center rounded-full bg-[rgb(var(--color-bee-yellow)/0.16)] text-[rgb(var(--color-bee-yellow))] w-fit">
+                <CheckCircle2 class="size-8" />
+            </div>
+
+            <h1 class="mt-6 text-5xl tracking-[-0.05em] md:text-6xl">
+            Thank you for reaching out!
+            </h1>
+
+            <p class="lead mx-auto mt-5 max-w-2xl">
+            Your enrollment inquiry has been received. A Mini Me Learning Center
+            team member will contact you soon with the next steps.
+            </p>
+
+            <div class="mt-8 flex justify-center">
+            <a href="/" class="btn btn-primary">
+                Back to Home
+                <Home class="size-4" />
+            </a>
+            </div>
+        </div>
+        </div>
+    </section>
+</MainLayout>

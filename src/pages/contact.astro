@@ -1,0 +1,358 @@
+---
+import MainLayout from "../layouts/MainLayout.astro";
+import {
+    Mail,
+    Phone,
+    MapPin,
+    MessageCircle,
+    Clock,
+    Send,
+    CheckCircle2,
+    HelpCircle,
+    Baby,
+    BriefcaseBusiness,
+    GraduationCap,
+    ArrowRight,
+} from "@lucide/astro";
+import { locations, contactReasons, faqs } from "../data/contactPage";
+---
+
+<MainLayout
+    title="Contact Us | Mini Me Learning Centers"
+    description="Contact Mini Me Learning Centers for enrollment questions, tours, program information, careers, and general inquiries."
+>
+    <section class="section-shell relative overflow-hidden">
+        <div class="pointer-events-none absolute inset-0 -z-10">
+        <div class="absolute left-[-12rem] top-16 h-80 w-80 rounded-full bg-[rgb(var(--color-bee-yellow)/0.18)] blur-3xl"></div>
+        <div class="absolute right-[-10rem] top-40 h-96 w-96 rounded-full bg-[rgb(var(--color-sky-blue)/0.16)] blur-3xl"></div>
+        </div>
+
+        <div class="container-shell">
+        <div class="flex flex-col items-center mx-auto max-w-4xl text-center">
+            <p class="section-kicker mx-auto inline-flex items-center justify-center text-center">
+            <MessageCircle class="size-4" aria-hidden="true" />
+            Contact Mini Me
+            </p>
+
+            <h1 class="mx-auto mt-5 text-center text-5xl leading-[1.02] tracking-[-0.05em] md:text-7xl">
+            We’re here to help your family take the next step.
+            </h1>
+
+            <p class="lead mx-auto mt-6 max-w-2xl text-center">
+            Have a question about enrollment, programs, tours, or careers? Send us
+            a message and a Mini Me Learning Center team member will follow up.
+            </p>
+        </div>
+
+        <div class="mt-12 grid gap-5 md:grid-cols-3">
+            {
+            contactReasons.map((reason) => {
+                const Icon = reason.icon;
+
+                return (
+                <article class="rounded-xl border border-[rgb(var(--color-border)/0.32)] bg-[rgb(var(--color-surface)/0.55)] p-6 text-center">
+                    <div style="padding:10px;" class="mx-auto flex h-14 w-fit items-center justify-center rounded-2xl bg-[rgb(var(--color-bee-yellow)/0.16)] text-[rgb(var(--color-bee-yellow))]">
+                        <Icon class="h-7 w-7" aria-hidden="true" />
+                    </div>
+
+                    <h3 class="mt-5 text-xl tracking-[-0.03em]">
+                    {reason.title}
+                    </h3>
+
+                    <p class="mt-3 text-sm leading-6 text-[rgb(var(--color-text-soft))]">
+                    {reason.description}
+                    </p>
+                </article>
+                );
+            })
+            }
+        </div>
+        </div>
+    </section>
+
+    <section class="section-shell-sm">
+        <div class="container-shell">
+        <div class="grid gap-8 lg:grid-cols-[0.85fr_1.15fr] lg:items-start">
+            <aside class="glow-panel h-fit p-6 md:p-8">
+            <p class="section-kicker">
+                <MapPin class="size-4" aria-hidden="true" />
+                Our Locations
+            </p>
+
+            <h2 class="mt-5 text-4xl tracking-[-0.05em] md:text-5xl">
+                Choose the center closest to you.
+            </h2>
+
+            <p class="mt-5 leading-7 text-[rgb(var(--color-text-soft))]">
+                Select your preferred location in the contact form and our team will
+                direct your message to the right Mini Me Learning Center.
+            </p>
+
+            <div class="mt-8 grid gap-4">
+                {
+                locations.map((location) => (
+                    <div class="rounded-[var(--radius-lg)] border border-[rgb(var(--color-border)/0.32)] bg-[rgb(var(--color-surface)/0.48)] p-4">
+                    <h3 class="font-black text-[rgb(var(--color-heading))]">
+                        {location.name}
+                    </h3>
+
+                    <div class="mt-3 grid gap-2 text-sm font-bold text-[rgb(var(--color-text-soft))]">
+                        <p class="flex items-start gap-2">
+                        <MapPin class="mt-0.5 size-4 shrink-0 text-[rgb(var(--color-bee-yellow))]" />
+                        <span>{location.address}</span>
+                        </p>
+
+                        <a
+                        href={`tel:${location.phone.replaceAll(" ", "").replaceAll("(", "").replaceAll(")", "").replaceAll("-", "")}`}
+                        class="flex items-center gap-2 transition hover:text-[rgb(var(--color-bee-yellow))]"
+                        >
+                        <Phone class="size-4 shrink-0 text-[rgb(var(--color-bee-yellow))]" />
+                        {location.phone}
+                        </a>
+
+                        <a
+                        href={`mailto:${location.email}`}
+                        class="flex items-center gap-2 break-all transition hover:text-[rgb(var(--color-bee-yellow))]"
+                        >
+                        <Mail class="size-4 shrink-0 text-[rgb(var(--color-bee-yellow))]" />
+                        {location.email}
+                        </a>
+                    </div>
+                    </div>
+                ))
+                }
+            </div>
+            </aside>
+
+            <div class="glow-panel p-6 md:p-8">
+            <div class="mb-8">
+                <p class="section-kicker">
+                <Send class="size-4" aria-hidden="true" />
+                Send a Message
+                </p>
+
+                <h2 class="mt-5 text-4xl tracking-[-0.05em] md:text-5xl">
+                How can we help?
+                </h2>
+
+                <p class="mt-5 leading-7 text-[rgb(var(--color-text-soft))]">
+                Fill out the form below and we’ll get back to you as soon as
+                possible.
+                </p>
+            </div>
+
+            <form
+                name="contact"
+                method="POST"
+                action="/thank-you"
+                data-netlify="true"
+                netlify-honeypot="bot-field"
+                class="grid gap-5 md:grid-cols-2"
+            >
+                <input type="hidden" name="form-name" value="contact" />
+
+                <p class="hidden">
+                <label>
+                    Don’t fill this out if you’re human:
+                    <input name="bot-field" />
+                </label>
+                </p>
+
+                <label class="field-label">
+                Full Name
+                <input
+                    type="text"
+                    name="full_name"
+                    required
+                    class="field-input"
+                    placeholder="Your full name"
+                />
+                </label>
+
+                <label class="field-label">
+                Phone Number
+                <input
+                    type="tel"
+                    name="phone"
+                    class="field-input"
+                    placeholder="(305) 000-0000"
+                />
+                </label>
+
+                <label class="field-label">
+                Email Address
+                <input
+                    type="email"
+                    name="email"
+                    required
+                    class="field-input"
+                    placeholder="you@example.com"
+                />
+                </label>
+
+                <label class="field-label">
+                Preferred Location
+                <select name="preferred_location" class="field-input">
+                    <option value="">Select a location</option>
+                    {locations.map((location) => <option value={location.name}>{location.name}</option>)}
+                    <option value="Not sure yet">Not sure yet</option>
+                </select>
+                </label>
+
+                <label class="field-label md:col-span-2">
+                Reason for Contact
+                <select name="reason_for_contact" required class="field-input">
+                    <option value="">Select a reason</option>
+                    <option value="Enrollment">Enrollment</option>
+                    <option value="Schedule a Tour">Schedule a Tour</option>
+                    <option value="Programs / Curriculum">Programs / Curriculum</option>
+                    <option value="Careers">Careers</option>
+                    <option value="Billing / Payments">Billing / Payments</option>
+                    <option value="General Question">General Question</option>
+                </select>
+                </label>
+
+                <label class="field-label md:col-span-2">
+                Message
+                <textarea
+                    name="message"
+                    rows="6"
+                    required
+                    class="field-input resize-none"
+                    placeholder="Tell us how we can help."
+                ></textarea>
+                </label>
+
+                <label class="md:col-span-2 flex items-start gap-3 rounded-[var(--radius-lg)] border border-[rgb(var(--color-border)/0.35)] bg-[rgb(var(--color-surface)/0.42)] p-4 text-sm leading-6 text-[rgb(var(--color-text-soft))]">
+                <input
+                    type="checkbox"
+                    name="consent_to_contact"
+                    value="Yes"
+                    required
+                    class="mt-1 size-4 accent-[rgb(var(--color-bee-yellow))]"
+                />
+                <span>
+                    I agree that Mini Me Learning Centers may contact me using the
+                    information provided above.
+                </span>
+                </label>
+
+                <div class="md:col-span-2 flex justify-center pt-3">
+                <button type="submit" class="btn btn-primary">
+                    Send Message
+                    <Send class="size-4" aria-hidden="true" />
+                </button>
+                </div>
+            </form>
+            </div>
+        </div>
+        </div>
+    </section>
+
+    <section class="section-shell-sm">
+        <div class="container-shell">
+        <div class="glow-panel grid gap-8 p-6 md:p-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
+            <div>
+            <p class="section-kicker">
+                <HelpCircle class="size-4" aria-hidden="true" />
+                Quick Questions
+            </p>
+
+            <h2 class="mt-5 text-4xl tracking-[-0.05em] md:text-5xl">
+                Common reasons families contact us.
+            </h2>
+
+            <p class="mt-5 leading-7 text-[rgb(var(--color-text-soft))]">
+                Not sure what to include in your message? These quick answers can
+                help you get started.
+            </p>
+            </div>
+
+            <div class="grid gap-4">
+            {
+                faqs.map((faq) => (
+                <div class="rounded-[var(--radius-lg)] border border-[rgb(var(--color-border)/0.3)] bg-[rgb(var(--color-surface)/0.45)] p-5">
+                    <h3 class="flex items-center gap-2 text-lg tracking-[-0.03em]">
+                    <CheckCircle2 class="size-5 shrink-0 text-[rgb(var(--color-bee-yellow))]" />
+                    {faq.question}
+                    </h3>
+
+                    <p class="mt-3 text-sm leading-6 text-[rgb(var(--color-text-soft))]">
+                    {faq.answer}
+                    </p>
+                </div>
+                ))
+            }
+            </div>
+        </div>
+        </div>
+    </section>
+
+    <section class="section-shell-sm">
+        <div class="container-shell">
+        <div class="flex flex-col items-center glow-panel p-8 text-center md:p-12">
+            <p class="section-kicker mx-auto inline-flex items-center justify-center text-center">
+            <MapPin class="size-4" aria-hidden="true" />
+                Visit Mini Me
+            </p>
+
+            <h2 class="mx-auto mt-5 max-w-4xl text-center text-4xl tracking-[-0.05em] md:text-6xl">
+                Find the Mini Me Learning Center that works best for your family.
+            </h2>
+
+            <p class="lead mx-auto mt-5 max-w-2xl text-center">
+                Whether you’re ready to enroll, schedule a tour, or ask a question,
+                we’re happy to help.
+            </p>
+
+            <div class="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
+            <a href="/enroll" class="btn btn-primary">
+                Start Enrollment
+                <ArrowRight class="size-4" aria-hidden="true" />
+            </a>
+
+            <a href="/careers" class="btn btn-secondary">
+                View Careers
+                <BriefcaseBusiness class="size-4" aria-hidden="true" />
+            </a>
+            </div>
+        </div>
+        </div>
+    </section>
+</MainLayout>
+
+<style>
+    .field-label {
+        display: grid;
+        gap: 0.6rem;
+        font-size: 0.9rem;
+        font-weight: 900;
+        color: rgb(var(--color-heading));
+    }
+
+    .field-input {
+        width: 100%;
+        border-radius: var(--radius-lg);
+        border: 1px solid rgb(var(--color-border) / 0.4);
+        background: rgb(var(--color-surface) / 0.72);
+        padding: 0.95rem 1rem;
+        font-size: 0.95rem;
+        font-weight: 600;
+        color: rgb(var(--color-text));
+        outline: none;
+        transition:
+        border-color 180ms ease,
+        box-shadow 180ms ease,
+        background 180ms ease;
+    }
+
+    .field-input::placeholder {
+        color: rgb(var(--color-text-soft) / 0.72);
+    }
+
+    .field-input:focus {
+        border-color: rgb(var(--color-bee-yellow) / 0.82);
+        box-shadow: 0 0 0 4px rgb(var(--color-bee-yellow) / 0.12);
+        background: rgb(var(--color-surface) / 0.95);
+    }
+</style>

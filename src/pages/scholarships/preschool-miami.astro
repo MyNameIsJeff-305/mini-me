@@ -1,0 +1,590 @@
+---
+import MainLayout from "../../layouts/MainLayout.astro";
+
+import {
+    School,
+    HeartHandshake,
+    HandCoins,
+    BookOpenCheck,
+    CheckCircle2,
+    Sparkles,
+    UsersRound,
+    Phone,
+    MoveRight,
+    MapPin,
+    ExternalLink,
+    FileText,
+    Baby,
+    ShieldCheck,
+    HelpCircle,
+    Home,
+    PencilLine,
+} from "@lucide/astro";
+import { supportPrograms, highlights, steps, whoThisHelps, relatedPages, faqs } from "../../data/scholarshipPreschoolMiamiPage";
+---
+
+<MainLayout
+    title="Preschool Scholarships in Miami | Early Learning Assistance | Mini Me Learning Centers"
+    description="Explore preschool scholarships and early learning assistance in Miami, including VPK, ELC School Readiness, Children’s Trust Families Forward, and support options at Mini Me Learning Centers."
+>
+    <section class="hero-shell">
+        <div class="hero-orb hero-orb-yellow animate-float-slow"></div>
+        <div class="hero-orb hero-orb-blue animate-float-soft"></div>
+
+        <div class="container-shell mb-10">
+            <div class="flex flex-col items-center mx-auto max-w-4xl text-center">
+                <p class="hero-badge mx-auto">
+                    <School class="size-4" aria-hidden="true" />
+                    Preschool Scholarships in Miami
+                </p>
+
+                <h1 class="mt-6">
+                    Early learning support for preschool families in Miami.
+                </h1>
+
+                <p class="lead mx-auto mt-6 max-w-3xl">
+                    Looking for help affording preschool in Miami? Mini Me
+                    Learning Centers welcomes families exploring preschool
+                    scholarships, VPK, School Readiness, Children’s Trust support,
+                    and other early learning assistance options.
+                </p>
+
+                <div class="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
+                    <a href="#preschool-scholarship-options" class="btn btn-primary">
+                        View Preschool Options
+                        <MoveRight class="size-4" aria-hidden="true" />
+                    </a>
+
+                    <a href="/contact" class="btn btn-outline">
+                        Ask a Question
+                        <Phone class="size-4" aria-hidden="true" />
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="container-shell">
+            <div
+                class="surface grid gap-4 p-5 sm:grid-cols-3 md:p-6"
+                aria-label="Preschool scholarship highlights"
+            >
+                {
+                    highlights.map(({ title, description, icon: Icon, gradient }) => (
+                        <div class="flex items-center gap-4">
+                            <span
+                                class:list={[
+                                    "grid size-12 shrink-0 place-items-center rounded-full",
+                                    gradient,
+                                ]}
+                            >
+                                <Icon
+                                    class="size-6 text-[rgb(var(--color-ink))]"
+                                    aria-hidden="true"
+                                />
+                            </span>
+
+                            <div>
+                                <p class="font-black text-[rgb(var(--color-heading))]">
+                                    {title}
+                                </p>
+
+                                <p class="text-sm font-semibold text-[rgb(var(--color-text-muted))]">
+                                    {description}
+                                </p>
+                            </div>
+                        </div>
+                    ))
+                }
+            </div>
+        </div>
+    </section>
+
+    <section class="section-shell">
+        <div class="container-shell">
+            <div class="grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
+                <div>
+                    <p class="section-kicker">
+                        <HeartHandshake class="size-4" aria-hidden="true" />
+                        Preschool Financial Support
+                    </p>
+
+                    <h2 class="mt-5">
+                        Preschool assistance may help eligible families access early learning.
+                    </h2>
+
+                    <p class="lead mt-5">
+                        Preschool is an important bridge between early childcare
+                        and kindergarten. It gives children time to build social
+                        confidence, classroom routines, communication skills,
+                        early literacy, early math awareness, and independence.
+                    </p>
+
+                    <p class="mt-5 leading-7 text-[rgb(var(--color-text-soft))]">
+                        For many families, the challenge is affordability.
+                        Scholarship and assistance programs can help eligible
+                        families access quality early learning while giving
+                        children a stronger foundation for school.
+                    </p>
+
+                    <div class="mt-8 flex flex-col gap-3 sm:flex-row">
+                        <a href="/locations" class="btn btn-primary">
+                            Find a Location
+                            <MapPin class="size-4" aria-hidden="true" />
+                        </a>
+
+                        <a href="#faq" class="btn btn-outline">
+                            Read FAQs
+                            <HelpCircle class="size-4" aria-hidden="true" />
+                        </a>
+                    </div>
+                </div>
+
+                <div class="glow-panel p-6 md:p-8">
+                    <p class="section-kicker">
+                        <CheckCircle2 class="size-4" aria-hidden="true" />
+                        This page is helpful for
+                    </p>
+
+                    <div class="mt-6 grid gap-4">
+                        {
+                            whoThisHelps.map((item) => (
+                                <div class="flex gap-4 rounded-[var(--radius-xl)] border border-[rgb(var(--color-border)/0.3)] bg-[rgb(var(--color-surface)/0.48)] p-4">
+                                    <span class="grid size-9 shrink-0 place-items-center rounded-full bg-[rgb(var(--color-bee-yellow)/0.14)] text-[rgb(var(--color-bee-yellow))]">
+                                        <CheckCircle2 class="size-5" aria-hidden="true" />
+                                    </span>
+
+                                    <p class="font-bold leading-7 text-[rgb(var(--color-heading))]">
+                                        {item}
+                                    </p>
+                                </div>
+                            ))
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="preschool-scholarship-options" class="section-shell">
+        <div class="container-shell">
+            <div class="flex flex-col items-center mx-auto max-w-3xl text-center">
+                <p class="section-kicker mx-auto justify-center text-center">
+                    <HandCoins class="size-4" aria-hidden="true" />
+                    Preschool Assistance Options
+                </p>
+
+                <h2 class="mx-auto mt-5 max-w-4xl text-center">
+                    Main preschool scholarship programs Miami families ask about.
+                </h2>
+
+                <p class="lead mx-auto mt-5 max-w-2xl text-center">
+                    These are common early learning support options families
+                    explore when looking for preschool scholarships, VPK, or
+                    childcare assistance in Miami-Dade County.
+                </p>
+            </div>
+
+            <div class="mt-12 grid gap-6 lg:grid-cols-3">
+                {
+                    supportPrograms.map((program) => (
+                        <article class="card flex h-full flex-col overflow-hidden p-0">
+                            <div
+                                class:list={[
+                                    "relative overflow-hidden border-b border-[rgb(var(--color-border)/0.35)] p-6",
+                                    program.accent === "bee"
+                                        ? "bg-[rgb(var(--color-bee-yellow)/0.06)]"
+                                        : "bg-[rgb(var(--color-wing-blue)/0.06)]",
+                                ]}
+                            >
+                                <div
+                                    class:list={[
+                                        "absolute -right-20 -top-20 size-48 rounded-full blur-3xl",
+                                        program.accent === "bee"
+                                            ? "bg-[rgb(var(--color-bee-yellow)/0.18)]"
+                                            : "bg-[rgb(var(--color-wing-blue)/0.18)]",
+                                    ]}
+                                />
+
+                                <div class="relative">
+                                    <img
+                                        src={program.logo}
+                                        alt={`${program.organization} logo`}
+                                        class="h-14 w-auto max-w-52 rounded-xl object-contain shadow-[var(--shadow-soft)]"
+                                        width="240"
+                                        height="120"
+                                        loading="lazy"
+                                    />
+
+                                    <p class="mt-6 inline-flex w-fit rounded-full bg-[rgb(var(--color-bee-yellow)/0.14)] px-3 py-1 text-[0.7rem] font-black uppercase tracking-[0.16em] text-[rgb(var(--color-bee-yellow))]">
+                                        {program.organization}
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="flex h-full flex-col justify-between gap-6 p-6">
+                                <div>
+                                    <h3 class="text-2xl leading-[1.05] tracking-[-0.04em]">
+                                        {program.name}
+                                    </h3>
+
+                                    <p class="mt-4 leading-7 text-[rgb(var(--color-text-soft))]">
+                                        {program.description}
+                                    </p>
+
+                                    <div class="mt-5 rounded-[var(--radius-lg)] border border-[rgb(var(--color-border)/0.28)] bg-[rgb(var(--color-surface)/0.48)] p-4">
+                                        <p class="text-sm font-black uppercase tracking-[0.14em] text-[rgb(var(--color-text-muted))]">
+                                            Best for
+                                        </p>
+
+                                        <p class="mt-2 font-bold leading-7 text-[rgb(var(--color-heading))]">
+                                            {program.bestFor}
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <a
+                                    href={program.href}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    class="inline-flex items-center gap-2 text-sm font-black text-[rgb(var(--color-bee-yellow))] transition hover:gap-3"
+                                >
+                                    Visit Official Program
+                                    <ExternalLink class="size-4" aria-hidden="true" />
+                                </a>
+                            </div>
+                        </article>
+                    ))
+                }
+            </div>
+        </div>
+    </section>
+
+    <section class="section-shell">
+        <div class="container-shell">
+            <div class="glow-panel p-6 md:p-10 lg:p-12">
+                <div class="grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
+                    <div>
+                        <p class="section-kicker">
+                            <Sparkles class="size-4" aria-hidden="true" />
+                            How to Begin
+                        </p>
+
+                        <h2 class="mt-5">
+                            A simple path for families searching for preschool scholarships.
+                        </h2>
+
+                        <p class="lead mt-5">
+                            Preschool scholarship programs can feel confusing
+                            because each one has different requirements. These
+                            steps can help your family begin the process with
+                            more clarity.
+                        </p>
+
+                        <div class="mt-8 flex flex-col gap-3 sm:flex-row">
+                            <a href="/contact" class="btn btn-primary">
+                                Contact Us
+                                <Phone class="size-4" aria-hidden="true" />
+                            </a>
+
+                            <a href="/locations" class="btn btn-outline">
+                                View Locations
+                                <MapPin class="size-4" aria-hidden="true" />
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="grid gap-4">
+                        {
+                            steps.map((step, index) => (
+                                <div class="card flex gap-5 p-5">
+                                    <div class="grid size-12 shrink-0 place-items-center rounded-full brand-gradient font-display text-xl font-black text-[rgb(var(--color-ink))]">
+                                        {index + 1}
+                                    </div>
+
+                                    <div>
+                                        <h3 class="text-2xl">{step.title}</h3>
+
+                                        <p class="mt-2 leading-7 text-[rgb(var(--color-text-soft))]">
+                                            {step.description}
+                                        </p>
+                                    </div>
+                                </div>
+                            ))
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-shell">
+        <div class="container-shell">
+            <div class="grid gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
+                <div class="glow-panel p-6 md:p-8 lg:p-10">
+                    <p class="section-kicker">
+                        <PencilLine class="size-4" aria-hidden="true" />
+                        Why Preschool Matters
+                    </p>
+
+                    <h2 class="mt-5">
+                        Preschool helps children feel ready for the next classroom.
+                    </h2>
+
+                    <p class="lead mt-5">
+                        A strong preschool experience helps children practice
+                        listening, sharing, communicating, following routines,
+                        exploring books, solving simple problems, and building
+                        confidence around teachers and classmates.
+                    </p>
+
+                    <p class="mt-5 leading-7 text-[rgb(var(--color-text-soft))]">
+                        For families exploring scholarships, the goal is not only
+                        to find financial support. It is also to choose a warm,
+                        structured, and caring early learning environment where
+                        children can grow socially, emotionally, and academically.
+                    </p>
+                </div>
+
+                <div class="grid gap-4">
+                    <div class="card p-5">
+                        <span class="grid size-12 place-items-center rounded-full bg-[rgb(var(--color-bee-yellow)/0.14)] text-[rgb(var(--color-bee-yellow))]">
+                            <BookOpenCheck class="size-6" aria-hidden="true" />
+                        </span>
+
+                        <h3 class="mt-5 text-2xl">Early literacy</h3>
+
+                        <p class="mt-3 leading-7 text-[rgb(var(--color-text-soft))]">
+                            Preschool introduces children to stories, sounds,
+                            letters, vocabulary, and communication skills.
+                        </p>
+                    </div>
+
+                    <div class="card p-5">
+                        <span class="grid size-12 place-items-center rounded-full bg-[rgb(var(--color-wing-blue)/0.14)] text-[rgb(var(--color-wing-blue))]">
+                            <UsersRound class="size-6" aria-hidden="true" />
+                        </span>
+
+                        <h3 class="mt-5 text-2xl">Social confidence</h3>
+
+                        <p class="mt-3 leading-7 text-[rgb(var(--color-text-soft))]">
+                            Children practice sharing, taking turns, expressing
+                            feelings, and becoming comfortable in a group setting.
+                        </p>
+                    </div>
+
+                    <div class="card p-5">
+                        <span class="grid size-12 place-items-center rounded-full bg-[rgb(var(--color-bee-yellow)/0.14)] text-[rgb(var(--color-bee-yellow))]">
+                            <School class="size-6" aria-hidden="true" />
+                        </span>
+
+                        <h3 class="mt-5 text-2xl">Classroom routines</h3>
+
+                        <p class="mt-3 leading-7 text-[rgb(var(--color-text-soft))]">
+                            Daily routines help children prepare for kindergarten
+                            expectations in a gentle, age-appropriate way.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-shell">
+        <div class="container-shell">
+            <div class="flex flex-col items-center mx-auto max-w-3xl text-center">
+                <p class="section-kicker mx-auto justify-center text-center">
+                    <Home class="size-4" aria-hidden="true" />
+                    Mini Me Learning Centers
+                </p>
+
+                <h2 class="mx-auto mt-5 max-w-4xl text-center">
+                    Preschool support for families across Miami-Dade.
+                </h2>
+
+                <p class="lead mx-auto mt-5 max-w-2xl text-center">
+                    Mini Me Learning Centers serves families looking for caring
+                    preschool, daycare, early learning, VPK, and school-readiness
+                    support near Miami, Fontainebleau, Westchester, Tamiami,
+                    Kendall, Homestead, and nearby communities.
+                </p>
+            </div>
+
+            <div class="mt-10 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+                <a
+                    href="/locations/mini-me-1"
+                    class="card group p-5 transition hover:-translate-y-1"
+                >
+                    <h3 class="mt-4 text-xl">Mini Me Learning Center I</h3>
+
+                    <p class="mt-2 text-sm font-semibold leading-6 text-[rgb(var(--color-text-soft))]">
+                        Fontainebleau / Miami area
+                    </p>
+
+                    <span class="mt-5 inline-flex items-center gap-2 text-sm font-black text-[rgb(var(--color-bee-yellow))] transition group-hover:gap-3">
+                        View Location
+                        <MoveRight class="size-4" aria-hidden="true" />
+                    </span>
+                </a>
+
+                <a
+                    href="/locations/mini-me-2"
+                    class="card group p-5 transition hover:-translate-y-1"
+                >
+                    <h3 class="mt-4 text-xl">Mini Me Learning Center II</h3>
+
+                    <p class="mt-2 text-sm font-semibold leading-6 text-[rgb(var(--color-text-soft))]">
+                        Tamiami / West Miami area
+                    </p>
+
+                    <span class="mt-5 inline-flex items-center gap-2 text-sm font-black text-[rgb(var(--color-bee-yellow))] transition group-hover:gap-3">
+                        View Location
+                        <MoveRight class="size-4" aria-hidden="true" />
+                    </span>
+                </a>
+
+                <a
+                    href="/locations/mini-me-3"
+                    class="card group p-5 transition hover:-translate-y-1"
+                >
+                    <h3 class="mt-4 text-xl">Mini Me Learning Center III</h3>
+
+                    <p class="mt-2 text-sm font-semibold leading-6 text-[rgb(var(--color-text-soft))]">
+                        Miami-Dade families
+                    </p>
+
+                    <span class="mt-5 inline-flex items-center gap-2 text-sm font-black text-[rgb(var(--color-bee-yellow))] transition group-hover:gap-3">
+                        View Location
+                        <MoveRight class="size-4" aria-hidden="true" />
+                    </span>
+                </a>
+
+                <a
+                    href="/locations/mini-me-4"
+                    class="card group p-5 transition hover:-translate-y-1"
+                >
+                    <h3 class="mt-4 text-xl">Mini Me Learning Center IV</h3>
+
+                    <p class="mt-2 text-sm font-semibold leading-6 text-[rgb(var(--color-text-soft))]">
+                        Miami-Dade families
+                    </p>
+
+                    <span class="mt-5 inline-flex items-center gap-2 text-sm font-black text-[rgb(var(--color-bee-yellow))] transition group-hover:gap-3">
+                        View Location
+                        <MoveRight class="size-4" aria-hidden="true" />
+                    </span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-shell">
+        <div class="container-shell">
+            <div class="flex flex-col items-center mx-auto max-w-3xl text-center">
+                <p class="section-kicker mx-auto justify-center text-center">
+                    <FileText class="size-4" aria-hidden="true" />
+                    Related Scholarship Guides
+                </p>
+
+                <h2 class="mx-auto mt-5 max-w-4xl text-center">
+                    Explore more early learning scholarship topics.
+                </h2>
+
+                <p class="lead mx-auto mt-5 max-w-2xl text-center">
+                    These related pages help families understand specific
+                    scholarship and early learning options in Miami.
+                </p>
+            </div>
+
+            <div class="mt-10 grid gap-5 md:grid-cols-3">
+                {
+                    relatedPages.map(({ title, description, href, icon: Icon }) => (
+                        <a href={href} class="card group p-6 transition hover:-translate-y-1">
+                            <span class="grid size-12 place-items-center rounded-full bg-[rgb(var(--color-bee-yellow)/0.14)] text-[rgb(var(--color-bee-yellow))] mb-10">
+                                <Icon class="size-6" aria-hidden="true" />
+                            </span>
+
+                            <h3 class="mt-5 text-2xl">{title}</h3>
+
+                            <p class="mt-3 leading-7 text-[rgb(var(--color-text-soft))]">
+                                {description}
+                            </p>
+
+                            <span class="mt-6 inline-flex items-center gap-2 text-sm font-black text-[rgb(var(--color-bee-yellow))] transition group-hover:gap-3">
+                                Read Guide
+                                <MoveRight class="size-4" aria-hidden="true" />
+                            </span>
+                        </a>
+                    ))
+                }
+            </div>
+        </div>
+    </section>
+
+    <section id="faq" class="section-shell">
+        <div class="container-shell">
+            <div class="flex flex-col items-center mx-auto max-w-3xl text-center">
+                <p class="section-kicker mx-auto justify-center text-center">
+                    <HelpCircle class="size-4" aria-hidden="true" />
+                    Preschool Scholarship FAQs
+                </p>
+
+                <h2 class="mx-auto mt-5 max-w-4xl text-center">
+                    Common questions from Miami preschool families.
+                </h2>
+
+                <p class="lead mx-auto mt-5 max-w-2xl text-center">
+                    Here are a few helpful answers for parents exploring
+                    preschool scholarships, VPK, childcare assistance, and early
+                    learning support.
+                </p>
+            </div>
+
+            <div class="mx-auto mt-10 grid max-w-4xl gap-4">
+                {
+                    faqs.map((faq) => (
+                        <article class="card p-6">
+                            <h3 class="text-2xl">{faq.question}</h3>
+
+                            <p class="mt-3 leading-7 text-[rgb(var(--color-text-soft))]">
+                                {faq.answer}
+                            </p>
+                        </article>
+                    ))
+                }
+            </div>
+        </div>
+    </section>
+
+    <section class="section-shell-sm">
+        <div class="container-shell">
+            <div class="glow-panel flex flex-col items-center p-8 text-center md:p-12">
+                <p class="section-kicker mx-auto justify-center text-center">
+                    <UsersRound class="size-4" aria-hidden="true" />
+                    Need Help Getting Started?
+                </p>
+
+                <h2 class="mx-auto mt-5 max-w-4xl text-center">
+                    Let’s help your child take the next step toward preschool.
+                </h2>
+
+                <p class="lead mx-auto mt-5 max-w-2xl text-center">
+                    Whether you are looking for preschool scholarships in Miami,
+                    VPK, School Readiness, childcare assistance, or guidance
+                    choosing a Mini Me location, our team is here to help.
+                </p>
+
+                <div class="mt-8 flex w-full flex-col justify-center gap-3 sm:w-auto sm:flex-row">
+                    <a href="/contact" class="btn btn-primary">
+                        Contact Us
+                        <Phone class="size-4" aria-hidden="true" />
+                    </a>
+
+                    <a href="/locations" class="btn btn-outline">
+                        View Locations
+                        <MapPin class="size-4" aria-hidden="true" />
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+</MainLayout>

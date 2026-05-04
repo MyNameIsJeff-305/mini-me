@@ -1,0 +1,703 @@
+---
+import MainLayout from "../../layouts/MainLayout.astro";
+import {
+    Baby,
+    MapPin,
+    UserRound,
+    Phone,
+    Mail,
+    CalendarDays,
+    MessageCircle,
+    CheckCircle2,
+    ArrowRight,
+    ArrowLeft,
+    ShieldCheck,
+} from "@lucide/astro";
+import { locations } from "../../data/enrollPage";
+---
+
+<MainLayout
+    title="Enrollment Inquiry | Mini Me Learning Centers"
+    description="Start your enrollment inquiry with Mini Me Learning Centers. Select your preferred location and share basic child and parent information so our team can contact you with the next steps."
+>
+    <section class="section-shell relative overflow-hidden">
+        <div class="pointer-events-none absolute inset-0 -z-10">
+        <div
+            class="absolute -left-48 top-10 h-72 w-72 rounded-full bg-[rgb(var(--color-bee-yellow)/0.18)] blur-3xl"
+        >
+        </div>
+        <div
+            class="absolute -right-40 top-32 h-80 w-80 rounded-full bg-[rgb(var(--color-sky-blue)/0.18)] blur-3xl"
+        >
+        </div>
+        </div>
+
+        <div class="container-shell">
+            <div class="flex flex-col items-center mx-auto max-w-4xl text-center">
+                <p class="section-kicker mx-auto">
+                    <Baby class="size-4" aria-hidden="true" />
+                    Enrollment Inquiry
+                </p>
+
+                <h1
+                class="mt-5 text-5xl leading-[1.02] tracking-tighter md:text-7xl"
+                >
+                    Start your child’s enrollment journey with Mini Me.
+                </h1>
+
+                <p class="lead mx-auto mt-6 max-w-2xl">
+                    Tell us a little about your family, select your preferred location,
+                    and our team will contact you with the next steps.
+                </p>
+            </div>
+
+            <div
+                class="mx-auto mt-12 grid max-w-6xl gap-8 lg:grid-cols-[0.8fr_1.2fr]"
+            >
+                <div class="glow-panel overflow-hidden p-6 md:p-8">
+                    <div class="mb-8">
+                        <div class="flex items-center justify-between gap-3 text-sm font-black">
+                            <span class="text-[rgb(var(--color-heading))]">
+                                Step <span id="currentStepText">1</span> of 4
+                            </span>
+                            <span id="stepLabel" class="text-[rgb(var(--color-text-soft))]">
+                                Location
+                            </span>
+                        </div>
+
+                        <div
+                        class="mt-4 h-3 overflow-hidden rounded-full bg-[rgb(var(--color-border)/0.28)]"
+                        >
+                            <div
+                                id="progressBar"
+                                class="h-full w-1/4 rounded-full bg-[rgb(var(--color-bee-yellow))] transition-all duration-300"
+                            >
+                            </div>
+                        </div>
+                    </div>
+
+                    <form
+                        name="enrollment-inquiry"
+                        method="POST"
+                        action="/thank-you"
+                        data-netlify="true"
+                        netlify-honeypot="bot-field"
+                        class="enroll-form"
+                    >
+                        <input type="hidden" name="form-name" value="enrollment-inquiry" />
+
+                        <p class="hidden">
+                            <label>
+                                Don’t fill this out if you’re human:
+                                <input name="bot-field" />
+                            </label>
+                        </p>
+
+                        <!-- Step 1 -->
+                        <div class="form-step active" data-step="1">
+                            <div class="mb-6">
+                                <p class="section-kicker">
+                                <MapPin class="size-4" />
+                                    Preferred Center
+                                </p>
+                                <h2 class="mt-4 text-3xl tracking-[-0.04em] md:text-4xl">
+                                    Which Mini Me location are you interested in?
+                                </h2>
+                                <p class="mt-3 leading-7 text-[rgb(var(--color-text-soft))]">
+                                    Select the center that works best for your family.
+                                </p>
+                            </div>
+
+                            <div class="grid gap-5">
+                                <label class="field-label">
+                                    Preferred Location
+                                    <select
+                                        name="preferred_location"
+                                        required
+                                        class="field-input"
+                                    >
+                                        <option value="">Select a location</option>
+                                        {
+                                        locations.map((location) => (
+                                            <option value={location.name}>{location.name}</option>
+                                        ))
+                                        }
+                                    </select>
+                                </label>
+
+                                <label class="field-label">
+                                    Preferred Start Date
+                                    <input
+                                        type="date"
+                                        name="preferred_start_date"
+                                        class="field-input"
+                                    />
+                                </label>
+
+                                <label class="field-label">
+                                    Program / Age Group
+                                    <select name="program_age_group" class="field-input">
+                                        <option value="">Select one</option>
+                                        <option value="Infant">Infant</option>
+                                        <option value="Toddler">Toddler</option>
+                                        <option value="Preschool">Preschool</option>
+                                        <option value="VPK">VPK</option>
+                                        <option value="After School">After School</option>
+                                        <option value="Not sure yet">Not sure yet</option>
+                                    </select>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Step 2 -->
+                        <div class="form-step" data-step="2">
+                        <div class="mb-6">
+                            <p class="section-kicker">
+                                <Baby class="size-4" />
+                                Child Information
+                            </p>
+                            <h2 class="mt-4 text-3xl tracking-[-0.04em] md:text-4xl">
+                                Tell us about your child.
+                            </h2>
+                            <p class="mt-3 leading-7 text-[rgb(var(--color-text-soft))]">
+                                This helps our team better understand your enrollment request.
+                            </p>
+                        </div>
+
+                        <div class="grid gap-5 md:grid-cols-2">
+                            <label class="field-label">
+                                Child’s First Name
+                                <input
+                                    type="text"
+                                    name="child_first_name"
+                                    required
+                                    class="field-input"
+                                    placeholder="First name"
+                                />
+                            </label>
+
+                            <label class="field-label">
+                                Child’s Last Name
+                                <input
+                                    type="text"
+                                    name="child_last_name"
+                                    required
+                                    class="field-input"
+                                    placeholder="Last name"
+                                />
+                            </label>
+
+                            <label class="field-label">
+                                Date of Birth
+                                <input
+                                    type="date"
+                                    name="child_date_of_birth"
+                                    id="childDateOfBirth"
+                                    required
+                                    class="field-input"
+                                />
+                            </label>
+
+                            <label class="field-label">
+                                Current Age
+                                <input
+                                    type="text"
+                                    name="child_age"
+                                    id="childAge"
+                                    class="field-input"
+                                    placeholder="Calculated automatically"
+                                    readonly
+                                />
+                            </label>
+
+                            <label class="field-label md:col-span-2">
+                            Child’s Address
+                            <input
+                                type="text"
+                                name="child_address"
+                                class="field-input"
+                                placeholder="Street address, city, state, ZIP"
+                            />
+                            </label>
+                        </div>
+                        </div>
+
+                        <!-- Step 3 -->
+                        <div class="form-step" data-step="3">
+                        <div class="mb-6">
+                            <p class="section-kicker">
+                            <UserRound class="size-4" />
+                            Parent / Guardian
+                            </p>
+                            <h2 class="mt-4 text-3xl tracking-[-0.04em] md:text-4xl">
+                            Who should we contact?
+                            </h2>
+                            <p class="mt-3 leading-7 text-[rgb(var(--color-text-soft))]">
+                            Please provide the best contact information for follow-up.
+                            </p>
+                        </div>
+
+                        <div class="grid gap-5 md:grid-cols-2">
+                            <label class="field-label">
+                            Parent / Guardian Name
+                            <input
+                                type="text"
+                                name="guardian_name"
+                                required
+                                class="field-input"
+                                placeholder="Full name"
+                            />
+                            </label>
+
+                            <label class="field-label">
+                            Relationship to Child
+                            <select
+                                name="relationship_to_child"
+                                required
+                                class="field-input"
+                            >
+                                <option value="">Select one</option>
+                                <option value="Mother">Mother</option>
+                                <option value="Father">Father</option>
+                                <option value="Guardian">Guardian</option>
+                                <option value="Other">Other</option>
+                            </select>
+                            </label>
+
+                            <label class="field-label">
+                            Phone Number
+                            <input
+                                type="tel"
+                                name="guardian_phone"
+                                required
+                                class="field-input"
+                                placeholder="(305) 000-0000"
+                            />
+                            </label>
+
+                            <label class="field-label">
+                            Email Address
+                            <input
+                                type="email"
+                                name="guardian_email"
+                                required
+                                class="field-input"
+                                placeholder="you@example.com"
+                            />
+                            </label>
+
+                            <label class="field-label md:col-span-2">
+                            Preferred Contact Method
+                            <select name="preferred_contact_method" class="field-input">
+                                <option value="">Select one</option>
+                                <option value="Phone Call">Phone Call</option>
+                                <option value="Text Message">Text Message</option>
+                                <option value="Email">Email</option>
+                                <option value="Any method is fine">
+                                Any method is fine
+                                </option>
+                            </select>
+                            </label>
+                        </div>
+                        </div>
+
+                        <!-- Step 4 -->
+                        <div class="form-step" data-step="4">
+                        <div class="mb-6">
+                            <p class="section-kicker">
+                            <MessageCircle class="size-4" />
+                            Additional Details
+                            </p>
+                            <h2 class="mt-4 text-3xl tracking-[-0.04em] md:text-4xl">
+                            Anything else we should know?
+                            </h2>
+                            <p class="mt-3 leading-7 text-[rgb(var(--color-text-soft))]">
+                            Share questions, needs, or important details before we contact
+                            you.
+                            </p>
+                        </div>
+
+                        <div class="grid gap-5">
+                            <label class="field-label">
+                            Notes, Questions, Allergies, or Special Needs
+                            <textarea
+                                name="message"
+                                rows="5"
+                                class="field-input resize-none"
+                                placeholder="Tell us anything that may help our team prepare for your follow-up."
+                            ></textarea>
+                            </label>
+
+                            <label
+                            class="flex items-start gap-3 rounded-lg border border-[rgb(var(--color-border)/0.35)] bg-[rgb(var(--color-surface)/0.42)] p-4 text-sm leading-6 text-[rgb(var(--color-text-soft))]"
+                            >
+                            <input
+                                type="checkbox"
+                                name="consent_to_contact"
+                                value="Yes"
+                                required
+                                class="mt-1 size-4 accent-[rgb(var(--color-bee-yellow))]"
+                            />
+                            <span>
+                                I understand this is an enrollment inquiry and a Mini Me
+                                Learning Center team member may contact me with next steps.
+                            </span>
+                            </label>
+                        </div>
+                        </div>
+
+                        <div
+                        class="mt-8 flex flex-col-reverse gap-3 pt-6 sm:flex-row sm:justify-between"
+                        >
+                        <button
+                            type="button"
+                            id="prevBtn"
+                            class="btn btn-secondary"
+                            disabled
+                        >
+                            <ArrowLeft class="size-4" />
+                            Back
+                        </button>
+
+                        <button
+                            type="button"
+                            id="nextBtn"
+                            class="btn btn-primary sm:ml-auto"
+                        >
+                            Continue
+                            <ArrowRight class="size-4" />
+                        </button>
+
+                        <button
+                            type="submit"
+                            id="submitBtn"
+                            class="btn btn-primary hidden sm:ml-auto"
+                            disabled
+                        >
+                            Submit Inquiry
+                            <CheckCircle2 class="size-4" />
+                        </button>
+                        </div>
+                    </form>
+                </div>
+
+                <aside class="glow-panel h-fit p-6 md:p-8">
+                    <div class="flex items-start gap-4">
+                        <div
+                        class="grid size-12 shrink-0 place-items-center rounded-2xl bg-[rgb(var(--color-bee-yellow)/0.16)] text-[rgb(var(--color-bee-yellow))]"
+                        >
+                            <ShieldCheck class="size-6" aria-hidden="true" />
+                        </div>
+
+                        <div>
+                            <h2 class="text-2xl tracking-tight">
+                                What happens after you submit?
+                            </h2>
+                            <p class="mt-3 leading-7 text-[rgb(var(--color-text-soft))]">
+                                Your inquiry will be sent to the location you select. A member
+                                of our team will follow up to confirm availability, answer
+                                questions, and guide you through the required enrollment
+                                documents.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="mt-8 grid gap-4">
+                        <div
+                        class="rounded-[var(--radius-lg)] border border-[rgb(var(--color-border)/0.35)] bg-[rgb(var(--color-surface)/0.45)] p-4"
+                        >
+                            <p
+                                class="flex items-center gap-2 font-black text-[rgb(var(--color-heading))]"
+                            >
+                                <CheckCircle2
+                                class="size-5 text-[rgb(var(--color-bee-yellow))]"
+                                />
+                                Fast first step
+                            </p>
+                            <p class="mt-2 text-sm leading-6 text-[rgb(var(--color-text-soft))]">
+                                This is not the full enrollment packet. It helps us begin the
+                                process.
+                            </p>
+                        </div>
+
+                        <div
+                        class="rounded-[var(--radius-lg)] border border-[rgb(var(--color-border)/0.35)] bg-[rgb(var(--color-surface)/0.45)] p-4"
+                        >
+                            <p
+                                class="flex items-center gap-2 font-black text-[rgb(var(--color-heading))]"
+                            >
+                                <CheckCircle2
+                                class="size-5 text-[rgb(var(--color-bee-yellow))]"
+                                />
+                                Location-based follow-up
+                            </p>
+                            <p class="mt-2 text-sm leading-6 text-[rgb(var(--color-text-soft))]">
+                                Your selected Mini Me center will receive your information.
+                            </p>
+                        </div>
+
+                        <div
+                        class="rounded-[var(--radius-lg)] border border-[rgb(var(--color-border)/0.35)] bg-[rgb(var(--color-surface)/0.45)] p-4"
+                        >
+                            <p
+                                class="flex items-center gap-2 font-black text-[rgb(var(--color-heading))]"
+                            >
+                                <CheckCircle2
+                                class="size-5 text-[rgb(var(--color-bee-yellow))]"
+                                />
+                                Required documents
+                            </p>
+                            <p class="mt-2 text-sm leading-6 text-[rgb(var(--color-text-soft))]">
+                                Our team will let you know which forms, health records, and
+                                documents are needed.
+                            </p>
+                        </div>
+                    </div>
+                </aside>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-shell-sm">
+        <div class="container-shell">
+        <div class="grid gap-5 md:grid-cols-3">
+            <div
+            class="flex flex-row glow-panel items-center gap-x-5 rounded-xl border border-[rgb(var(--color-border)/0.32)] bg-[rgb(var(--color-surface)/0.55)] p-6"
+            >
+                <Phone class="size-9 text-[rgb(var(--color-bee-yellow))]" />
+                <div>
+                    <h3 class="mt-4 text-xl">Prefer to call?</h3>
+                    <p class="mt-2 text-sm leading-6 text-[rgb(var(--color-text-soft))]">
+                        Contact your nearest Mini Me Learning Center and our team will be
+                        happy to help.
+                    </p>
+                </div>
+            </div>
+
+            <div
+            class="flex flex-row glow-panel items-center gap-x-5 rounded-xl border border-[rgb(var(--color-border)/0.32)] bg-[rgb(var(--color-surface)/0.55)] p-6"
+            >
+                <CalendarDays class="size-9 text-[rgb(var(--color-bee-yellow))]" />
+                <div>
+                    <h3 class="mt-4 text-xl">Need a tour?</h3>
+                    <p class="mt-2 text-sm leading-6 text-[rgb(var(--color-text-soft))]">
+                        Ask about availability, classroom options, and scheduling a visit.
+                    </p>
+                </div>
+            </div>
+
+            <div
+            class="flex flex-row glow-panel items-center gap-x-5 rounded-xl border border-[rgb(var(--color-border)/0.32)] bg-[rgb(var(--color-surface)/0.55)] p-6"
+            >
+                <Mail class="size-9 text-[rgb(var(--color-bee-yellow))]" />
+                <div>
+                    <h3 class="mt-4 text-xl">Next steps by email</h3>
+                    <p class="mt-2 text-sm leading-6 text-[rgb(var(--color-text-soft))]">
+                        After submission, the selected location will receive your inquiry.
+                    </p>
+                </div>
+            </div>
+        </div>
+        </div>
+    </section>
+</MainLayout>
+
+<style>
+    .form-step {
+        display: none;
+    }
+
+    .form-step.active {
+        display: block;
+    }
+
+    .field-label {
+        display: grid;
+        gap: 0.6rem;
+        font-size: 0.9rem;
+        font-weight: 900;
+        color: rgb(var(--color-heading));
+    }
+
+    .field-input {
+        width: 100%;
+        border-radius: var(--radius-lg);
+        border: 1px solid rgb(var(--color-border) / 0.4);
+        background: rgb(var(--color-surface) / 0.72);
+        padding: 0.95rem 1rem;
+        font-size: 0.95rem;
+        font-weight: 600;
+        color: rgb(var(--color-text));
+        outline: none;
+        transition:
+        border-color 180ms ease,
+        box-shadow 180ms ease,
+        background 180ms ease;
+    }
+
+    .field-input::placeholder {
+        color: rgb(var(--color-text-soft) / 0.72);
+    }
+
+    .field-input:focus {
+        border-color: rgb(var(--color-bee-yellow) / 0.82);
+        box-shadow: 0 0 0 4px rgb(var(--color-bee-yellow) / 0.12);
+        background: rgb(var(--color-surface) / 0.95);
+    }
+
+    .field-input[readonly] {
+        cursor: not-allowed;
+        opacity: 0.78;
+        background: rgb(var(--color-border) / 0.14);
+    }
+
+    .btn:disabled {
+        cursor: not-allowed;
+        opacity: 0.48;
+        transform: none;
+        box-shadow: none;
+    }
+</style>
+
+<script>
+    const form = document.querySelector(".enroll-form");
+    const steps = Array.from(document.querySelectorAll(".form-step"));
+    const prevBtn = document.querySelector("#prevBtn");
+    const nextBtn = document.querySelector("#nextBtn");
+    const submitBtn = document.querySelector("#submitBtn");
+    const currentStepText = document.querySelector("#currentStepText");
+    const stepLabel = document.querySelector("#stepLabel");
+    const progressBar = document.querySelector("#progressBar");
+    const childDateOfBirth = document.querySelector("#childDateOfBirth");
+    const childAge = document.querySelector("#childAge");
+
+    const labels = [
+        "Location",
+        "Child Information",
+        "Parent / Guardian",
+        "Additional Details",
+    ];
+
+    let currentStep = 0;
+
+    function calculateAge(dateValue) {
+        if (!dateValue) return "";
+
+        const birthDate = new Date(dateValue);
+        const today = new Date();
+
+        if (Number.isNaN(birthDate.getTime()) || birthDate > today) {
+        return "";
+        }
+
+        let years = today.getFullYear() - birthDate.getFullYear();
+        let months = today.getMonth() - birthDate.getMonth();
+
+        if (today.getDate() < birthDate.getDate()) {
+        months -= 1;
+        }
+
+        if (months < 0) {
+        years -= 1;
+        months += 12;
+        }
+
+        if (years <= 0) {
+        if (months <= 0) return "Less than 1 month old";
+        return `${months} month${months === 1 ? "" : "s"} old`;
+        }
+
+        if (months === 0) {
+        return `${years} year${years === 1 ? "" : "s"} old`;
+        }
+
+        return `${years} year${years === 1 ? "" : "s"}, ${months} month${
+        months === 1 ? "" : "s"
+        } old`;
+    }
+
+    function getCurrentStepFields() {
+        return Array.from(
+        steps[currentStep].querySelectorAll("input, select, textarea")
+        ).filter((field) => {
+        return field.type !== "hidden" && field.name !== "bot-field";
+        });
+    }
+
+    function isCurrentStepValid() {
+        const currentFields = getCurrentStepFields();
+
+        return currentFields.every((field) => {
+        if (field.type === "checkbox" && field.required) {
+            return field.checked;
+        }
+
+        return field.checkValidity();
+        });
+    }
+
+    function validateCurrentStep() {
+        const currentFields = getCurrentStepFields();
+
+        for (const field of currentFields) {
+        if (!field.checkValidity()) {
+            field.reportValidity();
+            return false;
+        }
+        }
+
+        return true;
+    }
+
+    function updateButtons() {
+        const isFirstStep = currentStep === 0;
+        const isLastStep = currentStep === steps.length - 1;
+        const currentStepIsValid = isCurrentStepValid();
+
+        prevBtn.disabled = isFirstStep;
+
+        nextBtn.classList.toggle("hidden", isLastStep);
+        nextBtn.disabled = isLastStep || !currentStepIsValid;
+
+        submitBtn.classList.toggle("hidden", !isLastStep);
+        submitBtn.disabled = !isLastStep || !currentStepIsValid;
+    }
+
+    function updateStep() {
+        steps.forEach((step, index) => {
+        step.classList.toggle("active", index === currentStep);
+        });
+
+        currentStepText.textContent = String(currentStep + 1);
+        stepLabel.textContent = labels[currentStep];
+        progressBar.style.width = `${((currentStep + 1) / steps.length) * 100}%`;
+
+        updateButtons();
+    }
+
+    childDateOfBirth?.addEventListener("input", () => {
+        childAge.value = calculateAge(childDateOfBirth.value);
+        updateButtons();
+    });
+
+    form?.addEventListener("input", updateButtons);
+    form?.addEventListener("change", updateButtons);
+
+    nextBtn?.addEventListener("click", () => {
+        if (!validateCurrentStep()) return;
+
+        if (currentStep < steps.length - 1) {
+        currentStep += 1;
+        updateStep();
+        }
+    });
+
+    prevBtn?.addEventListener("click", () => {
+        if (currentStep > 0) {
+        currentStep -= 1;
+        updateStep();
+        }
+    });
+
+    updateStep();
+</script>

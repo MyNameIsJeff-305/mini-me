@@ -1,0 +1,348 @@
+---
+import MainLayout from "../layouts/MainLayout.astro";
+import {
+  ShieldCheck,
+  FileText,
+  LockKeyhole,
+  Mail,
+  UsersRound,
+  Baby,
+  BriefcaseBusiness,
+  Cookie,
+  ExternalLink,
+  CheckCircle2,
+  ArrowRight,
+} from "@lucide/astro";
+import { policySections, rights } from "../data/privacyPolicyPage";
+---
+
+<MainLayout
+  title="Privacy Policy | Mini Me Learning Centers"
+  description="Read the Mini Me Learning Centers Privacy Policy to learn how information submitted through our website may be collected, used, and protected."
+>
+  <section class="section-shell relative overflow-hidden">
+    <div class="pointer-events-none absolute inset-0 -z-10">
+      <div class="absolute left-[-12rem] top-16 h-80 w-80 rounded-full bg-[rgb(var(--color-bee-yellow)/0.18)] blur-3xl"></div>
+      <div class="absolute right-[-10rem] top-40 h-96 w-96 rounded-full bg-[rgb(var(--color-sky-blue)/0.16)] blur-3xl"></div>
+    </div>
+
+    <div class="container-shell">
+      <div class="flex flex-col items-center mx-auto max-w-4xl text-center">
+        <p class="section-kicker mx-auto inline-flex items-center justify-center text-center">
+          <ShieldCheck class="size-4" aria-hidden="true" />
+          Privacy Policy
+        </p>
+
+        <h1 class="mx-auto mt-5 text-center text-5xl leading-[1.02] tracking-[-0.05em] md:text-7xl">
+          Your privacy matters to us.
+        </h1>
+
+        <p class="lead mx-auto mt-6 max-w-2xl text-center">
+          This Privacy Policy explains how Mini Me Learning Centers may collect,
+          use, and protect information submitted through our website.
+        </p>
+
+        <p class="mx-auto mt-5 max-w-2xl text-sm font-bold text-[rgb(var(--color-text-soft))]">
+          Last updated: May 2026
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-shell-sm">
+    <div class="container-shell">
+      <div class="glow-panel mx-auto max-w-5xl p-6 md:p-8">
+        <div class="grid gap-8 lg:grid-cols-[0.8fr_1.2fr] lg:items-start">
+          <div>
+            <p class="section-kicker">
+              <FileText class="size-4" aria-hidden="true" />
+              Overview
+            </p>
+
+            <h2 class="mt-5 text-4xl tracking-[-0.05em] md:text-5xl">
+              What this policy covers.
+            </h2>
+          </div>
+
+          <div class="space-y-5 leading-8 text-[rgb(var(--color-text-soft))]">
+            <p>
+              This Privacy Policy applies to information collected through the
+              Mini Me Learning Centers website, including contact forms,
+              enrollment inquiry forms, career application forms, and other
+              online submissions.
+            </p>
+
+            <p>
+              By using this website or submitting information through one of our
+              forms, you acknowledge that your information may be collected and
+              used as described in this policy.
+            </p>
+
+            <p>
+              This policy is intended for general website privacy information. It
+              does not replace any separate enrollment, employment, childcare, or
+              center-specific policies that may apply after direct communication
+              with one of our locations.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-shell-sm">
+    <div class="container-shell">
+      <div class="flex flex-col items-center mx-auto max-w-3xl text-center">
+        <p class="section-kicker mx-auto inline-flex items-center justify-center text-center">
+          <LockKeyhole class="size-4" aria-hidden="true" />
+          Information Practices
+        </p>
+
+        <h2 class="mx-auto mt-5 text-center text-4xl tracking-[-0.05em] md:text-6xl">
+          How information is collected and used.
+        </h2>
+
+        <p class="lead mx-auto mt-5 max-w-2xl text-center">
+          We only ask for information that helps us respond to families,
+          applicants, and website visitors more effectively.
+        </p>
+      </div>
+
+      <div class="mt-10 grid gap-5 md:grid-cols-2">
+        {
+          policySections.map((section) => {
+            const Icon = section.icon;
+
+            return (
+              <article class="rounded-xl border border-[rgb(var(--color-border)/0.32)] bg-[rgb(var(--color-surface)/0.55)] p-6">
+                <div class="flex h-14 w-14 mb-10 items-center justify-center rounded-2xl bg-[rgb(var(--color-bee-yellow)/0.16)] text-[rgb(var(--color-bee-yellow))]">
+                  <Icon class="h-6 w-6" aria-hidden="true" />
+                </div>
+
+                <h3 class="mt-5 text-2xl tracking-[-0.04em]">
+                  {section.title}
+                </h3>
+
+                <p class="mt-3 text-sm leading-7 text-[rgb(var(--color-text-soft))]">
+                  {section.content}
+                </p>
+              </article>
+            );
+          })
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="section-shell-sm">
+    <div class="container-shell">
+      <div class="glow-panel grid gap-8 p-6 md:p-8 lg:grid-cols-[0.85fr_1.15fr] lg:items-start">
+        <div>
+          <p class="section-kicker">
+            <UsersRound class="size-4" aria-hidden="true" />
+            Sharing Information
+          </p>
+
+          <h2 class="mt-5 text-4xl tracking-[-0.05em] md:text-5xl">
+            We do not sell your personal information.
+          </h2>
+
+          <p class="mt-5 leading-7 text-[rgb(var(--color-text-soft))]">
+            Information submitted through the website is used to support
+            communication, service requests, enrollment inquiries, and career
+            applications.
+          </p>
+        </div>
+
+        <div class="grid gap-4">
+          <div class="rounded-[var(--radius-lg)] border border-[rgb(var(--color-border)/0.3)] bg-[rgb(var(--color-surface)/0.45)] p-5">
+            <h3 class="flex items-center gap-2 text-lg tracking-[-0.03em]">
+              <CheckCircle2 class="size-5 shrink-0 text-[rgb(var(--color-bee-yellow))]" />
+              Internal use
+            </h3>
+            <p class="mt-3 text-sm leading-6 text-[rgb(var(--color-text-soft))]">
+              Your information may be shared internally with the appropriate
+              Mini Me Learning Center location or team member so they can follow
+              up with you.
+            </p>
+          </div>
+
+          <div class="rounded-[var(--radius-lg)] border border-[rgb(var(--color-border)/0.3)] bg-[rgb(var(--color-surface)/0.45)] p-5">
+            <h3 class="flex items-center gap-2 text-lg tracking-[-0.03em]">
+              <CheckCircle2 class="size-5 shrink-0 text-[rgb(var(--color-bee-yellow))]" />
+              Service providers
+            </h3>
+            <p class="mt-3 text-sm leading-6 text-[rgb(var(--color-text-soft))]">
+              We may use third-party website, hosting, form handling, email, or
+              analytics services that help us operate the website and receive
+              submissions.
+            </p>
+          </div>
+
+          <div class="rounded-[var(--radius-lg)] border border-[rgb(var(--color-border)/0.3)] bg-[rgb(var(--color-surface)/0.45)] p-5">
+            <h3 class="flex items-center gap-2 text-lg tracking-[-0.03em]">
+              <CheckCircle2 class="size-5 shrink-0 text-[rgb(var(--color-bee-yellow))]" />
+              Legal or safety reasons
+            </h3>
+            <p class="mt-3 text-sm leading-6 text-[rgb(var(--color-text-soft))]">
+              We may disclose information if required by law, legal process, or
+              when necessary to protect safety, rights, or security.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-shell-sm">
+    <div class="container-shell">
+      <div class="grid gap-8 lg:grid-cols-[1.05fr_0.95fr] lg:items-start">
+        <div class="glow-panel p-6 md:p-8">
+          <p class="section-kicker">
+            <Baby class="size-4" aria-hidden="true" />
+            Children’s Privacy
+          </p>
+
+          <h2 class="mt-5 text-4xl tracking-[-0.05em] md:text-5xl">
+            Information about children should be submitted by a parent or
+            guardian.
+          </h2>
+
+          <div class="mt-5 space-y-5 leading-8 text-[rgb(var(--color-text-soft))]">
+            <p>
+              Our website is intended for use by parents, guardians, applicants,
+              and adults seeking information about Mini Me Learning Centers.
+            </p>
+
+            <p>
+              Enrollment inquiry forms may ask for limited child-related
+              information so our team can respond appropriately. This information
+              should only be submitted by a parent, guardian, or authorized
+              adult.
+            </p>
+
+            <p>
+              We do not knowingly collect personal information directly from
+              children through this website.
+            </p>
+          </div>
+        </div>
+
+        <div class="rounded-[var(--radius-2xl)] border border-[rgb(var(--color-border)/0.32)] bg-[rgb(var(--color-surface)/0.55)] p-6">
+          <div class="flex h-14 w-14 items-center justify-center rounded-2xl bg-[rgb(var(--color-bee-yellow)/0.16)] text-[rgb(var(--color-bee-yellow))]">
+            <ShieldCheck class="h-7 w-7" aria-hidden="true" />
+          </div>
+
+          <h3 class="mt-6 text-3xl tracking-[-0.04em]">
+            Parent and guardian responsibility
+          </h3>
+
+          <p class="mt-4 leading-7 text-[rgb(var(--color-text-soft))]">
+            Please avoid submitting sensitive child information through the
+            website unless requested by a Mini Me Learning Center team member as
+            part of the appropriate enrollment process.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-shell-sm">
+    <div class="container-shell">
+      <div class="glow-panel grid gap-8 p-6 md:p-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
+        <div>
+          <p class="section-kicker">
+            <ExternalLink class="size-4" aria-hidden="true" />
+            Third-Party Links
+          </p>
+
+          <h2 class="mt-5 text-4xl tracking-[-0.05em] md:text-5xl">
+            Other websites may have their own policies.
+          </h2>
+        </div>
+
+        <div class="space-y-5 leading-8 text-[rgb(var(--color-text-soft))]">
+          <p>
+            Our website may contain links to third-party websites, platforms, or
+            services, such as maps, social media pages, form processing tools, or
+            external resources.
+          </p>
+
+          <p>
+            Mini Me Learning Centers is not responsible for the privacy
+            practices, content, or security of third-party websites. We encourage
+            you to review the privacy policies of any external websites you
+            visit.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-shell-sm">
+    <div class="container-shell">
+      <div class="grid gap-8 lg:grid-cols-[0.85fr_1.15fr] lg:items-start">
+        <div>
+          <p class="section-kicker">
+            <CheckCircle2 class="size-4" aria-hidden="true" />
+            Your Choices
+          </p>
+
+          <h2 class="mt-5 text-4xl tracking-[-0.05em] md:text-6xl">
+            You may contact us about your information.
+          </h2>
+
+          <p class="lead mt-5">
+            If you submitted information through our website, you may contact us
+            with questions or requests related to that information.
+          </p>
+        </div>
+
+        <div class="grid gap-3">
+          {
+            rights.map((item) => (
+              <div class="flex gap-3 rounded-[var(--radius-lg)] border border-[rgb(var(--color-border)/0.3)] bg-[rgb(var(--color-surface)/0.45)] p-4">
+                <CheckCircle2 class="mt-0.5 size-5 shrink-0 text-[rgb(var(--color-bee-yellow))]" />
+                <p class="text-sm font-bold leading-6 text-[rgb(var(--color-text-soft))]">
+                  {item}
+                </p>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-shell-sm">
+    <div class="container-shell">
+      <div class="glow-panel flex flex-col items-center p-8 text-center md:p-12">
+        <p class="section-kicker mx-auto inline-flex items-center justify-center text-center">
+          <Mail class="size-4" aria-hidden="true" />
+          Privacy Questions
+        </p>
+
+        <h2 class="mx-auto mt-5 max-w-4xl text-center text-4xl tracking-[-0.05em] md:text-6xl">
+          Have questions about this Privacy Policy?
+        </h2>
+
+        <p class="lead mx-auto mt-5 max-w-2xl text-center">
+          Contact Mini Me Learning Centers if you have questions about how
+          information submitted through this website is handled.
+        </p>
+
+        <div class="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
+          <a href="/contact" class="btn btn-primary">
+            Contact Us
+            <ArrowRight class="size-4" aria-hidden="true" />
+          </a>
+
+          <a href="/" class="btn btn-secondary">
+            Back to Home
+            <ShieldCheck class="size-4" aria-hidden="true" />
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</MainLayout>

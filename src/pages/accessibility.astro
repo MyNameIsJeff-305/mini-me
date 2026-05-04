@@ -1,0 +1,365 @@
+---
+import MainLayout from "../layouts/MainLayout.astro";
+import {
+  Accessibility,
+  HeartHandshake,
+  CheckCircle2,
+  Eye,
+  Keyboard,
+  MousePointerClick,
+  MonitorSmartphone,
+  Mail,
+  Phone,
+  FileText,
+  ShieldCheck,
+  UsersRound,
+  ArrowRight,
+} from "@lucide/astro";
+import { accessibilityCommitments, ongoingEfforts, helpfulDetails } from "../data/accessibilityPage";
+---
+
+<MainLayout
+  title="Accessibility Statement | Mini Me Learning Centers"
+  description="Read the Mini Me Learning Centers Accessibility Statement and learn about our commitment to making our website easier to use for all visitors."
+>
+  <section class="section-shell relative overflow-hidden">
+    <div class="pointer-events-none absolute inset-0 -z-10">
+      <div
+        class="absolute left-[-12rem] top-16 h-80 w-80 rounded-full bg-[rgb(var(--color-bee-yellow)/0.18)] blur-3xl"
+      >
+      </div>
+      <div
+        class="absolute right-[-10rem] top-40 h-96 w-96 rounded-full bg-[rgb(var(--color-sky-blue)/0.16)] blur-3xl"
+      >
+      </div>
+    </div>
+
+    <div class="container-shell">
+      <div class="flex flex-col items-center mx-auto max-w-4xl text-center">
+        <p
+          class="section-kicker mx-auto inline-flex items-center justify-center text-center"
+        >
+          <Accessibility class="size-4" aria-hidden="true" />
+          Accessibility Statement
+        </p>
+
+        <h1
+          class="mx-auto mt-5 text-center text-5xl leading-[1.02] tracking-[-0.05em] md:text-7xl"
+        >
+          We want our website to be welcoming and easy to use.
+        </h1>
+
+        <p class="lead mx-auto mt-6 max-w-2xl text-center">
+          Mini Me Learning Centers is committed to improving website
+          accessibility so families, applicants, and visitors can access
+          information more comfortably.
+        </p>
+
+        <p
+          class="mx-auto mt-5 max-w-2xl text-sm font-bold text-[rgb(var(--color-text-soft))]"
+        >
+          Last updated: May 2026
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-shell-sm">
+    <div class="container-shell">
+      <div class="glow-panel mx-auto max-w-5xl p-6 md:p-8">
+        <div class="grid gap-8 lg:grid-cols-[0.8fr_1.2fr] lg:items-start">
+          <div>
+            <p class="section-kicker">
+              <HeartHandshake class="size-4" aria-hidden="true" />
+              Our Commitment
+            </p>
+
+            <h2 class="mt-5 text-4xl tracking-[-0.05em] md:text-5xl">
+              Accessibility is part of creating a better experience.
+            </h2>
+          </div>
+
+          <div class="space-y-5 leading-8 text-[rgb(var(--color-text-soft))]">
+            <p>
+              Mini Me Learning Centers wants every visitor to have a positive
+              experience when using our website. We aim to make our online
+              content clear, organized, and accessible to as many people as
+              reasonably possible.
+            </p>
+
+            <p>
+              Our goal is to provide a website that helps families learn about
+              our centers, explore enrollment, contact our team, and review
+              career opportunities with fewer barriers.
+            </p>
+
+            <p>
+              We understand that accessibility is an ongoing effort. As our
+              website grows, we will continue reviewing and improving the user
+              experience where possible.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-shell-sm">
+    <div class="container-shell">
+      <div class="flex flex-col items-center mx-auto max-w-3xl text-center">
+        <p
+          class="section-kicker mx-auto inline-flex items-center justify-center text-center"
+        >
+          <ShieldCheck class="size-4" aria-hidden="true" />
+          Website Experience
+        </p>
+
+        <h2
+          class="mx-auto mt-5 text-center text-4xl tracking-[-0.05em] md:text-6xl"
+        >
+          What we work to support.
+        </h2>
+
+        <p class="lead mx-auto mt-5 max-w-2xl text-center">
+          We aim to make key website actions easier to understand, navigate, and
+          complete across different devices.
+        </p>
+      </div>
+
+      <div class="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-4">
+        {
+          accessibilityCommitments.map((item) => {
+            const Icon = item.icon;
+
+            return (
+              <article class="rounded-[var(--radius-xl)] border border-[rgb(var(--color-border)/0.32)] bg-[rgb(var(--color-surface)/0.55)] p-6">
+                <div class="flex h-14 w-14 mb-10 items-center justify-center rounded-2xl bg-[rgb(var(--color-bee-yellow)/0.16)] text-[rgb(var(--color-bee-yellow))]">
+                  <Icon class="h-6 w-6" aria-hidden="true" />
+                </div>
+
+                <h3 class="mt-5 text-2xl tracking-[-0.04em]">
+                  {item.title}
+                </h3>
+
+                <p class="mt-3 text-sm leading-7 text-[rgb(var(--color-text-soft))]">
+                  {item.content}
+                </p>
+              </article>
+            );
+          })
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="section-shell-sm">
+    <div class="container-shell">
+      <div
+        class="glow-panel grid gap-8 p-6 md:p-8 lg:grid-cols-[0.85fr_1.15fr] lg:items-start"
+      >
+        <div>
+          <p class="section-kicker">
+            <CheckCircle2 class="size-4" aria-hidden="true" />
+            Ongoing Improvements
+          </p>
+
+          <h2 class="mt-5 text-4xl tracking-[-0.05em] md:text-5xl">
+            We continue improving as the website grows.
+          </h2>
+
+          <p class="mt-5 leading-7 text-[rgb(var(--color-text-soft))]">
+            Accessibility is not a one-time task. We aim to keep improving the
+            site experience as pages, forms, and content are updated.
+          </p>
+        </div>
+
+        <div class="grid gap-3">
+          {
+            ongoingEfforts.map((item) => (
+              <div class="flex gap-3 rounded-[var(--radius-lg)] border border-[rgb(var(--color-border)/0.3)] bg-[rgb(var(--color-surface)/0.45)] p-4">
+                <CheckCircle2 class="mt-0.5 size-5 shrink-0 text-[rgb(var(--color-bee-yellow))]" />
+                <p class="text-sm font-bold leading-6 text-[rgb(var(--color-text-soft))]">
+                  {item}
+                </p>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-shell-sm">
+    <div class="container-shell">
+      <div class="grid gap-8 lg:grid-cols-[1.05fr_0.95fr] lg:items-start">
+        <div class="glow-panel p-6 md:p-8">
+          <p class="section-kicker">
+            <FileText class="size-4" aria-hidden="true" />
+            Forms and Documents
+          </p>
+
+          <h2 class="mt-5 text-4xl tracking-[-0.05em] md:text-5xl">
+            Let us know if you need help with an online form.
+          </h2>
+
+          <div
+            class="mt-5 space-y-5 leading-8 text-[rgb(var(--color-text-soft))]"
+          >
+            <p>
+              Our website may include contact forms, enrollment inquiry forms,
+              career application forms, and downloadable or uploaded documents.
+            </p>
+
+            <p>
+              If you have difficulty using a form, submitting information, or
+              accessing a document on the website, please contact us so we can
+              assist you or provide information in another reasonable way.
+            </p>
+
+            <p>
+              We also encourage visitors to contact the appropriate Mini Me
+              Learning Center location directly for enrollment or career-related
+              questions.
+            </p>
+          </div>
+        </div>
+
+        <div
+          class="rounded-[var(--radius-2xl)] border border-[rgb(var(--color-border)/0.32)] bg-[rgb(var(--color-surface)/0.55)] p-6"
+        >
+          <div
+            class="flex h-14 w-14 items-center justify-center rounded-2xl bg-[rgb(var(--color-bee-yellow)/0.16)] text-[rgb(var(--color-bee-yellow))]"
+          >
+            <Accessibility class="h-7 w-7" aria-hidden="true" />
+          </div>
+
+          <h3 class="mt-6 text-3xl tracking-[-0.04em]">
+            Need another way to connect?
+          </h3>
+
+          <p class="mt-4 leading-7 text-[rgb(var(--color-text-soft))]">
+            If a website feature is difficult to use, reach out through the
+            contact page and our team will do their best to help you access the
+            information you need.
+          </p>
+
+          <div class="mt-6">
+            <a href="/contact" class="btn btn-primary">
+              Contact Us
+              <ArrowRight class="size-4" aria-hidden="true" />
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-shell-sm">
+    <div class="container-shell">
+      <div
+        class="glow-panel grid gap-8 p-6 md:p-8 lg:grid-cols-[0.85fr_1.15fr] lg:items-start"
+      >
+        <div>
+          <p class="section-kicker">
+            <UsersRound class="size-4" aria-hidden="true" />
+            Feedback
+          </p>
+
+          <h2 class="mt-5 text-4xl tracking-[-0.05em] md:text-5xl">
+            Tell us about accessibility issues.
+          </h2>
+
+          <p class="mt-5 leading-7 text-[rgb(var(--color-text-soft))]">
+            If you experience an accessibility barrier on our website, sharing a
+            few details can help us understand and address the issue.
+          </p>
+        </div>
+
+        <div class="grid gap-3">
+          {
+            helpfulDetails.map((item) => (
+              <div class="flex gap-3 rounded-[var(--radius-lg)] border border-[rgb(var(--color-border)/0.3)] bg-[rgb(var(--color-surface)/0.45)] p-4">
+                <CheckCircle2 class="mt-0.5 size-5 shrink-0 text-[rgb(var(--color-bee-yellow))]" />
+                <p class="text-sm font-bold leading-6 text-[rgb(var(--color-text-soft))]">
+                  {item}
+                </p>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-shell-sm">
+    <div class="container-shell">
+      <div class="grid gap-5 md:grid-cols-3">
+        <div
+          class="rounded-[var(--radius-xl)] border border-[rgb(var(--color-border)/0.32)] bg-[rgb(var(--color-surface)/0.55)] p-6"
+        >
+          <h3 class="mt-10 text-xl">Contact by Email</h3>
+          <p class="mt-2 text-sm leading-6 text-[rgb(var(--color-text-soft))]">
+            Use the contact form to tell us what accessibility issue you
+            experienced.
+          </p>
+        </div>
+
+        <div
+          class="rounded-[var(--radius-xl)] border border-[rgb(var(--color-border)/0.32)] bg-[rgb(var(--color-surface)/0.55)] p-6"
+        >
+          <h3 class="mt-10 text-xl">Call a Location</h3>
+          <p class="mt-2 text-sm leading-6 text-[rgb(var(--color-text-soft))]">
+            Families may also contact their preferred Mini Me Learning Center
+            directly.
+          </p>
+        </div>
+
+        <div
+          class="rounded-[var(--radius-xl)] border border-[rgb(var(--color-border)/0.32)] bg-[rgb(var(--color-surface)/0.55)] p-6"
+        >
+          <h3 class="mt-10 text-xl">We’ll Try to Help</h3>
+          <p class="mt-2 text-sm leading-6 text-[rgb(var(--color-text-soft))]">
+            Our team will do its best to provide the information in a way that
+            works for you.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-shell-sm">
+    <div class="container-shell">
+      <div class="flex flex-col items-center glow-panel p-8 text-center md:p-12">
+        <p
+          class="section-kicker mx-auto inline-flex items-center justify-center text-center"
+        >
+          <Accessibility class="size-4" aria-hidden="true" />
+          Accessibility Support
+        </p>
+
+        <h2
+          class="mx-auto mt-5 max-w-4xl text-center text-4xl tracking-[-0.05em] md:text-6xl"
+        >
+          Need help accessing something on our website?
+        </h2>
+
+        <p class="lead mx-auto mt-5 max-w-2xl text-center">
+          Contact us and let us know what page or feature you had trouble with.
+          We’ll do our best to help.
+        </p>
+
+        <div class="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
+          <a href="/contact" class="btn btn-primary">
+            Contact Us
+            <ArrowRight class="size-4" aria-hidden="true" />
+          </a>
+
+          <a href="/privacy-policy" class="btn btn-secondary">
+            Privacy Policy
+            <ShieldCheck class="size-4" aria-hidden="true" />
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</MainLayout>

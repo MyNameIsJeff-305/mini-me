@@ -1,0 +1,11 @@
+---
+import MainLayout from "../../layouts/MainLayout.astro";
+import LocationPage from "../../components/LocationPage.astro";
+import { miniMeLocations } from "../../data/miniMeLocations";
+
+const location = miniMeLocations["mini-me-2"];
+---
+
+<MainLayout title={location.title} description={location.description}>
+    <LocationPage location={location} />
+</MainLayout>

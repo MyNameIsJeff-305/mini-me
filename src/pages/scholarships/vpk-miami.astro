@@ -1,0 +1,666 @@
+---
+import MainLayout from "../../layouts/MainLayout.astro";
+
+import {
+    GraduationCap,
+    HeartHandshake,
+    HandCoins,
+    BookOpenCheck,
+    CheckCircle2,
+    Sparkles,
+    UsersRound,
+    Phone,
+    MoveRight,
+    MapPin,
+    ExternalLink,
+    FileText,
+    School,
+    Baby,
+    ShieldCheck,
+    HelpCircle,
+    Home,
+    ClipboardCheck,
+    SearchCheck,
+    CalendarDays,
+    PencilLine,
+} from "@lucide/astro";
+import { supportPrograms, highlights, steps, whoThisHelps, programBenefits, relatedPages, faqs } from "../../data/scholarshipVpkMiamiPage";
+---
+
+<MainLayout
+    title="VPK in Miami | Free Voluntary Prekindergarten | Mini Me Learning Centers"
+    description="Learn about VPK in Miami, Florida’s free Voluntary Prekindergarten Program, eligibility for 4-year-old children, VPK certificates, and early learning support at Mini Me Learning Centers."
+>
+    <section class="hero-shell">
+        <div class="hero-orb hero-orb-yellow animate-float-slow"></div>
+        <div class="hero-orb hero-orb-blue animate-float-soft"></div>
+
+        <div class="container-shell mb-10">
+            <div class="flex flex-col items-center mx-auto max-w-4xl text-center">
+                <p class="hero-badge mx-auto">
+                    <GraduationCap class="size-4" aria-hidden="true" />
+                    VPK in Miami
+                </p>
+
+                <h1 class="mt-6">
+                    Free prekindergarten support for Miami families.
+                </h1>
+
+                <p class="lead mx-auto mt-6 max-w-3xl">
+                    Florida’s Voluntary Prekindergarten Program helps eligible
+                    children build early learning skills before kindergarten.
+                    Mini Me Learning Centers welcomes families exploring VPK,
+                    preschool, daycare, and school-readiness support in Miami-Dade.
+                </p>
+
+                <div class="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
+                    <a href="#vpk-options" class="btn btn-primary">
+                        View VPK Resources
+                        <MoveRight class="size-4" aria-hidden="true" />
+                    </a>
+
+                    <a href="/contact" class="btn btn-outline">
+                        Ask a Question
+                        <Phone class="size-4" aria-hidden="true" />
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="container-shell">
+            <div
+                class="surface grid gap-4 p-5 sm:grid-cols-3 md:p-6"
+                aria-label="VPK highlights"
+            >
+                {
+                    highlights.map(({ title, description, icon: Icon, gradient }) => (
+                        <div class="flex items-center gap-4">
+                            <span
+                                class:list={[
+                                    "grid size-12 shrink-0 place-items-center rounded-full",
+                                    gradient,
+                                ]}
+                            >
+                                <Icon
+                                    class="size-6 text-[rgb(var(--color-ink))]"
+                                    aria-hidden="true"
+                                />
+                            </span>
+
+                            <div>
+                                <p class="font-black text-[rgb(var(--color-heading))]">
+                                    {title}
+                                </p>
+
+                                <p class="text-sm font-semibold text-[rgb(var(--color-text-muted))]">
+                                    {description}
+                                </p>
+                            </div>
+                        </div>
+                    ))
+                }
+            </div>
+        </div>
+    </section>
+
+    <section class="section-shell">
+        <div class="container-shell">
+            <div class="grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
+                <div>
+                    <p class="section-kicker">
+                        <HeartHandshake class="size-4" aria-hidden="true" />
+                        Florida Voluntary Prekindergarten
+                    </p>
+
+                    <h2 class="mt-5">
+                        VPK helps children prepare for kindergarten with confidence.
+                    </h2>
+
+                    <p class="lead mt-5">
+                        VPK gives young children a valuable opportunity to
+                        practice classroom routines, build early literacy and
+                        math awareness, grow socially, and become more comfortable
+                        in a structured learning environment before kindergarten.
+                    </p>
+
+                    <p class="mt-5 leading-7 text-[rgb(var(--color-text-soft))]">
+                        For Miami families, VPK can be an important step between
+                        preschool and kindergarten. If you are looking for free
+                        prekindergarten in Miami, this page can help you
+                        understand where to begin and how to connect with Mini Me
+                        Learning Centers.
+                    </p>
+
+                    <div class="mt-8 flex flex-col gap-3 sm:flex-row">
+                        <a href="/locations" class="btn btn-primary">
+                            Find a Location
+                            <MapPin class="size-4" aria-hidden="true" />
+                        </a>
+
+                        <a href="#faq" class="btn btn-outline">
+                            Read FAQs
+                            <HelpCircle class="size-4" aria-hidden="true" />
+                        </a>
+                    </div>
+                </div>
+
+                <div class="glow-panel p-6 md:p-8">
+                    <p class="section-kicker">
+                        <CheckCircle2 class="size-4" aria-hidden="true" />
+                        This page is helpful for
+                    </p>
+
+                    <div class="mt-6 grid gap-4">
+                        {
+                            whoThisHelps.map((item) => (
+                                <div class="flex gap-4 rounded-[var(--radius-xl)] border border-[rgb(var(--color-border)/0.3)] bg-[rgb(var(--color-surface)/0.48)] p-4">
+                                    <span class="grid size-9 shrink-0 place-items-center rounded-full bg-[rgb(var(--color-bee-yellow)/0.14)] text-[rgb(var(--color-bee-yellow))]">
+                                        <CheckCircle2 class="size-5" aria-hidden="true" />
+                                    </span>
+
+                                    <p class="font-bold leading-7 text-[rgb(var(--color-heading))]">
+                                        {item}
+                                    </p>
+                                </div>
+                            ))
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="vpk-options" class="section-shell">
+        <div class="container-shell">
+            <div class="flex flex-col items-center mx-auto max-w-3xl text-center">
+                <p class="section-kicker mx-auto justify-center text-center">
+                    <HandCoins class="size-4" aria-hidden="true" />
+                    VPK Resources
+                </p>
+
+                <h2 class="mx-auto mt-5 max-w-4xl text-center">
+                    Main VPK resources for Miami families.
+                </h2>
+
+                <p class="lead mx-auto mt-5 max-w-2xl text-center">
+                    These official resources can help families learn about VPK,
+                    apply through the Family Portal, and understand the next
+                    steps for enrolling with a participating provider.
+                </p>
+            </div>
+
+            <div class="mt-12 grid gap-6 lg:grid-cols-3">
+                {
+                    supportPrograms.map((program) => (
+                        <article class="card flex h-full flex-col overflow-hidden p-0">
+                            <div
+                                class:list={[
+                                    "relative overflow-hidden border-b border-[rgb(var(--color-border)/0.35)] p-6",
+                                    program.accent === "bee"
+                                        ? "bg-[rgb(var(--color-bee-yellow)/0.06)]"
+                                        : "bg-[rgb(var(--color-wing-blue)/0.06)]",
+                                ]}
+                            >
+                                <div
+                                    class:list={[
+                                        "absolute -right-20 -top-20 size-48 rounded-full blur-3xl",
+                                        program.accent === "bee"
+                                            ? "bg-[rgb(var(--color-bee-yellow)/0.18)]"
+                                            : "bg-[rgb(var(--color-wing-blue)/0.18)]",
+                                    ]}
+                                />
+
+                                <div class="relative">
+                                    <img
+                                        src={program.logo}
+                                        alt={`${program.organization} logo`}
+                                        class="h-14 w-auto max-w-52 rounded-xl object-contain shadow-[var(--shadow-soft)]"
+                                        width="240"
+                                        height="120"
+                                        loading="lazy"
+                                    />
+
+                                    <p class="mt-6 inline-flex w-fit rounded-full bg-[rgb(var(--color-bee-yellow)/0.14)] px-3 py-1 text-[0.7rem] font-black uppercase tracking-[0.16em] text-[rgb(var(--color-bee-yellow))]">
+                                        {program.organization}
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="flex h-full flex-col justify-between gap-6 p-6">
+                                <div>
+                                    <h3 class="text-2xl leading-[1.05] tracking-[-0.04em]">
+                                        {program.name}
+                                    </h3>
+
+                                    <p class="mt-4 leading-7 text-[rgb(var(--color-text-soft))]">
+                                        {program.description}
+                                    </p>
+
+                                    <div class="mt-5 rounded-[var(--radius-lg)] border border-[rgb(var(--color-border)/0.28)] bg-[rgb(var(--color-surface)/0.48)] p-4">
+                                        <p class="text-sm font-black uppercase tracking-[0.14em] text-[rgb(var(--color-text-muted))]">
+                                            Best for
+                                        </p>
+
+                                        <p class="mt-2 font-bold leading-7 text-[rgb(var(--color-heading))]">
+                                            {program.bestFor}
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <a
+                                    href={program.href}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    class="inline-flex items-center gap-2 text-sm font-black text-[rgb(var(--color-bee-yellow))] transition hover:gap-3"
+                                >
+                                    Visit Official Resource
+                                    <ExternalLink class="size-4" aria-hidden="true" />
+                                </a>
+                            </div>
+                        </article>
+                    ))
+                }
+            </div>
+        </div>
+    </section>
+
+    <section class="section-shell">
+        <div class="container-shell">
+            <div class="grid gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
+                <div class="glow-panel p-6 md:p-8 lg:p-10">
+                    <p class="section-kicker">
+                        <SearchCheck class="size-4" aria-hidden="true" />
+                        Why VPK Matters
+                    </p>
+
+                    <h2 class="mt-5">
+                        VPK gives children a strong start before kindergarten.
+                    </h2>
+
+                    <p class="lead mt-5">
+                        The year before kindergarten is a big moment in a child’s
+                        development. VPK helps children practice learning habits,
+                        classroom participation, early literacy, early math, and
+                        social skills in an age-appropriate environment.
+                    </p>
+
+                    <p class="mt-5 leading-7 text-[rgb(var(--color-text-soft))]">
+                        Families should confirm eligibility and application steps
+                        through official Florida early learning resources, then
+                        contact their preferred Mini Me Learning Center location
+                        for enrollment guidance.
+                    </p>
+                </div>
+
+                <div class="grid gap-4">
+                    {
+                        programBenefits.map(({ title, description, icon: Icon }) => (
+                            <div class="card p-5">
+                                <span class="grid size-12 place-items-center rounded-full bg-[rgb(var(--color-bee-yellow)/0.14)] text-[rgb(var(--color-bee-yellow))]">
+                                    <Icon class="size-6" aria-hidden="true" />
+                                </span>
+
+                                <h3 class="mt-5 text-2xl">{title}</h3>
+
+                                <p class="mt-3 leading-7 text-[rgb(var(--color-text-soft))]">
+                                    {description}
+                                </p>
+                            </div>
+                        ))
+                    }
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-shell">
+        <div class="container-shell">
+            <div class="glow-panel p-6 md:p-10 lg:p-12">
+                <div class="grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
+                    <div>
+                        <p class="section-kicker">
+                            <Sparkles class="size-4" aria-hidden="true" />
+                            How to Begin
+                        </p>
+
+                        <h2 class="mt-5">
+                            A simple path for families exploring VPK.
+                        </h2>
+
+                        <p class="lead mt-5">
+                            VPK registration can feel easier when you break it
+                            into a few simple steps. Start by confirming
+                            eligibility, apply through the official portal, then
+                            connect with your preferred Mini Me location.
+                        </p>
+
+                        <div class="mt-8 flex flex-col gap-3 sm:flex-row">
+                            <a href="/contact" class="btn btn-primary">
+                                Contact Us
+                                <Phone class="size-4" aria-hidden="true" />
+                            </a>
+
+                            <a href="/locations" class="btn btn-outline">
+                                View Locations
+                                <MapPin class="size-4" aria-hidden="true" />
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="grid gap-4">
+                        {
+                            steps.map((step, index) => (
+                                <div class="card flex gap-5 p-5">
+                                    <div class="grid size-12 shrink-0 place-items-center rounded-full brand-gradient font-display text-xl font-black text-[rgb(var(--color-ink))]">
+                                        {index + 1}
+                                    </div>
+
+                                    <div>
+                                        <h3 class="text-2xl">{step.title}</h3>
+
+                                        <p class="mt-2 leading-7 text-[rgb(var(--color-text-soft))]">
+                                            {step.description}
+                                        </p>
+                                    </div>
+                                </div>
+                            ))
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-shell">
+        <div class="container-shell">
+            <div class="grid gap-10 lg:grid-cols-[0.95fr_1.05fr] lg:items-center">
+                <div class="grid gap-4">
+                    <div class="card p-5">
+                        <span class="grid size-12 place-items-center rounded-full bg-[rgb(var(--color-bee-yellow)/0.14)] text-[rgb(var(--color-bee-yellow))]">
+                            <CalendarDays class="size-6" aria-hidden="true" />
+                        </span>
+
+                        <h3 class="mt-5 text-2xl">Age-based eligibility</h3>
+
+                        <p class="mt-3 leading-7 text-[rgb(var(--color-text-soft))]">
+                            VPK is generally available for children who live in
+                            Florida and are 4 years old on or before September 1
+                            of the school year they enroll.
+                        </p>
+                    </div>
+
+                    <div class="card p-5">
+                        <span class="grid size-12 place-items-center rounded-full bg-[rgb(var(--color-wing-blue)/0.14)] text-[rgb(var(--color-wing-blue))]">
+                            <ClipboardCheck class="size-6" aria-hidden="true" />
+                        </span>
+
+                        <h3 class="mt-5 text-2xl">Certificate of Eligibility</h3>
+
+                        <p class="mt-3 leading-7 text-[rgb(var(--color-text-soft))]">
+                            Families usually apply online and receive a VPK
+                            Certificate of Eligibility, which is used to enroll
+                            with a participating provider.
+                        </p>
+                    </div>
+
+                    <div class="card p-5">
+                        <span class="grid size-12 place-items-center rounded-full bg-[rgb(var(--color-bee-yellow)/0.14)] text-[rgb(var(--color-bee-yellow))]">
+                            <PencilLine class="size-6" aria-hidden="true" />
+                        </span>
+
+                        <h3 class="mt-5 text-2xl">School-year or summer options</h3>
+
+                        <p class="mt-3 leading-7 text-[rgb(var(--color-text-soft))]">
+                            Families may be able to choose between school-year
+                            and summer VPK options depending on provider
+                            availability and program requirements.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="glow-panel p-6 md:p-8 lg:p-10">
+                    <p class="section-kicker">
+                        <ClipboardCheck class="size-4" aria-hidden="true" />
+                        VPK Eligibility Basics
+                    </p>
+
+                    <h2 class="mt-5">
+                        What families should know before applying.
+                    </h2>
+
+                    <p class="lead mt-5">
+                        VPK is free for eligible Florida children and is designed
+                        to prepare children for kindergarten. Families typically
+                        apply through the official Family Portal and use their
+                        VPK Certificate of Eligibility to enroll with a
+                        participating provider.
+                    </p>
+
+                    <p class="mt-5 leading-7 text-[rgb(var(--color-text-soft))]">
+                        Because program dates, provider availability, and
+                        enrollment steps can vary, families should confirm the
+                        latest details through Florida Early Learning or the
+                        Early Learning Coalition before choosing a provider.
+                    </p>
+
+                    <div class="mt-8 flex flex-col gap-3 sm:flex-row">
+                        <a
+                            href="https://familyservices.floridaearlylearning.com/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="btn btn-primary"
+                        >
+                            Apply for VPK
+                            <ExternalLink class="size-4" aria-hidden="true" />
+                        </a>
+
+                        <a href="/contact" class="btn btn-outline">
+                            Contact Mini Me
+                            <Phone class="size-4" aria-hidden="true" />
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-shell">
+        <div class="container-shell">
+            <div class="flex flex-col items-center mx-auto max-w-3xl text-center">
+                <p class="section-kicker mx-auto justify-center text-center">
+                    <Home class="size-4" aria-hidden="true" />
+                    Mini Me Learning Centers
+                </p>
+
+                <h2 class="mx-auto mt-5 max-w-4xl text-center">
+                    VPK support for families across Miami-Dade.
+                </h2>
+
+                <p class="lead mx-auto mt-5 max-w-2xl text-center">
+                    Mini Me Learning Centers serves families looking for VPK,
+                    preschool, daycare, early learning, and School Readiness
+                    support near Miami, Fontainebleau, Westchester, Tamiami,
+                    Kendall, Homestead, and nearby communities.
+                </p>
+            </div>
+
+            <div class="mt-10 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+                <a
+                    href="/locations/mini-me-1"
+                    class="card group p-5 transition hover:-translate-y-1"
+                >
+                    <h3 class="mt-4 text-xl">Mini Me Learning Center I</h3>
+
+                    <p class="mt-2 text-sm font-semibold leading-6 text-[rgb(var(--color-text-soft))]">
+                        Fontainebleau / Miami area
+                    </p>
+
+                    <span class="mt-5 inline-flex items-center gap-2 text-sm font-black text-[rgb(var(--color-bee-yellow))] transition group-hover:gap-3">
+                        View Location
+                        <MoveRight class="size-4" aria-hidden="true" />
+                    </span>
+                </a>
+
+                <a
+                    href="/locations/mini-me-2"
+                    class="card group p-5 transition hover:-translate-y-1"
+                >
+                    <h3 class="mt-4 text-xl">Mini Me Learning Center II</h3>
+
+                    <p class="mt-2 text-sm font-semibold leading-6 text-[rgb(var(--color-text-soft))]">
+                        Tamiami / West Miami area
+                    </p>
+
+                    <span class="mt-5 inline-flex items-center gap-2 text-sm font-black text-[rgb(var(--color-bee-yellow))] transition group-hover:gap-3">
+                        View Location
+                        <MoveRight class="size-4" aria-hidden="true" />
+                    </span>
+                </a>
+
+                <a
+                    href="/locations/mini-me-3"
+                    class="card group p-5 transition hover:-translate-y-1"
+                >
+                    <h3 class="mt-4 text-xl">Mini Me Learning Center III</h3>
+
+                    <p class="mt-2 text-sm font-semibold leading-6 text-[rgb(var(--color-text-soft))]">
+                        Miami-Dade families
+                    </p>
+
+                    <span class="mt-5 inline-flex items-center gap-2 text-sm font-black text-[rgb(var(--color-bee-yellow))] transition group-hover:gap-3">
+                        View Location
+                        <MoveRight class="size-4" aria-hidden="true" />
+                    </span>
+                </a>
+
+                <a
+                    href="/locations/mini-me-4"
+                    class="card group p-5 transition hover:-translate-y-1"
+                >
+                    <h3 class="mt-4 text-xl">Mini Me Learning Center IV</h3>
+
+                    <p class="mt-2 text-sm font-semibold leading-6 text-[rgb(var(--color-text-soft))]">
+                        Miami-Dade families
+                    </p>
+
+                    <span class="mt-5 inline-flex items-center gap-2 text-sm font-black text-[rgb(var(--color-bee-yellow))] transition group-hover:gap-3">
+                        View Location
+                        <MoveRight class="size-4" aria-hidden="true" />
+                    </span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-shell">
+        <div class="container-shell">
+            <div class="flex flex-col items-center mx-auto max-w-3xl text-center">
+                <p class="section-kicker mx-auto justify-center text-center">
+                    <FileText class="size-4" aria-hidden="true" />
+                    Related Scholarship Guides
+                </p>
+
+                <h2 class="mx-auto mt-5 max-w-4xl text-center">
+                    Explore more early learning scholarship topics.
+                </h2>
+
+                <p class="lead mx-auto mt-5 max-w-2xl text-center">
+                    These related pages help families understand childcare
+                    assistance, preschool support, VPK, and scholarship options
+                    in Miami.
+                </p>
+            </div>
+
+            <div class="mt-10 grid gap-5 md:grid-cols-3">
+                {
+                    relatedPages.map(({ title, description, href, icon: Icon }) => (
+                        <a href={href} class="card group p-6 transition hover:-translate-y-1">
+                            <span class="grid size-12 place-items-center rounded-full bg-[rgb(var(--color-bee-yellow)/0.14)] text-[rgb(var(--color-bee-yellow))] mb-10">
+                                <Icon class="size-6" aria-hidden="true" />
+                            </span>
+
+                            <h3 class="mt-5 text-2xl">{title}</h3>
+
+                            <p class="mt-3 leading-7 text-[rgb(var(--color-text-soft))]">
+                                {description}
+                            </p>
+
+                            <span class="mt-6 inline-flex items-center gap-2 text-sm font-black text-[rgb(var(--color-bee-yellow))] transition group-hover:gap-3">
+                                Read Guide
+                                <MoveRight class="size-4" aria-hidden="true" />
+                            </span>
+                        </a>
+                    ))
+                }
+            </div>
+        </div>
+    </section>
+
+    <section id="faq" class="section-shell">
+        <div class="container-shell">
+            <div class="flex flex-col items-center mx-auto max-w-3xl text-center">
+                <p class="section-kicker mx-auto justify-center text-center">
+                    <HelpCircle class="size-4" aria-hidden="true" />
+                    VPK FAQs
+                </p>
+
+                <h2 class="mx-auto mt-5 max-w-4xl text-center">
+                    Common questions from Miami families.
+                </h2>
+
+                <p class="lead mx-auto mt-5 max-w-2xl text-center">
+                    Here are a few helpful answers for parents exploring VPK,
+                    free prekindergarten, preschool, and early learning support
+                    in Miami.
+                </p>
+            </div>
+
+            <div class="mx-auto mt-10 grid max-w-4xl gap-4">
+                {
+                    faqs.map((faq) => (
+                        <article class="card p-6">
+                            <h3 class="text-2xl">{faq.question}</h3>
+
+                            <p class="mt-3 leading-7 text-[rgb(var(--color-text-soft))]">
+                                {faq.answer}
+                            </p>
+                        </article>
+                    ))
+                }
+            </div>
+        </div>
+    </section>
+
+    <section class="section-shell-sm">
+        <div class="container-shell">
+            <div class="glow-panel flex flex-col items-center p-8 text-center md:p-12">
+                <p class="section-kicker mx-auto justify-center text-center">
+                    <UsersRound class="size-4" aria-hidden="true" />
+                    Need Help Getting Started?
+                </p>
+
+                <h2 class="mx-auto mt-5 max-w-4xl text-center">
+                    Let’s help your child take the next step toward kindergarten.
+                </h2>
+
+                <p class="lead mx-auto mt-5 max-w-2xl text-center">
+                    Whether you are looking for VPK in Miami, preschool support,
+                    daycare options, School Readiness, or help choosing a Mini Me
+                    location, our team is here to guide you.
+                </p>
+
+                <div class="mt-8 flex w-full flex-col justify-center gap-3 sm:w-auto sm:flex-row">
+                    <a href="/contact" class="btn btn-primary">
+                        Contact Us
+                        <Phone class="size-4" aria-hidden="true" />
+                    </a>
+
+                    <a href="/locations" class="btn btn-outline">
+                        View Locations
+                        <MapPin class="size-4" aria-hidden="true" />
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+</MainLayout>

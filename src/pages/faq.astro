@@ -1,0 +1,275 @@
+---
+import MainLayout from "../layouts/MainLayout.astro";
+
+import {
+    CircleHelp,
+    Plus,
+    Baby,
+    GraduationCap,
+    ShieldCheck,
+    Clock,
+    Utensils,
+    MapPin,
+    Phone,
+    Mail,
+    MoveRight,
+    CalendarDays,
+    HeartHandshake,
+    School,
+    CheckCircle2,
+    UsersRound,
+} from "@lucide/astro";
+import { faqCategories, quickAnswers, locations } from "../data/faqPage";
+import { cleanPhone } from "../utils/formatters";
+
+
+---
+
+<MainLayout
+    title="Frequently Asked Questions | Mini Me Learning Centers"
+    description="Find answers to common questions about Mini Me Learning Centers, including enrollment, visits, early learning programs, childcare, safety, locations, and contact information."
+>
+    <section class="hero-shell">
+        <div class="hero-orb hero-orb-yellow animate-float-slow"></div>
+        <div class="hero-orb hero-orb-blue animate-float-soft"></div>
+
+        <div class="container-shell">
+        <div class="flex flex-col items-center mx-auto max-w-4xl text-center animate-slide-up">
+            <p class="hero-badge mx-auto">
+            <CircleHelp class="size-4" aria-hidden="true" />
+                Parent Questions
+            </p>
+
+            <h1 class="mt-6">
+                Frequently Asked <br />
+                <span class="text-gradient">Questions</span>
+            </h1>
+
+            <p class="lead mx-auto mt-6 max-w-2xl">
+            Choosing a daycare and early learning center is an important decision.
+            Here are clear answers to help your family feel confident about Mini Me
+            Learning Centers.
+            </p>
+
+            <div class="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
+            <a href="/enroll" class="btn btn-primary">
+                Start Enrollment
+                <MoveRight class="size-4" aria-hidden="true" />
+            </a>
+
+            <a href="/locations" class="btn btn-outline">
+                View Locations
+                <MapPin class="size-4" aria-hidden="true" />
+            </a>
+            </div>
+        </div>
+        </div>
+
+        <div class="section-shell-sm -mt-10">
+        <div class="container-shell">
+            <div
+            class="surface grid gap-4 p-5 sm:grid-cols-3 md:p-6"
+            aria-label="Mini Me FAQ highlights"
+            >
+            {
+                quickAnswers.map(({ icon: Icon, title, description }, index) => (
+                <div class="flex items-center gap-4">
+                    <span
+                    class:list={[
+                        "grid size-12 place-items-center rounded-full",
+                        index === 1 ? "bee-gradient" : "wing-gradient",
+                    ]}
+                    >
+                    <Icon
+                        class="size-6 text-[rgb(var(--color-ink))]"
+                        aria-hidden="true"
+                    />
+                    </span>
+
+                    <div>
+                    <p class="font-black text-[rgb(var(--color-heading))]">
+                        {title}
+                    </p>
+                    <p class="text-sm font-semibold text-[rgb(var(--color-text-muted))]">
+                        {description}
+                    </p>
+                    </div>
+                </div>
+                ))
+            }
+            </div>
+        </div>
+        </div>
+    </section>
+
+    <section class="section-shell">
+        <div class="container-shell">
+        <div class="mx-auto max-w-3xl text-center">
+            <p class="section-kicker mx-auto">
+            <Baby class="size-4" aria-hidden="true" />
+            Helpful Answers
+            </p>
+
+            <h2 class="mt-5">
+            Everything parents need to know before taking the next step.
+            </h2>
+
+            <p class="lead mt-5">
+            From enrollment and visits to programs, daily care, and locations,
+            these answers are designed to make your decision easier.
+            </p>
+        </div>
+
+        <div class="mt-12 grid gap-6">
+            {
+            faqCategories.map(({ title, description, icon: Icon, faqs }) => (
+                <article class="glow-panel p-6 md:p-8">
+                <div class="grid gap-8 lg:grid-cols-[0.85fr_1.15fr]">
+                    <div>
+                    <div class="grid mb-10 size-14 place-items-center rounded-[var(--radius-lg)] bg-[rgb(var(--color-bee-yellow)/0.14)] text-[rgb(var(--color-bee-yellow))]">
+                        <Icon class="size-7" aria-hidden="true" />
+                    </div>
+
+                    <h3 class="text-3xl">{title}</h3>
+
+                    <p class="mt-4 leading-7 text-[rgb(var(--color-text-soft))]">
+                        {description}
+                    </p>
+                    </div>
+
+                    <div class="grid gap-4">
+                    {
+                        faqs.map((faq) => (
+                        <details class="card group p-5">
+                            <summary class="flex cursor-pointer list-none items-center justify-between gap-5">
+                            <span class="font-display text-xl font-black tracking-[-0.03em] text-[rgb(var(--color-heading))]">
+                                {faq.question}
+                            </span>
+
+                            <span class="grid size-9 shrink-0 place-items-center rounded-full bg-[rgb(var(--color-bee-yellow)/0.14)] font-black text-[rgb(var(--color-bee-yellow))] transition group-open:rotate-45">
+                                <Plus class="size-5" aria-hidden="true" />
+                            </span>
+                            </summary>
+
+                            <p class="mt-4 leading-7 text-[rgb(var(--color-text-soft))]">
+                            {faq.answer}
+                            </p>
+                        </details>
+                        ))
+                    }
+                    </div>
+                </div>
+                </article>
+            ))
+            }
+        </div>
+        </div>
+    </section>
+
+    <section class="section-shell">
+        <div class="container-shell">
+        <div class="glow-panel p-6 md:p-10 lg:p-12">
+            <div class="grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
+            <div>
+                <p class="section-kicker">
+                <Phone class="size-4" aria-hidden="true" />
+                Contact a Center
+                </p>
+
+                <h2 class="mt-5">Still have questions? We’re happy to help.</h2>
+
+                <p class="lead mt-5">
+                Each Mini Me Learning Center can help you with availability,
+                program details, visits, enrollment questions, and location-specific
+                information.
+                </p>
+
+                <div class="mt-8 flex flex-col gap-3 sm:flex-row">
+                <a href="/contact" class="btn btn-primary">
+                    Contact Us
+                    <Mail class="size-4" aria-hidden="true" />
+                </a>
+
+                <a href="/locations" class="btn btn-outline">
+                    Find a Location
+                    <MapPin class="size-4" aria-hidden="true" />
+                </a>
+                </div>
+            </div>
+
+            <div class="grid gap-4 sm:grid-cols-2">
+                {
+                locations.map((location) => (
+                    <article class="card p-5">
+                    <h3 class="text-xl">{location.name}</h3>
+
+                    <div class="mt-4 grid gap-3 text-sm font-bold text-[rgb(var(--color-text-soft))]">
+                        <a
+                        href={`tel:+1${cleanPhone(location.phone)}`}
+                        class="inline-flex items-center gap-2 transition hover:text-[rgb(var(--color-bee-yellow))]"
+                        >
+                        <Phone class="size-4" aria-hidden="true" />
+                        {location.phone}
+                        </a>
+
+                        <a
+                        href={`mailto:${location.email}`}
+                        class="inline-flex items-center gap-2 transition hover:text-[rgb(var(--color-wing-blue))]"
+                        >
+                        <Mail class="size-4" aria-hidden="true" />
+                        {location.email}
+                        </a>
+                    </div>
+
+                    <a
+                        href={location.slug}
+                        class="mt-5 inline-flex items-center gap-2 text-sm font-black text-[rgb(var(--color-bee-yellow))] transition hover:gap-3"
+                    >
+                        View location
+                        <MoveRight class="size-4" aria-hidden="true" />
+                    </a>
+                    </article>
+                ))
+                }
+            </div>
+            </div>
+        </div>
+        </div>
+    </section>
+
+    <section class="section-shell-sm">
+        <div class="container-shell">
+        <div
+            class="glow-panel flex flex-col items-center justify-center p-8 text-center md:p-12"
+        >
+            <p class="section-kicker mx-auto">
+            <UsersRound class="size-4" aria-hidden="true" />
+            Ready when you are
+            </p>
+
+            <h2 class="mx-auto mt-5 max-w-4xl">
+            Find the right Mini Me Learning Center for your child.
+            </h2>
+
+            <p class="lead mx-auto mt-5 max-w-2xl">
+            Visit a center, ask questions, or begin the enrollment process with the
+            location that works best for your family.
+            </p>
+
+            <div
+            class="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row"
+            >
+            <a href="/enroll" class="btn btn-primary">
+                Start Enrollment
+                <MoveRight class="size-4" aria-hidden="true" />
+            </a>
+
+            <a href="/locations" class="btn btn-secondary">
+                View Locations
+                <MapPin class="size-4" aria-hidden="true" />
+            </a>
+            </div>
+        </div>
+        </div>
+    </section>
+</MainLayout>

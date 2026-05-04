@@ -1,0 +1,320 @@
+---
+import {
+    MapPin,
+    Phone,
+    Mail,
+    Clock,
+    CheckCircle2,
+    GraduationCap,
+    HeartHandshake,
+    MoveRight,
+    HelpCircle,
+} from "@lucide/astro";
+
+import { Image } from "astro:assets";
+
+const { location } = Astro.props;
+
+const canonicalPath = `/locations/${location.slug}`;
+
+import SEO from "./SEO.astro";
+import { createChildCareSchema } from "../utils/locationSchema";
+
+const childCareSchema = createChildCareSchema(location);
+---
+
+<SEO schema={childCareSchema} />
+
+<section class="section-shell pt-10 md:pt-14">
+    <div class="container-shell">
+        <div class="grid items-center gap-10 lg:grid-cols-[1.05fr_0.95fr]">
+        <div>
+            <p class="section-kicker">
+            <MapPin class="size-4" aria-hidden="true" />
+            {location.area} Location
+            </p>
+
+            <h1 class="mt-5 max-w-4xl text-5xl leading-[1.02] tracking-[-0.05em] md:text-6xl">
+            {location.primaryKeyword}
+            </h1>
+
+            <p class="lead mt-6 max-w-2xl">
+            {location.intro}
+            </p>
+
+            <div class="mt-8 flex flex-col gap-3 sm:flex-row">
+            <a href="/enroll" class="btn btn-primary">
+                Start Enrollment
+                <MoveRight class="size-4" aria-hidden="true" />
+            </a>
+
+            {
+                location.phone !== "Add phone number here" && (
+                <a href={`tel:${location.phone}`} class="btn btn-secondary">
+                    Call This Location
+                    <Phone class="size-4" aria-hidden="true" />
+                </a>
+                )
+            }
+            </div>
+        </div>
+
+        <aside class="glow-panel rounded-[var(--radius-2xl)] p-4">
+            <div class="p-5 mb-10">
+                <Image
+                    src={location.image}
+                    alt={`Mini Me Learning Center daycare location in ${location.area}`}
+                    class="h-auto w-full rounded-[var(--radius-lg)] object-cover"
+                    width={600}
+                    height={400}
+                    loading="lazy"
+                />
+                <div
+                    class="mt-4 text-sm italic text-[rgb(var(--color-text-soft))]"
+                />
+                <p class="text-sm font-black uppercase tracking-[0.16em] text-[rgb(var(--color-bee-yellow))]">
+                    Location Details
+                </p>
+
+                <h3 class="mt-3 text-3xl">
+                    {location.name}
+                </h3>
+
+                <div class="mt-5 grid gap-4 text-sm leading-6 text-[rgb(var(--color-text-soft))]">
+                    <p class="flex gap-3">
+                    <MapPin class="mt-1 size-4 shrink-0 text-[rgb(var(--color-bee-yellow))]" aria-hidden="true" />
+                    <span>{location.address}</span>
+                    </p>
+
+                    <p class="flex gap-3">
+                    <Phone class="mt-1 size-4 shrink-0 text-[rgb(var(--color-bee-yellow))]" aria-hidden="true" />
+                    <span>{location.phone}</span>
+                    </p>
+
+                    <p class="flex gap-3">
+                    <Mail class="mt-1 size-4 shrink-0 text-[rgb(var(--color-bee-yellow))]" aria-hidden="true" />
+                    <span>{location.email}</span>
+                    </p>
+                </div>
+            </div>
+        </aside>
+        </div>
+    </div>
+</section>
+
+<section class="section-shell-sm">
+    <div class="container-shell">
+        <div class="grid gap-6 lg:grid-cols-3">
+        <article class="glow-panel rounded-[var(--radius-xl)] p-6">
+            <div class="flex flex-row gap-3">
+                <GraduationCap class="size-8 text-[rgb(var(--color-bee-yellow))]" aria-hidden="true" />
+                <h3 class="mt-4 text-2xl">Early Learning Programs</h3>
+            </div>
+            <p class="mt-3 leading-7 text-[rgb(var(--color-text-soft))]">
+            Children learn through structured routines, guided activities, creative play, and age-appropriate educational support.
+            </p>
+        </article>
+
+        <article class="glow-panel rounded-[var(--radius-xl)] p-6">
+            <div class="flex flex-row gap-3">
+                <HeartHandshake class="size-8 text-[rgb(var(--color-bee-yellow))]" aria-hidden="true" />
+                <h3 class="mt-4 text-2xl">Caring Environment</h3>
+            </div>
+            <p class="mt-3 leading-7 text-[rgb(var(--color-text-soft))]">
+            Our team helps children feel safe, supported, and encouraged while building confidence, independence, and social skills.
+            </p>
+        </article>
+
+        <article class="glow-panel rounded-[var(--radius-xl)] p-6">
+            <div class="flex flex-row gap-3">
+                <MapPin class="size-8 text-[rgb(var(--color-bee-yellow))]" aria-hidden="true" />
+                <h3 class="mt-4 text-2xl">Convenient for Local Families</h3>
+            </div>
+            <p class="mt-3 leading-7 text-[rgb(var(--color-text-soft))]">
+            This location serves families near {location.nearbyAreas.slice(0, 3).join(", ")} and surrounding communities.
+            </p>
+        </article>
+        </div>
+    </div>
+</section>
+
+<section class="section-shell-sm">
+    <div class="container-shell">
+        <div class="glow-panel grid gap-10 p-6 md:grid-cols-[1.15fr_0.85fr] md:items-center md:p-10 lg:p-12">
+        <div>
+            <p class="section-kicker">
+                <CheckCircle2 class="size-4" aria-hidden="true" />
+                Programs & Services
+            </p>
+
+            <h2 class="mt-5">
+                Childcare and preschool support near {location.area}
+            </h2>
+
+            <p class="lead mt-5">
+            Our programs are designed to support children during their most important early learning years while giving parents peace of mind.
+            </p>
+        </div>
+
+        <div class="grid gap-3 sm:grid-cols-2">
+            {
+            location.services.map((service: unknown) => (
+                <div class="flex items-start gap-3 rounded-[var(--radius-lg)] border border-[rgb(var(--color-border)/0.32)] bg-[rgb(var(--color-surface)/0.48)] p-4">
+                <CheckCircle2 class="mt-0.5 size-5 shrink-0 text-[rgb(var(--color-bee-yellow))]" aria-hidden="true" />
+                <p class="font-bold text-[rgb(var(--color-heading))]">{service}</p>
+                </div>
+            ))
+            }
+        </div>
+        </div>
+    </div>
+</section>
+
+<section class="section-shell-sm">
+    <div class="container-shell">
+        <div class="glow-panel rounded-2xl p-6 md:p-8">
+            <div class="grid gap-8">
+                <div>
+                <p class="section-kicker">
+                    <MapPin class="size-4" aria-hidden="true" />
+                    Nearby Areas
+                </p>
+
+                <h2 class="mt-5">
+                    Serving families around {location.area}
+                </h2>
+
+                <p class="mt-5 leading-7 text-[rgb(var(--color-text-soft))]">
+                    This Mini Me Learning Center location is a convenient option for families looking for daycare, preschool, and early education near:
+                </p>
+                </div>
+
+                <div class="flex flex-wrap content-start gap-3">
+                {
+                    location.nearbyAreas.map((area: unknown) => (
+                    <span class="rounded-full border border-[rgb(var(--color-border)/0.35)] bg-[rgb(var(--color-surface)/0.55)] px-4 py-2 text-sm font-black text-[rgb(var(--color-heading))]">
+                        {area}
+                    </span>
+                    ))
+                }
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{
+    location.mapEmbedUrl && (
+        <section class="section-shell-sm">
+        <div class="container-shell">
+            <div class="overflow-hidden rounded-[var(--radius-2xl)] border border-[rgb(var(--color-border)/0.32)]">
+            <iframe
+                src={location.mapEmbedUrl}
+                width="100%"
+                height="420"
+                style="border:0;"
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+                title={`Map for ${location.name}`}
+            />
+            </div>
+        </div>
+        </section>
+    )
+}
+
+<section class="section-shell-sm">
+    <div class="container-shell">
+        <div class="grid gap-6 lg:grid-cols-2">
+        <div class="glow-panel rounded-[var(--radius-xl)] p-6 md:p-8">
+            <p class="section-kicker">
+            <HelpCircle class="size-4" aria-hidden="true" />
+            FAQ
+            </p>
+
+            <h2 class="mt-5">
+            Questions about our {location.area} location
+            </h2>
+        </div>
+
+        <div class="grid gap-4">
+            <details class="rounded-[var(--radius-lg)] border border-[rgb(var(--color-border)/0.32)] bg-[rgb(var(--color-surface)/0.5)] p-5">
+            <summary class="cursor-pointer font-black text-[rgb(var(--color-heading))]">
+                Do you offer preschool and daycare at this location?
+            </summary>
+            <p class="mt-3 leading-7 text-[rgb(var(--color-text-soft))]">
+                Yes. This location supports early childhood education, daycare, preschool readiness, and age-appropriate learning activities.
+            </p>
+            </details>
+
+            <details class="rounded-[var(--radius-lg)] border border-[rgb(var(--color-border)/0.32)] bg-[rgb(var(--color-surface)/0.5)] p-5">
+            <summary class="cursor-pointer font-black text-[rgb(var(--color-heading))]">
+                What areas does this Mini Me Learning Center serve?
+            </summary>
+            <p class="mt-3 leading-7 text-[rgb(var(--color-text-soft))]">
+                This location serves families near {location.nearbyAreas.join(", ")} and nearby communities.
+            </p>
+            </details>
+
+            <details class="rounded-[var(--radius-lg)] border border-[rgb(var(--color-border)/0.32)] bg-[rgb(var(--color-surface)/0.5)] p-5">
+            <summary class="cursor-pointer font-black text-[rgb(var(--color-heading))]">
+                How can I ask about enrollment?
+            </summary>
+            <p class="mt-3 leading-7 text-[rgb(var(--color-text-soft))]">
+                You can contact the center directly or visit the enrollment page to request more information about availability.
+            </p>
+            </details>
+        </div>
+        </div>
+    </div>
+</section>
+
+<section class="section-shell-sm">
+    <div class="container-shell">
+        <div class="flex flex-col items-center glow-panel p-8 text-center md:p-12">
+            <p class="section-kicker mx-auto">
+                <HeartHandshake class="size-4" aria-hidden="true" />
+                Visit Mini Me Learning Centers
+            </p>
+
+            <h2 class="mx-auto mt-5 max-w-4xl">
+                Ready to learn more about our {location.area} location?
+            </h2>
+
+            <p class="lead mx-auto mt-5 max-w-2xl">
+                Connect with our team to ask about programs, availability, enrollment, and how we can support your child’s early learning journey.
+            </p>
+
+            <div class="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
+                <a href="/enroll" class="btn btn-primary">
+                Start Enrollment
+                <MoveRight class="size-4" aria-hidden="true" />
+                </a>
+
+                <a href="/contact" class="btn btn-secondary">
+                Contact Us
+                <Phone class="size-4" aria-hidden="true" />
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "ChildCare",
+    name: location.name,
+    description: location.description,
+    address: {
+        "@type": "PostalAddress",
+        streetAddress: location.address,
+        addressLocality: location.city,
+        addressRegion: location.state,
+        postalCode: location.zip,
+        addressCountry: "US",
+    },
+    telephone: location.phone,
+    email: location.email,
+    url: canonicalPath,
+    areaServed: location.nearbyAreas,
+})} />

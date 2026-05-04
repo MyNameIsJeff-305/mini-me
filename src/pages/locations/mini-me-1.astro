@@ -1,0 +1,12 @@
+---
+import MainLayout from "../../layouts/MainLayout.astro";
+import LocationPage from "../../components/LocationPage.astro";
+import { miniMeLocations } from "../../data/miniMeLocations";
+
+const location = miniMeLocations["mini-me-1"];
+const nearbyAreas = location.nearbyAreas.join(", ");
+---
+
+<MainLayout title={`Daycare & Early Learning in ${location.area}`} description={`Looking for daycare in ${location.area}? Mini Me Learning Center offers childcare, early learning, school readiness support, and enrollment help near ${nearbyAreas}.`}>
+    <LocationPage location={location} />
+</MainLayout>
